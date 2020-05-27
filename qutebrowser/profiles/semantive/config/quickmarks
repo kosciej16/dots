@@ -1,0 +1,20 @@
+work/aws https://console.aws.amazon.com/console/home?region=us-east-1#
+work/links https://royaldutchshell.atlassian.net/wiki/spaces/SDU/pages/328401240/SDU+Links
+work/board https://sede-ui-adp.visualstudio.com/X-Digi/_sprints/taskboard/SDU_DP_Integration/X-Digi/SDU-PI-05.2/Sprints/Sprint_41
+work/chime https://app.chime.aws/meetings/CharleyLeMeetings
+work/github https://github.com/sdu-rds
+work/jenkins https://jenkins.ops.sdu-rds.com/job/dataplatform/
+work/youtrack https://semantive.myjetbrains.com/youtrack/dashboard
+tmp https://royaldutchshell.atlassian.net/wiki/spaces/ASC/pages/522027009/Notification+service+CWT+events+spike+design
+j/pub https://jenkins.ops.sdu-rds.com/blue/organizations/jenkins/dataplatform%2Fsdu-publish-service/branches/
+pub https://jenkins.ops.sdu-rds.com/blue/organizations/jenkins/dataplatform%2Fsdu-publish-service/branches/
+e2e https://jenkins.ops.sdu-rds.com/blue/organizations/jenkins/dataplatform%2Fsdu-integration-team-e2e-tests/branches
+azure fault domains https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability
+azure firewall https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal
+work/help https://royaldutchshell.atlassian.net/servicedesk/customer/portals
+help/jenkins https://royaldutchshell.atlassian.net/servicedesk/customer/portal/13/BAP-224
+con new navigation https://support.atlassian.com/confluence-cloud/docs/improved-confluence-navigation/
+youtrack https://semantive.myjetbrains.com/youtrack/issue/47L-5469
+qumulo https://jenkins.ops.sdu-rds.com/blue/organizations/jenkins/dataplatform%2Fsdu-qumulo-service/branches
+workspace https://jenkins.ops.sdu-rds.com/blue/organizations/jenkins/dataplatform%2Fsdu-workspace-service/branches
+board https://sede-ui-adp.visualstudio.com/X-Digi/_sprints/taskboard/SDU_DP_Integration/X-Digi/SDU-PI-05.2/Sprints/Sprint_42
