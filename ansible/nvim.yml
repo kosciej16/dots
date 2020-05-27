@@ -1,0 +1,119 @@
+--- #
+- hosts: vm
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+
+    - name: Create app directory for nvim
+      file: 
+        state: directory
+        path: "{{ appDir }}"
+
+    - name: Download nvim.appimage
+      get_url:
+        url: "{{ url }}"
+        dest: "{{ nvimApp }}"
+        mode: 0777
+
+    - name: Add path variable for nvim
+      block:
+        - shell: "grep {{appDir}} ~/.profile"
+          register: grep_output
+          failed_when: false
+          no_log: true
+        - lineinfile:
+            path: ~/.profile
+            line: "export PATH=$PATH:{{ appDir }}"
+          when: grep_output.stderr == ""
+
+    - name: Add nvim as defaults
+      block:
+        - name: Add nvim as default for editor
+          alternatives:
+            name: editor
+            path: "{{ nvimApp }}"
+            link: /usr/bin/editor
+            priority: 60
+        - name: Add nvim as default for vim
+          alternatives:
+            name: vim
+            path: "{{ nvimApp }}"
+            link: /usr/bin/vim
+            priority: 60
+      become: yes
+
+    - name: Make sure {{ hostDir }} exists
+      file:
+        path: "{{ hostDir }}"
+        state: directory
+
+    - name: Copy neovim configuration
+      copy:
+        src: "{{ localDir }}/{{ item }}"
+        dest: "{{ hostDir }}/"
+      with_items: [init.vim, vimrc_parts, colors, ftplugin, UltiSnips, vimwiki]
+
+    - name: Install PlugInstall dependencies
+      package:
+        name: [git, curl, ripgrep]
+        state: present
+      become: yes
+
+    - name: Install nvim plugins
+      shell: vim -E -s -c "source {{ hostDir }}/init.vim" -c PlugInstall -c qa
+
+    - name: Python stuff
+      block:
+      - name: Install pip
+        package:
+          name: python3-pip
+          state: present
+        become: yes
+
+      - name: Install pipx
+        pip:
+          name: pipx
+
+      - name: Install python tools
+        block:
+        - name: Install apps with pipx
+          shell: "pipx install {{ item }}"
+          with_items: [isort, yapf, pylint, flake8, ipdb]
+
+        - name: Install libs with pip
+          pip:
+            name: pdbpp
+        environment:
+          PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+      - name: Copy python configuration
+        copy:
+          src: "{{ localPythonDir }}/{{ item }}"
+          dest: "$HOME/.{{ item }}"
+        with_items:
+          - pylintrc
+          - pdbrc.py
+
+      - name: Copy yapf configuration
+        copy:
+          src: "{{ localPythonDir }}/yapf"
+          dest: "{{ ConfigDir }}"
+
+      - name: Make sure python3-venv is installed
+        package:
+          name: python3-venv
+          state: present
+        become: yes
+
+      - name: Setup python support
+        pip:
+          name: neovim
+          virtualenv: $HOME/neovim
+          virtualenv_command: "{{ ansible_python_interpreter }} -m venv"
+
+      - name: Install COC python support
+        block:
+          - shell: vim -E -s -c "source {{ hostDir }}/init.vim" -c "CocInstall coc-python" -c qa
+          - copy:
+              src: "{{ localDir }}/coc-settings.json"
+              dest: "{{ hostDir }}/coc-settings.json"

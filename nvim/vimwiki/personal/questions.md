@@ -1,0 +1,2 @@
+qutebrowser:
+    Plugins from chromium
