@@ -1,0 +1,59 @@
+--- #
+- hosts: vm
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    locDir: "{{playbook_dir | dirname}}/khal"
+  tasks:
+    - name: Install pip
+      package:
+        name: python3-pip
+        state: present
+      become: yes
+
+    - name: Install pipx
+      pip:
+        name: pipx
+
+    - name: Install khal and dependencies
+      block:
+        - name: Install khal and dependencies
+          shell: "pipx install {{ item }}"
+          with_items: ["vdirsyncer", "git+git://github.com/pimutils/khal.git"]
+          environment:
+            PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+        - name: Install vdirsyncer lib
+          shell: "pipx inject vdirsyncer requests-oauthlib"
+          environment:
+            PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+    - name: Copy configuration
+      copy:
+        src: "{{ locDir }}/{{ item }}"
+        dest: "{{ ConfigDir }}"
+      with_items: [khal, vdirsyncer]
+
+    - name: Systemd
+      block:
+        - name: Create user systemd directory
+          file:
+            path: "{{ ConfigDir }}/systemd/user"
+            state: directory
+
+        - name: Copy systemd files
+          copy:
+            src: "{{ locDir }}/{{ item }}"
+            dest: "{{ ConfigDir }}/systemd/user/"
+          with_items: [vdirsyncer.service, vdirsyncer.timer]
+
+        # - name: Discover calendars
+        #   shell: "vdirsyncer discover"
+        #   environment:
+        #     PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+        - name: Enable vdirsyncer timer
+          systemd:
+            name: vdirsyncer.timer
+            enabled: yes
+            user: yes
+            state: started

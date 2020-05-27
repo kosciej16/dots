@@ -1,0 +1,22 @@
+[calendars]
+ [[home]]
+    path = ~/.calendars/kd305513@gmail.com/
+    color = dark green
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+
+[view]
+agenda_event_format={calendar-color}{start-end-time-style} {title}{repeat-symbol}{description-separator}{description} ({location}){reset}
+theme=dark
+
+[default]
+default_calendar = home
+highlight_event_days = True  # the default is False
+
+[highlight_days]
+color=light blue
