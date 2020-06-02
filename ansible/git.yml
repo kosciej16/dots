@@ -1,0 +1,58 @@
+--- #
+- hosts: vm
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    locDir: "{{playbook_dir | dirname}}/git"
+  tasks:
+
+    - name: Install git
+      package:
+        name: git
+        state: present
+      become: yes
+
+    - name: Copy config files
+      copy:
+        src: "{{ locDir }}/{{ item }}"
+        dest: "$HOME/.{{ item }}"
+      with_items: [gitignore, gitconfig, gitconfig-sdu]
+
+    - name: hub
+      block:
+        - name: Install hub
+          package:
+            name: hub
+            state: present
+          become: yes
+
+        - name: Create app directory for nvim
+          file: 
+            state: directory
+            path: "{{ completionDir }}"
+
+        - name: Get completion file
+          get_url:
+            url: "https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh"
+            dest: "{{ completionDir }}"
+
+        - name: Add alias to path
+          lineinfile:
+            path: "{{ aliasesDir }}/misc"
+            line: eval "$(hub alias -s)"
+            create: yes
+
+        - name: Add source aliases
+          blockinfile:
+            path: ~/.profile
+            block: |
+              for c in ~/.aliases/* ; do
+                . $c
+              done
+
+        - name: Add source completion
+          blockinfile:
+            path: ~/.profile
+            block: |
+              for c in ~/.completions/* ; do
+                . $c
+              done

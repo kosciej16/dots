@@ -1,0 +1,5 @@
+[core]
+    sshCommand = ssh -i ~/.ssh/work_rsa -F /dev/null
+[user]
+	email = krystian.dowolski@hitachivantara.com
+	name = Krystian Dowolski
