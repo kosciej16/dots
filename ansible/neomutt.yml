@@ -1,0 +1,146 @@
+--- #
+- hosts: vm
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    mailDir: $HOME/.mail
+    neomuttDir: "{{ repoDir }}/neomutt"
+    locDir: "{{playbook_dir | dirname}}/neomutt"
+    hDir: $HOME/.config/neomutt
+  tasks:
+
+    - name: Pass
+      block:
+        - name: Install pass and dependencies
+          package:
+            name: [pass, rofi]
+            state: present
+          become: yes
+
+        - name: Clone pass repository
+          git:
+            repo: 'git@github.com:kosciej16/pass.git'
+            dest: $HOME/.password-store
+            accept_hostkey: yes
+
+        - name: Copy gnpug keys
+          command: cp -Tr $HOME/.password-store/gnupg $HOME/.gnupg
+
+        - name: Get gpg key id
+          shell: (gpg -K | grep -A1 sec | tail -1)
+          register: gpg_key_id
+
+        - name: Init pass database
+          shell: "pass init {{ gpg_key_id.stdout }}"
+
+
+    # ISYNC
+    
+    - name: Install isync
+      package:
+        name: isync
+        state: present
+      become: yes
+
+    - name: Create mail directories
+      file: 
+        state: directory
+        path: "{{ mailDir }}/{{ item }}"
+      with_items: [work, home]
+
+    - name: Copy config
+      copy: 
+        src: "{{ locDir }}/mbsync/mbsyncrc"
+        dest: "$HOME/.mbsyncrc"
+
+    - name: Sync emails
+      command: mbsync -a
+
+    - name: Systemd
+      block:
+        - name: Create user systemd directory
+          file:
+            path: "{{ ConfigDir }}/systemd/user"
+            state: directory
+
+        - name: Copy systemd files
+          copy:
+            src: "{{ locDir }}/mbsync/{{ item }}"
+            dest: "{{ ConfigDir }}/systemd/user/"
+          with_items: [mbsync.service, mbsync.timer]
+
+        - name: Enable mbsync timer
+          systemd:
+            name: mbsync.timer
+            enabled: yes
+            user: yes
+            state: started
+
+    # MSMTP
+
+    - name: Copy msmtp config
+      copy:
+        src: "{{ locDir }}/msmtp/msmtprc"
+        dest: "$HOME/.msmtprc"
+
+
+    # NOTMUCH
+
+    - name: Install notmuch
+      package:
+        name: notmuch
+        state: present
+      become: yes
+
+    - name: Copy notmuch hooks
+      copy:
+        src: "{{ locDir }}/notmuch/hooks"
+        dest: "{{ mailDir }}/.notmuch/"
+        mode: 0755
+
+    - name: Copy notmuch config
+      copy:
+        src: "{{ locDir }}/notmuch/notmuch-config"
+        dest: "$HOME/.notmuch-config"
+
+    - name: Init notmuch database
+      command: "notmuch new"
+      chdir: "{{ mailDir }}"
+
+    # NEOMUTT
+
+    - name: Clone neomutt repository
+      git:
+        repo: 'git@github.com:neomutt/neomutt.git'
+        dest: "{{ repoDir }}/neomutt"
+
+    # Some ansible problem
+    # - apt_repository:
+    #     repo: deb-src http://pl.archive.ubuntu.com/ubuntu/ focal universe
+    #     state: present
+
+    - name: Install neomutt dependencies
+      apt:
+        name: neomutt
+        state: build-dep
+      become: yes
+
+    - name: Configure
+      command: ./configure --notmuch
+      args:
+        chdir: "{{ neomuttDir }}"
+
+    - name: Make
+      make:
+        chdir: "{{ neomuttDir }}"
+
+    - name: Make install
+      make:
+        chdir: "/home/kosciej/repos/neomutt"
+        target: install
+      become: yes
+
+    - name: Copy neomutt configuration
+      copy:
+        src: "{{ locDir }}/neomutt/{{ item }}"
+        dest: "{{ hDir }}/"
+      with_items: [bindings, colors, mailboxes, mailcap, muttrc, printing.sh]

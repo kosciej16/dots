@@ -7,6 +7,7 @@ TODO:
 - [ ] Profiles read from directory instead hardcoded
 - [ ] Own server for storing gpupg key
 - [ ] Pass url from file/variable
+- [ ] gnupg right (700 dir, 600 content)
 
 IDEAS:
 - [ ] Install pip/git and more as common role in each playbook

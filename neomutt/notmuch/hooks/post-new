@@ -1,0 +1,4 @@
+#!/bin/bash
+
+notmuch tag -new +sent -- 'tag:new and (folder:work/sent or folder:home/sent)'
+notmuch tag -new +unread +inbox -- 'tag:new'
