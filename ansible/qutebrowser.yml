@@ -41,7 +41,7 @@
           when: not stat_result.stat.exists
 
         - name: Add qutebrowser to PATH
-        - lineinfile:
+          lineinfile:
             path: ~/.profile
             line: "export PATH=$PATH:{{ venvDir }}/bin"
 
@@ -78,8 +78,13 @@
             dest: $HOME/.password-store
             accept_hostkey: yes
 
+        - name: Create gnupg director
+          file: 
+            state: directory
+            path: "$HOME/.gnupg"
+
         - name: Copy gnpug keys
-          command: cp -r $HOME/.password-store/gnupg $HOME/.gnupg
+          command: cp -Tr $HOME/.password-store/gnupg $HOME/.gnupg
 
         - name: Get gpg key id
           shell: (gpg -K | grep -A1 sec | tail -1)
@@ -93,6 +98,11 @@
             name: tldextract
           environment:
             PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+        - name: Create userscipts directory
+          file: 
+            state: directory
+            path: "{{ userscriptsDir }}"
 
         - name: qute-pass userscript
           get_url:
