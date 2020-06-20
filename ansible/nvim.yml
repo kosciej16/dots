@@ -70,6 +70,12 @@
           state: present
         become: yes
 
+      - name: Make sure python3-venv is installed
+        package:
+          name: python3-venv
+          state: present
+        become: yes
+
       - name: Install pipx
         pip:
           name: pipx
@@ -84,7 +90,7 @@
           pip:
             name: pdbpp
         environment:
-          PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+          PATH: "{{ ansible_env.PATH }}:/home/kosciej/.local/bin"
 
       - name: Copy python configuration
         copy:
@@ -99,12 +105,6 @@
           src: "{{ localPythonDir }}/yapf"
           dest: "{{ ConfigDir }}"
 
-      - name: Make sure python3-venv is installed
-        package:
-          name: python3-venv
-          state: present
-        become: yes
-
       - name: Setup python support
         pip:
           name: neovim
@@ -113,7 +113,13 @@
 
       - name: Install COC python support
         block:
-          - shell: vim -E -s -c "source {{ hostDir }}/init.vim" -c "CocInstall coc-python" -c qa
+          - package:
+              name: [nodejs, npm]
+              state: present
+            become: yes
+          - command: npm install coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+            args:
+              chdir: "{{ ConfigDir }}/coc/extensions"
           - copy:
               src: "{{ localDir }}/coc-settings.json"
               dest: "{{ hostDir }}/coc-settings.json"

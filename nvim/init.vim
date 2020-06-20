@@ -25,8 +25,7 @@ source ~/.config/nvim/vimrc_parts/autopaste.vim
 source ~/.config/nvim/vimrc_parts/basic.vim
 source ~/.config/nvim/vimrc_parts/mappings.vim
 
-" let g:python3_host_prog = "/home/kosciej/virt/neovim3/bin/python"
-" let g:python_host_prog = "/home/kosciej/virt/neovim/bin/python"
+let g:python3_host_prog = "/home/kosciej/neovim/bin/python"
 
 " nmap <C-_> gcc
 " vmap <C-_> gc
