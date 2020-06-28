@@ -3,6 +3,7 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
     locDir: "{{playbook_dir | dirname}}/git"
+    scripstDir: $HOME/bin
   tasks:
 
     - name: Install git
@@ -15,7 +16,12 @@
       copy:
         src: "{{ locDir }}/{{ item }}"
         dest: "$HOME/.{{ item }}"
-      with_items: [gitignore, gitconfig, gitconfig-sdu]
+      with_items: [gitignore, gitconfig]
+
+    - name: Copy scripts
+      copy:
+        src: "{{ locDir }}/newtag"
+        dest: "{{ scripstDir }}"
 
     - name: hub
       block:
