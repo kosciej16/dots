@@ -33,6 +33,19 @@
         dest: "{{ ConfigDir }}"
       with_items: [khal, vdirsyncer]
 
+    - name: Copy aliases
+      copy:
+        src: "{{ locDir }}/"
+        dest: "{{ aliasesDir }}/khal"
+
+    - name: Add sourcing aliases
+      blockinfile:
+        path: ~/.profile
+        block: |
+          for c in ~/.aliases/* ; do
+            . $c
+          done
+
     - name: Systemd
       block:
         - name: Create user systemd directory
