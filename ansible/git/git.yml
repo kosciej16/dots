@@ -1,9 +1,7 @@
 --- #
-- hosts: vm
+- hosts: ubuntu
   vars:
-    ansible_python_interpreter: /usr/bin/python3
-    locDir: "{{playbook_dir | dirname}}/git"
-    scripstDir: $HOME/bin
+    localDir: "{{ localRoot }}/git"
   tasks:
 
     - name: Install git
@@ -14,14 +12,14 @@
 
     - name: Copy config files
       copy:
-        src: "{{ locDir }}/{{ item }}"
+        src: "{{ localDir }}/{{ item }}"
         dest: "$HOME/.{{ item }}"
       with_items: [gitignore, gitconfig]
 
     - name: Copy scripts
       copy:
-        src: "{{ locDir }}/newtag"
-        dest: "{{ scripstDir }}"
+        src: "{{ localDir }}/newtag"
+        dest: "{{ scriptsDir }}"
 
     - name: hub
       block:

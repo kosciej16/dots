@@ -1,8 +1,7 @@
 --- #
-- hosts: vm
+- hosts: ubuntu
   vars:
-    ansible_python_interpreter: /usr/bin/python3
-    locDir: "{{playbook_dir | dirname}}/khal"
+    localDir: "{{ localRoot }}/khal"
   tasks:
     - name: Install pip
       package:
@@ -20,22 +19,22 @@
           shell: "pipx install {{ item }}"
           with_items: ["vdirsyncer", "git+git://github.com/pimutils/khal.git"]
           environment:
-            PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+            PATH: "{{ ansible_env.PATH }}:.local/bin"
 
         - name: Install vdirsyncer lib
           shell: "pipx inject vdirsyncer requests-oauthlib"
           environment:
-            PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+            PATH: "{{ ansible_env.PATH }}:.local/bin"
 
     - name: Copy configuration
       copy:
-        src: "{{ locDir }}/{{ item }}"
-        dest: "{{ ConfigDir }}"
+        src: "{{ localDir }}/{{ item }}"
+        dest: "{{ configDir }}"
       with_items: [khal, vdirsyncer]
 
     - name: Copy aliases
       copy:
-        src: "{{ locDir }}/"
+        src: "{{ localDir }}/"
         dest: "{{ aliasesDir }}/khal"
 
     - name: Add sourcing aliases
@@ -50,19 +49,19 @@
       block:
         - name: Create user systemd directory
           file:
-            path: "{{ ConfigDir }}/systemd/user"
+            path: "{{ configDir }}/systemd/user"
             state: directory
 
         - name: Copy systemd files
           copy:
-            src: "{{ locDir }}/{{ item }}"
-            dest: "{{ ConfigDir }}/systemd/user/"
+            src: "{{ localDir }}/{{ item }}"
+            dest: "{{ configDir }}/systemd/user/"
           with_items: [vdirsyncer.service, vdirsyncer.timer]
 
         # - name: Discover calendars
         #   shell: "vdirsyncer discover"
         #   environment:
-        #     PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+        #     PATH: "{{ ansible_env.PATH }}:$HOME/.local/bin"
 
         - name: Enable vdirsyncer timer
           systemd:

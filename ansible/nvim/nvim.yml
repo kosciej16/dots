@@ -1,7 +1,10 @@
 --- #
-- hosts: vm
+- hosts: ubuntu
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    nvimApp: "{{ appDir }}/nvim"
+    localDir: "{{ localRoot }}/nvim"
+    localPythonDir: "{{ localRoot }}/python"
+    hostDir: $HOME/.config/nvim
   tasks:
 
     - name: Create app directory for nvim
@@ -11,7 +14,7 @@
 
     - name: Download nvim.appimage
       get_url:
-        url: "{{ url }}"
+        url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
         dest: "{{ nvimApp }}"
         mode: 0777
 
@@ -41,6 +44,7 @@
             link: /usr/bin/vim
             priority: 60
       become: yes
+      become_user: "{{ ansible_ssh_user }}"
 
     - name: Make sure {{ hostDir }} exists
       file:
@@ -103,7 +107,7 @@
       - name: Copy yapf configuration
         copy:
           src: "{{ localPythonDir }}/yapf"
-          dest: "{{ ConfigDir }}"
+          dest: "{{ configDir }}"
 
       - name: Setup python support
         pip:
@@ -119,7 +123,7 @@
             become: yes
           - command: npm install coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
             args:
-              chdir: "{{ ConfigDir }}/coc/extensions"
+              chdir: "{{ configDir }}/coc/extensions"
           - copy:
               src: "{{ localDir }}/coc-settings.json"
               dest: "{{ hostDir }}/coc-settings.json"

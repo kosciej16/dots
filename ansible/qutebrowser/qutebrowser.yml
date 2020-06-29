@@ -1,13 +1,12 @@
 --- #
-- hosts: vm
+- hosts: ubuntu
   vars:
-    ansible_python_interpreter: /usr/bin/python3
     repoDir: $HOME/repos/qutebrowser
     venvDir: "{{ repoDir }}/.venv"
     userscriptsDir: "$HOME/.local/share/qutebrowser/userscripts"
-    locDir: "{{playbook_dir | dirname}}/qutebrowser"
-    hDir: "{{ configDir }}/qutebrowser"
-    profDir: "$HOME/.qutebrowser"
+    localDir: "{{ localRoot }}/qutebrowser"
+    hostDir: "{{ configDir }}/qutebrowser"
+    profilesDir: "$HOME/.qutebrowser"
   tasks:
 
     - name: Install git
@@ -21,9 +20,9 @@
         repo: 'https://github.com/qutebrowser/qutebrowser.git'
         dest: "{{ repoDir }}"
 
-    - name: Install doc dependencies
+    - name: Install dependencies
       package:
-        name: asciidoc
+        name: [asciidoc, libjs-pdf]
         state: present
       become: yes
 
@@ -47,24 +46,10 @@
 
     - name: Copy config file
       copy:
-        src: "{{ locDir }}/config.py"
-        dest: "{{ hDir }}/"
+        src: "{{ localDir }}/config.py"
+        dest: "{{ hostDir }}/"
 
-    - name: Profiles
-      block:
-        - name: Copy profiles data
-          copy:
-            src: "{{ locDir }}/profiles/{{ item }}"
-            dest: "{{ profDir }}/"
-          with_items: [kosciej, semantive]
-        - name: Create symlink to qutebrowser config
-          file:
-            src: "{{ hDir }}/config.py"
-            dest: "{{ profDir }}/{{ item }}/config/config.py"
-            state: link
-          with_items: [kosciej, semantive]
-
-    - name: Pass
+    - name: pass
       block:
         - name: Install pass and dependencies
           package:
@@ -109,3 +94,31 @@
             url: "https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/misc/userscripts/qute-pass"
             dest: "{{ userscriptsDir }}/qute-pass"
             mode: 0755
+
+    - name: Profiles
+      block:
+        - name: Copy profiles data
+          copy:
+            src: "{{ localDir }}/profiles/{{ item }}"
+            dest: "{{ profilesDir }}/"
+          with_items: [kosciej]
+
+        - name: Create symlink to qutebrowser config
+          file:
+            src: "{{ hostDir }}/config.py"
+            dest: "{{ profilesDir }}/{{ item }}/config/config.py"
+            state: link
+          with_items: [kosciej]
+
+        - name: Create profile data directory
+          file:
+            state: directory
+            dest: "{{ profilesDir }}/{{ item }}/data"
+          with_items: [kosciej]
+
+        - name: Create symlink to userscipts
+          file:
+            src: "{{ userscriptsDir }}"
+            dest: "{{ profilesDir }}/{{ item }}/data/userscripts"
+            state: link
+          with_items: [kosciej]

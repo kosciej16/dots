@@ -1,3 +1,2 @@
 *.retry
-host_vars
-inventory
+main.yml

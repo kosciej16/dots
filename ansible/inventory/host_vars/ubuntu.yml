@@ -1,0 +1,9 @@
+--- #
+ansible_python_interpreter: /usr/bin/python3
+configDir: $HOME/.config
+repoDir: $HOME/repos
+scriptsDir: $HOME/bin
+appDir: "{{ scriptsDir }}/app"
+localRoot: "{{playbook_dir | dirname | dirname}}"
+completionDir: $HOME/.completions
+aliasesDir: $HOME/.aliases

@@ -1,14 +1,13 @@
 --- #
-- hosts: vm
+- hosts: ubuntu
   vars:
-    ansible_python_interpreter: /usr/bin/python3
     mailDir: $HOME/.mail
-    neomuttDir: "{{ repoDir }}/neomutt"
-    locDir: "{{playbook_dir | dirname}}/neomutt"
-    hDir: $HOME/.config/neomutt
+    neomuttRepoDir: "{{ repoDir }}/neomutt"
+    localDir: "{{ localRoot }}/neomutt"
+    hostDir: "{{ configDir }}/neomutt"
   tasks:
 
-    - name: Pass
+    - name: pass
       block:
         - name: Install pass and dependencies
           package:
@@ -25,6 +24,12 @@
         - name: Copy gnpug keys
           command: cp -Tr $HOME/.password-store/gnupg $HOME/.gnupg
 
+        - name: Change .gnupg permissions
+          file:
+            path: $HOME/.gnupg
+            state: directory
+            mode: '0700'
+
         - name: Get gpg key id
           shell: (gpg -K | grep -A1 sec | tail -1)
           register: gpg_key_id
@@ -33,114 +38,120 @@
           shell: "pass init {{ gpg_key_id.stdout }}"
 
 
-    # ISYNC
-    
-    - name: Install isync
-      package:
-        name: isync
-        state: present
-      become: yes
-
-    - name: Create mail directories
-      file: 
-        state: directory
-        path: "{{ mailDir }}/{{ item }}"
-      with_items: [work, home]
-
-    - name: Copy config
-      copy: 
-        src: "{{ locDir }}/mbsync/mbsyncrc"
-        dest: "$HOME/.mbsyncrc"
-
-    - name: Sync emails
-      command: mbsync -a
-
-    - name: Systemd
+    - name: isync
       block:
-        - name: Create user systemd directory
-          file:
-            path: "{{ ConfigDir }}/systemd/user"
-            state: directory
+      - name: Install isync
+        package:
+          name: isync
+          state: present
+        become: yes
 
-        - name: Copy systemd files
-          copy:
-            src: "{{ locDir }}/mbsync/{{ item }}"
-            dest: "{{ ConfigDir }}/systemd/user/"
-          with_items: [mbsync.service, mbsync.timer]
+      - name: Create mail directories
+        file:
+          state: directory
+          path: "{{ mailDir }}/{{ item }}"
+        with_items: [work, home]
 
-        - name: Enable mbsync timer
-          systemd:
-            name: mbsync.timer
-            enabled: yes
-            user: yes
-            state: started
+      - name: Copy config
+        copy:
+          src: "{{ localDir }}/mbsync/mbsyncrc"
+          dest: "$HOME/.mbsyncrc"
 
-    # MSMTP
+      - name: Sync emails
+        command: mbsync -a
 
-    - name: Copy msmtp config
-      copy:
-        src: "{{ locDir }}/msmtp/msmtprc"
-        dest: "$HOME/.msmtprc"
+      - name: Systemd
+        block:
+          - name: Create user systemd directory
+            file:
+              path: "{{ configDir }}/systemd/user"
+              state: directory
 
+          - name: Copy systemd files
+            copy:
+              src: "{{ localDir }}/mbsync/{{ item }}"
+              dest: "{{ configDir }}/systemd/user/"
+            with_items: [mbsync.service, mbsync.timer]
 
-    # NOTMUCH
+          - name: Enable mbsync timer
+            systemd:
+              name: mbsync.timer
+              enabled: yes
+              user: yes
+              state: started
 
-    - name: Install notmuch
-      package:
-        name: notmuch
-        state: present
-      become: yes
+    - name: msmtp
+      block:
+      - name: Copy msmtp config
+        copy:
+          src: "{{ localDir }}/msmtp/msmtprc"
+          dest: "$HOME/.msmtprc"
 
-    - name: Copy notmuch hooks
-      copy:
-        src: "{{ locDir }}/notmuch/hooks"
-        dest: "{{ mailDir }}/.notmuch/"
-        mode: 0755
+    - name: notmuch
+      block:
+      - name: Install notmuch
+        package:
+          name: notmuch
+          state: present
+        become: yes
 
-    - name: Copy notmuch config
-      copy:
-        src: "{{ locDir }}/notmuch/notmuch-config"
-        dest: "$HOME/.notmuch-config"
+      - name: Copy notmuch hooks
+        copy:
+          src: "{{ localDir }}/notmuch/hooks"
+          dest: "{{ mailDir }}/.notmuch/"
+          mode: 0755
 
-    - name: Init notmuch database
-      command: "notmuch new"
-      chdir: "{{ mailDir }}"
+      - name: Copy notmuch config
+        copy:
+          src: "{{ localDir }}/notmuch/notmuch-config"
+          dest: "$HOME/.notmuch-config"
 
-    # NEOMUTT
+      - name: Init notmuch database
+        command: "notmuch new"
+        chdir: "{{ mailDir }}"
 
-    - name: Clone neomutt repository
-      git:
-        repo: 'git@github.com:neomutt/neomutt.git'
-        dest: "{{ repoDir }}/neomutt"
+    - name: Check if neomutt is installed
+      shell: "which neomutt"
+      register: result
+      ignore_errors: true
 
-    # Some ansible problem
-    # - apt_repository:
-    #     repo: deb-src http://pl.archive.ubuntu.com/ubuntu/ focal universe
-    #     state: present
+    - name: neomutt
+      block:
+      - name: Clone neomutt repository
+        git:
+          repo: 'git@github.com:neomutt/neomutt.git'
+          dest: "{{ repoDir }}/neomutt"
 
-    - name: Install neomutt dependencies
-      apt:
-        name: neomutt
-        state: build-dep
-      become: yes
+      # Some ansible problem
+      # - apt_repository:
+      #     repo: deb-src http://pl.archive.ubuntu.com/ubuntu/ focal universe
+      #     state: present
 
-    - name: Configure
-      command: ./configure --notmuch
-      args:
-        chdir: "{{ neomuttDir }}"
+      - name: Install neomutt dependencies
+        apt:
+          name: neomutt
+          state: build-dep
+        become: yes
 
-    - name: Make
-      make:
-        chdir: "{{ neomuttDir }}"
+      - name: Configure
+        command: ./configure --notmuch
+        args:
+          chdir: "{{ neomuttRepoDir }}"
 
-    - name: Make install
-      make:
-        chdir: "/home/kosciej/repos/neomutt"
-        target: install
-      become: yes
+      - name: Make
+        make:
+          chdir: "{{ neomuttRepoDir }}"
 
-    - name: Copy neomutt configuration
-      copy:
-        src: "{{ locDir }}/neomutt/{{ item }}"
-        dest: "{{ hDir }}/"
-      with_items: [bindings, colors, mailboxes, mailcap, muttrc, printing.sh]
+      - name: Make install
+        make:
+          chdir: "$HOME/repos/neomutt"
+          target: install
+        become: yes
+        become_user: "{{ ansible_ssh_user }}"
+
+      - name: Copy neomutt configuration
+        copy:
+          src: "{{ localDir }}/neomutt/{{ item }}"
+          dest: "{{ hostDir }}/"
+        with_items: [bindings, colors, mailboxes, mailcap, muttrc, printing.sh]
+      when: result.rc != 0
