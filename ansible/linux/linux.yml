@@ -1,0 +1,99 @@
+--- #
+- hosts: ubuntu
+  vars:
+    localDir: "{{ localRoot }}/linux"
+  tasks:
+
+    - name: Copy dot files
+      copy:
+        src: "{{ localDir }}/bash/bashrc"
+        dest: "$HOME/.bashrc"
+
+    - name: Copy aliases
+      copy:
+        src: "{{ localDir }}/bash/aliases"
+        dest: "{{ aliasesDir }}/misc"
+
+    - name: Add sourcing aliases
+      blockinfile:
+        path: ~/.profile
+        block: |
+          for c in ~/.aliases/* ; do
+            . $c
+          done
+
+    - name: Rclone
+      block:
+        - name: Install dependencies
+          package:
+            name: curl
+            state: present
+          become: yes
+
+        - name: Install rclone
+          get_url: 
+            url: https://rclone.org/install.sh
+            dest: $HOME/install.sh
+            mode: 0755
+
+        # - name: Install rclone
+        #   command: bash install.sh
+        #   become: yes
+        #
+        - name: Copy helper script
+          copy: 
+            src: "{{ localDir }}/rclone/rc"
+            dest: "{{ scriptsDir }}"
+
+    - name: IRC
+      block:
+        - name: Install weechat
+          package:
+            name: weechat
+            state: present
+          become: yes
+
+        - name: Copy config
+          copy: 
+            src: "{{ localDir }}/weechat/irc.conf"
+            dest: "$HOME/.weechat/"
+
+    - name: Taskwarrior
+      block:
+        - name: Install taskwarrior
+          package:
+            name: taskwarrior
+            state: present
+          become: yes
+
+        - name: Copy aliases
+          copy: 
+            src: "{{ localDir }}/taskwarrior/aliases"
+            dest: "{{ aliasesDir }}/taskwarrior"
+
+        - name: Add sourcing aliases
+          blockinfile:
+            path: ~/.profile
+            block: |
+              for c in ~/.aliases/* ; do
+                . $c
+              done
+
+    - name: Install usefull tools
+      package:
+        name: [ripgrep, xclip, autojump]
+        state: present
+      become: yes
+
+    - name: Ranger
+      block:
+        - name: Install ranger
+          package:
+            name: ranger
+            state: present
+          become: yes
+
+        - name: Copy config files
+          copy:
+            src: "{{ localDir }}/ranger"
+            dest: "{{ configDir }}/"

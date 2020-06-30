@@ -1,0 +1,21 @@
+#!/bin/bash
+
+declare -A drive_ids
+drive_ids['kp']=1EyQqTeOAVVcE0v2PSd-oF_gyPyTCktUR 
+drive_ids['pbb']=1P9ajihOxlgHNBDv1U4PH-l8bRG_52zey
+
+function mount {
+    dir="mydrive"
+    mkdir -p $dir
+    echo "Mounting Google Drive $1 directory into $dir"
+    rclone mount --drive-root-folder-id ${drive_ids[$1]} gdrive: $dir
+    rm -rf $dir
+}
+
+COMMAND=${@:$OPTIND:1}
+
+case $COMMAND in
+  "mount" | "m") mount ${@:$OPTIND+1:1} ;;
+  # "package" | "p") package ;;
+  # "package" | "p") package
+esac

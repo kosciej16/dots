@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# general commands
+alias t="task"
+alias ta="task add"
+alias td="task done"
+alias t-="task delete"
+alias tm="task modify"
+alias tu="task undo"
+alias tv="vit rc.alias.next=list"
+alias tw1="task modify wait:1d"
+# alias tw2="task modify wait:2d"
+# alias tw3="task modify wait:3d"
+# alias tw1w="task modify wait:1w"
+# alias tw2w="task modify wait:2w"
+# alias tw3w="task modify wait:3w"
+# alias tw1m="task modify wait:1m"
+# alias tw2m="task modify wait:2m"
+# alias tw3m="task modify wait:3m"
+
+# context control
+alias tc="task context"
+alias tt="task rc.context=none"
+alias ttv="vit rc.alias.next=list rc.context=none"
+# alias tfoss="task rc.context=foss"
+# alias thome="task rc.context=home"
+# alias tmisc="task rc.context=misc"
+# alias tfin="task rc.context=fin"
+# alias tinc="task rc.context=inc"
+
+# reports, in current context
+alias tb="task burndown.daily"
+alias tbw="task burndown.weekly"
+alias tbm="task burndown.monthly"
+alias tclosedtoday='t end:today all'
+alias tdonetoday='t end:today status:completed all'
+alias tl="clear; task list -BLOCKED"
+alias tn="clear; task newest"
+# list main categories (projects)
+alias tp="task projects rc.list.all.projects=yes 2>/dev/null | grep -E '^\w'"
+# list uncompleted projects
+alias tpp="task projects"
+# list all projects
+alias tppp="task projects rc.list.all.projects=yes"
+# alias tr="clear; task +READY"
+alias ts="task summary"
+alias tss="task summary rc.summary.all.projects=yes"
+
+# reports, ignoring current context
+alias ttb="tt burndown.daily"
+alias ttbw="tt burndown.weekly"
+alias ttbm="tt burndown.monthly"
+alias ttl="clear; tt list -BLOCKED"
+alias ttp="tt projects rc.list.all.projects=yes 2>/dev/null | grep -E '^\w'"
+alias ttpp="tt projects"
+alias ttppp="tt projects rc.list.all.projects=yes"
+alias ttr="clear; tt +READY"
+
+# main categories
+alias tmut="t project:mutt"
+alias tbiz="t project:biz"
+alias tfam="t project:fam"
+alias tfos="t project:fos"
+alias tfri="t project~fr.$"
+alias thom="t project:hom"
+alias tinc="t project:inc"
+alias tper="t project:per"
+alias tser="t project:ser"
+
+# misc.
+alias twfeedback="t fe1226d4"  # taskwarrior feedback task
+alias flog="t 5b343cc0"
+# tcvadd ISSUENO "ARG1" [ARG2 ARG3 ARG4 ARG5 ARG6]
+function tcvadd ()
+{
+  task add project:inc.cv."$1" +cv +inc "$2" "$3" "$4" "$5" "$6"
+}
+# set new recurrences' scheduled date to their due date
+alias tfixrecurring="t +READY +CHILD modify scheduled:due"
+#alias treview="for p in `tp | tail +2 | head -9 | awk '{print $1}'`; do clear; echo $p; t project:$p +READY; read; done"
+function treview ()
+{
+  for p in `tp | tail +2 | head -9 | awk '{print $1}'`; do
+    clear
+    t project:$p +READY
+    read
+  done
+}
