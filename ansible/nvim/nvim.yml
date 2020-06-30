@@ -57,9 +57,9 @@
         dest: "{{ hostDir }}/"
       with_items: [init.vim, vimrc_parts, colors, ftplugin, UltiSnips, vimwiki]
 
-    - name: Install PlugInstall dependencies
+    - name: Install Plugin dependencies
       package:
-        name: [git, curl, ripgrep]
+        name: [git, curl, ripgrep, universal-ctags]
         state: present
       become: yes
 
