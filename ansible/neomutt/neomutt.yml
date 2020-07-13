@@ -82,6 +82,11 @@
 
     - name: msmtp
       block:
+        - name: Install msmtp
+          package:
+            name: msmtp
+            state: present
+          become: yes
       - name: Copy msmtp config
         copy:
           src: "{{ localDir }}/msmtp/msmtprc"
@@ -155,3 +160,9 @@
           dest: "{{ hostDir }}/"
         with_items: [bindings, colors, mailboxes, mailcap, muttrc, printing.sh]
       when: result.rc != 0
+
+      - name: Install neomutt dependencies
+        package:
+          name: [urlscan]
+          state: present
+        become: yes

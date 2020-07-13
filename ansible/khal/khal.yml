@@ -34,7 +34,7 @@
 
     - name: Copy aliases
       copy:
-        src: "{{ localDir }}/"
+        src: "{{ localDir }}/aliases"
         dest: "{{ aliasesDir }}/khal"
 
     - name: Add sourcing aliases

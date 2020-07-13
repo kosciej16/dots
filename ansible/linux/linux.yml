@@ -97,3 +97,5 @@
           copy:
             src: "{{ localDir }}/ranger"
             dest: "{{ configDir }}/"
+
+    # install nmap

@@ -93,8 +93,8 @@
         - name: Install libs with pip
           pip:
             name: pdbpp
-        environment:
-          PATH: "{{ ansible_env.PATH }}:/home/kosciej/.local/bin"
+          environment:
+            PATH: "{{ ansible_env.PATH }}:/home/kosciej/.local/bin"
 
       - name: Copy python configuration
         copy:
@@ -110,20 +110,32 @@
           dest: "{{ configDir }}"
 
       - name: Setup python support
+
         pip:
           name: neovim
           virtualenv: $HOME/neovim
           virtualenv_command: "{{ ansible_python_interpreter }} -m venv"
 
-      - name: Install COC python support
+      - name: COC
         block:
-          - package:
+          - name: Install dependencies
+            package:
               name: [nodejs, npm]
               state: present
             become: yes
-          - command: npm install coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+
+          - name: Install pip dependencies
+            pip:
+              name: jedi
+            environment:
+              PATH: "{{ ansible_env.PATH }}:/home/kosciej/.local/bin"
+
+          - name: Install coc python extension
+            command: npm install coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
             args:
               chdir: "{{ configDir }}/coc/extensions"
-          - copy:
+
+          - name: Copy config file
+            copy:
               src: "{{ localDir }}/coc-settings.json"
               dest: "{{ hostDir }}/coc-settings.json"
