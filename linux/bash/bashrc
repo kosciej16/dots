@@ -61,8 +61,8 @@ fi
 #   bindkey '\ew' x-copy-region-as-kill
 # fi
 
-if [ -d ~/.bash_aliases ]; then
-    for aliases in ~/.bash_aliases/* ; do
+if [ -d ~/.aliases ]; then
+    for aliases in ~/.aliases/* ; do
         . $aliases
     done
 fi

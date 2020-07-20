@@ -75,6 +75,8 @@
           shell: (gpg -K | grep -A1 sec | tail -1)
           register: gpg_key_id
 
+        # gpg-connect-agent reloadagent /bye
+
         - name: Init pass database
           shell: "pass init {{ gpg_key_id.stdout }}"
 
