@@ -1,0 +1,20 @@
+- stat:
+    path: /usr/local/bin/pip
+  register: pip
+
+- block:
+  - name: Install pip downloader
+    get_url:
+      url: https://bootstrap.pypa.io/get-pip.py
+      dest: "{{ pip_downloader_path }}"
+      mode: 0755
+
+  - name: Download pip
+    shell: python get-pip.py
+
+  - name: Delete downloader script
+    file:
+      path: "{{ pip_downloader_path }}"
+      state: absent
+  when:
+    pip.stat.islnk is not defined

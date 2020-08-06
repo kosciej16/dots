@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles:
+    - nvim
+    - python
+    - coc

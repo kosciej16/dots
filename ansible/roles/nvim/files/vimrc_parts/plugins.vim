@@ -68,5 +68,6 @@ Plug 'mhinz/vim-signify'
 
 Plug 'ludovicchabant/vim-gutentags'
 
+let g:ansible_unindent_after_newline = 1
 call plug#end()
 filetype plugin indent on    " required
