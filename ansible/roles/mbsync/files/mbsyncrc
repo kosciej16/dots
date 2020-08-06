@@ -1,0 +1,45 @@
+#################################
+######## Account mailbox ########
+#################################
+
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount home
+Host imap.gmail.com
+User kd305513@gmail.com
+PassCmd "pass accounts.google.com/kd305513@gmail.com"
+Timeout 0
+SSLType IMAPS
+SSLVersions TLSv1.2
+AuthMechs PLAIN  # needed by macos
+
+IMAPStore home-remote
+Account home
+
+MaildirStore home-local
+Path ~/.mail/home/
+
+Channel home-inbox
+Master :home-remote:"INBOX"
+Slave :home-local:inbox
+
+Channel home-sent
+Master :home-remote:"[Gmail]/Sent Mail"
+# Master :home-remote:"[Gmail]/Wys&AUI-ane"
+Slave :home-local:sent
+
+Channel home-robocze
+Master :home-remote:"[Gmail]/Drafts"
+# Master :mailbox-remote:"[Gmail]/Wersje robocze"
+Slave :home-local:robocze
+
+Channel home-mutt_archive
+Master :home-remote:"mutt_archive"
+Slave :home-local:mutt_archive
+
+Group home
+Channel home-inbox
+Channel home-sent
+Channel home-mutt_archive

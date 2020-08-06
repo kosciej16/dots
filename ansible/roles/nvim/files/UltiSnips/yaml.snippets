@@ -1,0 +1,54 @@
+snippet bec "become that works for macos and linux"
+become: "{{ ansible_os_family != 'Darwin' }}"
+endsnippet
+	
+snippet cask "ansible homebrew_cask"
+- name: Install $1
+  homebrew_cask:
+    name: $1
+    state: ${2:present}
+endsnippet
+
+snippet brew "ansible homebrew"
+- name: Install $1
+  homebrew:
+    name: $1
+    state: ${2:present}
+endsnippet
+
+snippet pack "ansible package"
+- name: Install $1
+  package:
+    name: $1
+    state: ${2:present}
+  become: "{{ ansible_os_family != 'Darwin' }}"
+endsnippet
+
+snippet file "ansible file with home path"
+- name: $1
+  file:
+    path: $HOME/$2
+    state: ${3:directory}
+endsnippet
+
+snippet filec "ansible file with config_dir path"
+- name: $1
+  file:
+    path: "{{ config_dir }}/$2"
+    state: ${3:directory}
+endsnippet
+
+snippet copy "ansible copy with home path"
+- name: Copy config files
+  copy:
+    src: $1
+    dest: $HOME/$2
+endsnippet
+
+snippet copyc "ansible copy with config_dir path"
+- name: Copy config files
+  copy:
+    src: $1
+    dest: "{{ config_dir }}"/$2
+endsnippet
+

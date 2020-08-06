@@ -1,0 +1,20 @@
+# misc
+alias lst='ls -thor'
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
+
+mkcd() { mkdir -p "$@" && cd "$@"; }
+
+alias python=python3
+alias pip=pip3
+
+alias cdc='cd $(pbpaste)'
+
+alias ip=ipython
+
+alias lat="pdflatex -output-directory=~/tmp"
+
+alias pipr="pip install --upgrade"

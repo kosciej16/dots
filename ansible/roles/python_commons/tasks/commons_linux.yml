@@ -1,0 +1,11 @@
+- name: Install pip
+  package:
+    name: python3-pip
+    state: present
+  become: yes
+
+- name: Make sure python3-venv is installed
+  package:
+    name: python3-venv
+    state: present
+  become: yes

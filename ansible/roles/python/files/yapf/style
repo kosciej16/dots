@@ -1,0 +1,6 @@
+[style]
+column_limit = 120
+coalesce_brackets = true
+dedent_closing_brackets = true
+split_before_expression_after_opening_paren = true
+each_dict_entry_on_separate_line = true

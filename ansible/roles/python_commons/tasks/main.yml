@@ -1,0 +1,14 @@
+- include_tasks: commons_linux.yml
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+
+- include_tasks: commons_mac.yml
+  when:
+    - ansible_facts['distribution'] == "MacOSX"
+
+- name: Install pipx
+  pip:
+    name: pipx
+
+- name: Add pipx binaries to PATH
+  shell: pipx ensurepath

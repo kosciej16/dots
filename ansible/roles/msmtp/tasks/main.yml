@@ -1,0 +1,11 @@
+- name: Install msmtp
+  package:
+    name: msmtp
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+
+- name: Copy msmtp config
+  copy:
+    src: "msmtprc"
+    dest: "$HOME/.msmtprc"

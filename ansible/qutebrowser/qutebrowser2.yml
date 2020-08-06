@@ -1,0 +1,126 @@
+--- #
+- hosts: localhost
+  vars:
+    repoDir: $HOME/repos/qutebrowser
+    venvDir: "{{ repoDir }}/.venv"
+    userscriptsDir: "$HOME/.local/share/qutebrowser/userscripts"
+    localDir: "{{ localRoot }}/qutebrowser"
+    hostDir: "{{ configDir }}/qutebrowser"
+    profilesDir: "$HOME/.qutebrowser"
+  tasks:
+
+    - name: Install git
+      package:
+        name: git
+        state: present
+      # become: yes
+
+    - name: Clone qutebrowser repository
+      git:
+        repo: 'https://github.com/qutebrowser/qutebrowser.git'
+        dest: "{{ repoDir }}"
+
+    - name: Install dependencies
+      package:
+        name: [asciidoc]
+        state: present
+      # become: yes
+
+    - name: Install qutebrowser
+      block:
+        - name: Check that qutebrowser is not installed
+          stat:
+            path: "{{ venvDir }}"
+          register: stat_result
+
+        - name: Install from script
+          command: "python3 scripts/mkvenv.py --venv-dir {{ venvDir }}"
+          args:
+            chdir: "{{ repoDir }}"
+          when: not stat_result.stat.exists
+
+        - name: Add qutebrowser to PATH
+          lineinfile:
+            path: ~/.profile
+            line: "export PATH=$PATH:{{ venvDir }}/bin"
+
+    - name: Copy config file
+      copy:
+        src: "{{ localDir }}/config.py"
+        dest: "{{ hostDir }}/"
+
+    - name: pass
+      block:
+        - name: Install pass and dependencies
+          package:
+            name: [pass, choose-gui]
+            state: present
+          # become: yes
+
+        - name: Clone pass repository
+          git:
+            repo: 'git@github.com:kosciej16/pass.git'
+            dest: $HOME/.password-store
+            accept_hostkey: yes
+
+        - name: Create gnupg director
+          file: 
+            state: directory
+            path: "$HOME/.gnupg"
+
+        - name: Copy gnpug keys
+          command: cp -r $HOME/.password-store/gnupg $HOME/.gnupg
+
+        - name: Get gpg key id
+          shell: (gpg -K | grep -A1 sec | tail -1)
+          register: gpg_key_id
+
+        # gpg-connect-agent reloadagent /bye
+
+        - name: Init pass database
+          shell: "pass init {{ gpg_key_id.stdout }}"
+
+        - name: Install libs with pip
+          pip:
+            name: tldextract
+          environment:
+            PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
+
+        - name: Create userscipts directory
+          file: 
+            state: directory
+            path: "{{ userscriptsDir }}"
+
+        - name: qute-pass userscript
+          get_url:
+            url: "https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/misc/userscripts/qute-pass"
+            dest: "{{ userscriptsDir }}/qute-pass"
+            mode: 0755
+
+    - name: Profiles
+      block:
+        - name: Copy profiles data
+          copy:
+            src: "{{ localDir }}/profiles/{{ item }}"
+            dest: "{{ profilesDir }}/"
+          with_items: [kosciej]
+
+        - name: Create symlink to qutebrowser config
+          file:
+            src: "{{ hostDir }}/config.py"
+            dest: "{{ profilesDir }}/{{ item }}/config/config.py"
+            state: link
+          with_items: [kosciej]
+
+        - name: Create profile data directory
+          file:
+            state: directory
+            dest: "{{ profilesDir }}/{{ item }}/data"
+          with_items: [kosciej]
+
+        - name: Create symlink to userscipts
+          file:
+            src: "{{ userscriptsDir }}"
+            dest: "{{ profilesDir }}/{{ item }}/data/userscripts"
+            state: link
+          with_items: [kosciej]

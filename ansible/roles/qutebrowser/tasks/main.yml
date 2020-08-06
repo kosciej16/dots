@@ -1,0 +1,61 @@
+- name: Clone qutebrowser repository
+  git:
+    repo: 'https://github.com/qutebrowser/qutebrowser.git'
+    dest: "{{ output_dir }}"
+
+- name: Install dependencies
+  package:
+    name: [asciidoc]
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Install qutebrowser
+  block:
+    - name: Check that qutebrowser is not installed
+      stat:
+        path: "{{ output_venv_dir }}"
+      register: stat_result
+
+    - name: Install from script
+      command: "python3 scripts/mkvenv.py --venv-dir {{ output_venv_dir }}"
+      args:
+        chdir: "{{ output_dir }}"
+      when: not stat_result.stat.exists
+
+    - name: Add qutebrowser to PATH
+      lineinfile:
+        path: ~/.profile
+        line: "export PATH=$PATH:{{ output_venv_dir }}/bin"
+
+- name: Copy config file
+  copy:
+    src: "config.py"
+    dest: "{{ qute_config_dir }}"
+
+- name: Profiles
+  block:
+    - name: Copy profiles data
+      copy:
+        src: "{{ item }}"
+        dest: "{{ profiles_dir }}/"
+      with_items: [kosciej]
+
+    - name: Create symlink to qutebrowser config
+      file:
+        src: "{{ qute_config_dir }}/config.py"
+        dest: "{{ profiles_dir }}/{{ item }}/config/config.py"
+        state: link
+      with_items: [kosciej]
+
+    - name: Create profile data directory
+      file:
+        state: directory
+        dest: "{{ profiles_dir }}/{{ item }}/data"
+      with_items: [kosciej]
+
+    - name: Create symlink to userscipts
+      file:
+        src: "{{ userscripts_dir }}"
+        dest: "{{ profiles_dir }}/{{ item }}/data/userscripts"
+        state: link
+      with_items: [kosciej]

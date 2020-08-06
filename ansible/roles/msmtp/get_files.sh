@@ -1,0 +1,1 @@
+cp ~/.msmtprc files/msmtprc

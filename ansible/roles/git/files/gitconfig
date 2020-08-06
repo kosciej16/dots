@@ -1,0 +1,29 @@
+[alias]
+	co = checkout
+    ci = commit
+    cm = commit --amend
+    br = branch
+    st = status -s
+    cherry = cherry-pick
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    rom = reset --hard origin/master
+    reb2 = rebase -i HEAD~2
+    reb3 = rebase -i HEAD~3
+    reb4 = rebase -i HEAD~4
+    reb5 = rebase -i HEAD~5
+    rab = rebase --abort
+    rco = rebase --continue
+    stp = stash pop
+    files = diff-tree --no-commit-id --name-only -r
+[user]
+	name = kosciej
+[push]
+	default = current
+[pull]
+	rebase = true
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[hub]
+	protocol = ssh

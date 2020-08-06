@@ -1,0 +1,32 @@
+- name: Install hub
+  package:
+    name: hub
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Get completion file
+  get_url:
+    url: "https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh"
+    dest: "{{ completionDir }}"
+
+- name: Add alias to path
+  lineinfile:
+    path: "{{ aliasesDir }}/misc"
+    line: eval "$(hub alias -s)"
+    create: yes
+
+- name: Add source aliases
+  blockinfile:
+    path: ~/.profile
+    block: |
+      for c in ~/.aliases/* ; do
+      . $c
+      done
+
+- name: Add source completion
+  blockinfile:
+    path: ~/.profile
+    block: |
+      for c in ~/.completions/* ; do
+      . $c
+      done

@@ -1,0 +1,25 @@
+- name: Install neovim
+  homebrew:
+    name: neovim
+    state: head
+
+- name: Setup aliases
+  import_role:
+    name: commons
+    tasks_from: setup_aliases
+
+- name: Add nvim alias
+  lineinfile:
+    path: "{{ aliases_dir }}/macos"
+    line: alias vim=nvim
+    create: yes
+
+- name: Install Plugin dependencies
+  homebrew:
+    name: "{{ item.name }}" 
+    state: "{{ item.state }}"
+  with_items:
+    - { name: 'git', state: 'present' }
+    - { name: 'curl', state: 'present' }
+    - { name: 'ripgrep', state: 'present' }
+    - { name: 'universal-ctags', state: 'head' }

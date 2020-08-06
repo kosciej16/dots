@@ -1,0 +1,36 @@
+alias d="docker"
+alias dc="docker container"
+alias dcl="docker container ls"
+alias dcs="docker container stop"
+alias dcsa='docker container stop $(docker ps -a -q)'
+alias dcra='docker container rm -f $(docker ps -a -q)'
+alias dce="docker container exec -it"
+alias dci="docker container inspect"
+
+
+alias di="docker image"
+alias dil="docker image ls"
+alias dii="docker image inspect"
+alias dip="docker image prune"
+
+alias dn="docker network"
+alias dnl="docker network ls"
+alias dni="docker network inspect"
+alias dnp="docker network prune"
+
+alias dv="docker volume"
+alias dvl="docker volume ls"
+alias dvi="docker volume inspect"
+alias dvp="docker volume prune"
+
+alias dx="docker context"
+alias dxl="docker context ls"
+alias dxi="docker context inspect"
+alias dxu="docker context use"
+alias dxp="docker context prune"
+
+foo() {
+    for f in worker beat api postgres redis helios ; do docker container rm -f "warden-$f" ; done
+}
+
+alias dcrw="foo"

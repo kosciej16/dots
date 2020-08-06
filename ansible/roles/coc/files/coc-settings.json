@@ -1,0 +1,37 @@
+{
+    "list.normalMappings": {
+        "<C-c>": "do:exit",
+        "q": "do:exit"
+    },
+    "list.insertMappings": {
+        "<C-c>": "do:exit"
+    },
+
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.indexing": true,
+
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "~/.pyenv/shims/black",
+    "python.formatting.blackArgs": ["-l", "99"],
+
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "~/.pyenv/shims/flake8",
+    "python.linting.flake8Args": ["--max-line-length=100"],
+
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyPath": "~/.pyenv/shims/mypy",
+
+    "python.linting.pylintPath": "~/.pyenv/shims/pylint",
+    "python.linting.pylintArgs": ["--max-line-length=100", "--enable=W0614"],
+
+    "python.sortImports.path": "~/.pyenv/shims/isort",
+    "python.sortImports.args": ["-w 99"],
+
+    "python.analysis.typeshedPaths": ["/Users/krystian.dowolski/repos/typeshed/"]
+}

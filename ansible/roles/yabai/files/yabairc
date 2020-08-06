@@ -1,0 +1,53 @@
+#!/usr/bin/env sh
+alias yc='yabai -m config'
+alias yr='yabai -m rule --add'
+
+# global settings
+yc mouse_follows_focus          off
+yc focus_follows_mouse          off
+yc window_placement             second_child
+yc window_topmost               on
+yc window_opacity               off
+yc window_opacity_duration      0.0
+yc window_shadow                on
+yc active_window_opacity        1.0
+yc normal_window_opacity        1.0 
+yc split_ratio                  0.50
+yc auto_balance                 off
+yc mouse_modifier               fn
+yc mouse_action1                move
+yc mouse_action2                resize
+
+# general space settings
+yc layout                       bsp
+yc external_bar                 all:20:0
+yc top_padding                  10
+yc bottom_padding               10
+yc left_padding                 10
+yc right_padding                10
+yc window_gap                   10
+
+
+# yabai rules
+yr title='Preferences$' manage=off layer=above
+yr title='Opening$' manage=off layer=above
+yr app='System Preferences' manage=off layer=above
+yr app='App Store' manage=off layer=above
+yr app='Finder' manage=off layer=above
+yr app='Choice-gui' manage=off layer=above
+yr app='PyCharm CE' manage=off layer=above
+
+yr app='iTerm' space=1
+yr app='qutebrowser'   space=2
+yr app='Python'   space=2
+yr app='Slack'   space=3
+yr app='Spotify' space=6
+yr app='Preview' display=2
+
+
+# yabai signals
+# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+# yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
+
+echo "yabai configuration loaded!"

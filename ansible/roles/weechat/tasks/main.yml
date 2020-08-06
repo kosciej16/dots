@@ -1,0 +1,15 @@
+- name: Install weechat
+  package:
+    name: weechat
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Create config directory
+  file:
+    path: $HOME/.weechat
+    state: directory
+
+- name: Copy config files
+  copy:
+    src: irc.conf
+    dest: $HOME/.weechat
