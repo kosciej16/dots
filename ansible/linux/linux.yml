@@ -4,24 +4,6 @@
     localDir: "{{ localRoot }}/linux"
   tasks:
 
-    - name: Copy dot files
-      copy:
-        src: "{{ localDir }}/bash/bashrc"
-        dest: "$HOME/.bashrc"
-
-    - name: Copy aliases
-      copy:
-        src: "{{ localDir }}/bash/aliases"
-        dest: "{{ aliasesDir }}/misc"
-
-    - name: Add sourcing aliases
-      blockinfile:
-        path: ~/.profile
-        block: |
-          for c in ~/.aliases/* ; do
-            . $c
-          done
-
     - name: Rclone
       block:
         - name: Install dependencies
@@ -57,19 +39,6 @@
           copy: 
             src: "{{ localDir }}/weechat/irc.conf"
             dest: "$HOME/.weechat/"
-
-    - name: Taskwarrior
-      block:
-        - name: Install taskwarrior
-          package:
-            name: taskwarrior
-            state: present
-          become: yes
-
-        - name: Copy aliases
-          copy: 
-            src: "{{ localDir }}/taskwarrior/aliases"
-            dest: "{{ aliasesDir }}/taskwarrior"
 
         - name: Add sourcing aliases
           blockinfile:

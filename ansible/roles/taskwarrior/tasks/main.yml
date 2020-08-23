@@ -1,0 +1,12 @@
+- name: Install taskwarrior
+  package:
+    name: task
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Copy aliases
+  copy: 
+    src: "aliases"
+    dest: "{{ aliases_dir }}/taskwarrior"
+
+

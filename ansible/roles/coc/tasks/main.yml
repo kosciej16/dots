@@ -1,0 +1,20 @@
+- name: Create coc extension directory 
+  file: 
+    state: directory
+    path: "{{ config_dir }}/coc/extensions"
+
+- name: Install dependencies
+  package:
+    name: [nodejs, npm]
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Install coc python extension
+  command: npm install coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+  args:
+    chdir: "{{ config_dir }}/coc/extensions"
+
+- name: Copy config file
+  copy:
+    src: "coc-settings.json"
+    dest: "{{ target_dir }}/"

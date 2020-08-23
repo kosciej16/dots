@@ -1,0 +1,21 @@
+- include_tasks: install_linux.yml
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+
+- include_tasks: install_mac.yml
+  when:
+    - ansible_facts['distribution'] == "MacOSX"
+
+- name: Make sure {{ target_dir }} exists
+  file:
+    path: "{{ target_dir }}"
+    state: directory
+
+- name: Copy neovim configuration
+  copy:
+    src: "{{ item }}"
+    dest: "{{ target_dir }}/"
+  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, vimwiki]
+
+- name: Install nvim plugins
+  shell: nvim -E -s -c "source {{ target_dir }}/init.vim" -c PlugInstall -c qa

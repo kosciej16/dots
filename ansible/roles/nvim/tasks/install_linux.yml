@@ -1,24 +1,13 @@
 # prefer to install from precompiled binary
 
 vars:
-  nvimApp: "{{ appDir }}/nvim"
+  nvimApp: "/usr/local/bin/nvim"
 
 - name: Download nvim.appimage
   get_url:
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     dest: "{{ nvimApp }}"
     mode: 0777
-
-- name: Add path variable for nvim
-  block:
-    - shell: "grep {{appDir}} ~/.profile"
-    register: grep_output
-    failed_when: false
-    no_log: true
-    - lineinfile:
-    path: ~/.profile
-    line: "export PATH=$PATH:{{ appDir }}"
-    when: grep_output.stderr == ""
 
 - name: Add nvim as defaults
   when:
@@ -44,4 +33,3 @@ vars:
     name: [git, curl, ripgrep, universal-ctags]
     state: present
   become: yes
-

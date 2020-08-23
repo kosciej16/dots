@@ -5,7 +5,8 @@
 
 - name: Setup aliases
   import_role:
-    name: shell_aliases_setup
+    name: commons
+    tasks_from: setup_aliases
 
 - name: Add nvim alias
   lineinfile:

@@ -1,6 +1,4 @@
-let g:python3_host_prog = "/home/kosciej/virt/neovim3/bin/python"
-
-noremap <leader>pr :!python3 %<CR>
+noremap <buffer> <leader>pr :!python3 %<CR>
 noremap <leader>pm mt?def<CR>O@pytest.mark.mojmarker1<ESC>'t
 noremap <leader>pt :!clear && python -m pytest "mojmarker1"<CR>
 

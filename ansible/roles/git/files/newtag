@@ -1,0 +1,100 @@
+#!/bin/bash
+
+usage() {
+    cat <<EOM
+Usage:
+    $(basename $0) [parameters]
+    creates and push new lightweight tag based on last one in current branch 1.2.3 -> 1.2.4
+    -M                  Major, 1.2.3 -> 2.0.0
+    -m                  minor, 1.2.3 -> 1.3.0
+    -f                  don't ask for confirmations
+    -t tag_name         create and push tag_name
+    -b branch           use specific branch to guess the tag
+    -h                  show this help
+EOM
+    exit 0
+}
+
+while getopts "mMt:b:fh" opt; do
+    case "$opt" in
+    M)  major=1
+        ;;
+    m)  minor=1
+        ;;
+    t)  new_tag=$OPTARG
+        ;;
+    f)  force=1
+        ;;
+    b)  branch_name=$OPTARG
+        ;;
+    h)  usage
+        ;;
+    esac
+done
+
+confirm() {
+    if [ ! -z $force ] ; then
+        return 0
+    fi
+    echo -n "$1 (yes/abort)? "
+    old_stty_cfg=$(stty -g)
+    stty raw -echo
+    answer=$( while ! head -c 1 | grep -i '[ya]' ;do true ;done )
+    stty $old_stty_cfg
+    if echo "$answer" | grep -iq "^y" ;then
+        echo "yes"
+        return 0
+    else
+        echo "abort"
+        exit
+    fi
+}
+
+
+if [ -z $new_tag ] ; then
+    #get highest tag number
+    version=`git describe --abbrev=0 --tags $branch_name`
+
+    #replace . with space so can split into an array
+    version_bits=(${version//./ })
+
+    #get number parts and increase last one by 1
+    vnum1=${version_bits[0]:1}
+    vnum2=${version_bits[1]}
+    vnum3=${version_bits[2]}
+    vsuff=${version_bits[3]}
+    if [ ! -z $major ] ; then
+        vnum1=$((vnum1+1))
+        vnum2=0
+        vnum3=0
+    elif [ ! -z $minor ] ; then
+        vnum2=$((vnum2+1))
+        vnum3=0
+    else
+        vnum3=$((vnum3+1))
+    fi
+
+    #create new tag
+    new_tag="v$vnum1.$vnum2.$vnum3"
+    if [ ! -z $vsuff ] ; then
+        new_tag="$new_tag.$vsuff"
+    fi
+fi
+
+if [ -z $version ] ; then
+    confirm "Creating tag $new_tag"
+else
+    confirm "Updating tag $version to $new_tag"
+fi
+
+#remove local tag if exists
+if [ $(git tag -l "$new_tag") ]; then
+    confirm "local tag $new_tag exist, remove" && git tag -d "$new_tag"
+fi
+#remove remote tag if exists
+if git ls-remote --tags 2> /dev/null | grep $new_tag; then
+    confirm "remote tag $new_tag exist, remove" && git push origin :$new_tag
+fi
+git tag $new_tag
+echo "Tagged with $new_tag"
+git push origin $new_tag

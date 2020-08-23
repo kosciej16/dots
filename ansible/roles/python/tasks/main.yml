@@ -1,0 +1,35 @@
+- include_role:
+    name: python_commons
+
+- name: Install apps with pipx
+  shell: "pipx install {{ item }}"
+  with_items: [isort, yapf, pylint, flake8, ipdb]
+
+- name: Install libs with pip
+  pip:
+    name: pdbpp
+
+- name: Copy python configuration
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.{{ item }}"
+  with_items:
+    - pylintrc
+    - pdbrc.py
+
+- name: Copy yapf configuration
+  copy:
+    src: "yapf"
+    dest: "{{ config_dir }}"
+
+- name: Setup python support
+  pip:
+    name: neovim
+    virtualenv: $HOME/neovim
+    virtualenv_command: "{{ ansible_python_interpreter }} -m venv"
+
+- name: Install pip dependencies
+  pip:
+    name: jedi
+  environment:
+    PATH: "{{ ansible_env.PATH }}:$HOME/.local/bin"

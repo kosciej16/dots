@@ -1,6 +1,7 @@
 nnoremap <leader>gw :Gwrite!<cr>
 nnoremap <leader>gr :Gread<space>
 nnoremap <leader>ge :Gedit<space>
+nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gff :Gdiff<cr>
 nnoremap <leader>gfm :Gdiff origin/master

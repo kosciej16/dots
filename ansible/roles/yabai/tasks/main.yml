@@ -1,0 +1,14 @@
+- name: Install yabai
+  homebrew:
+    name: yabai
+    state: present
+
+- name: Make sure config directory exists
+  file:
+    path: "{{ config_dir }}/yabai"
+    state: directory
+
+- name: Copy config files
+  copy:
+    src: yabairc
+    dest: "{{ config_dir }}"/yabai

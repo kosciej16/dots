@@ -1,0 +1,23 @@
+
+- name: Install tmux
+  package:
+    name: tmux
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Copy config files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ tmux_config_dir }}"
+  with_items: [tmux.conf, appearance.conf]
+
+- name: Copy aliases
+  copy:
+    src: "{{ item }}"
+    dest: "{{ tmux_config_dir }}"
+  with_items: [tmux.conf, appearance.conf]
+
+- name: Clone tmux plugin manager repository
+  git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "$HOME/.config/tmux/plugins/tpm"

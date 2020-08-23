@@ -1,0 +1,13 @@
+- name: Create completion directory 
+  file: 
+    state: directory
+    path: "{{ completions_dir }}"
+
+- name: Source completions
+  blockinfile:
+    path: ~/.profile
+    block: |
+      for c in {{ completions_dir }}/* ; do
+      . $c
+      done 2> /dev/null
+    marker: "# {mark} ANSIBLE COMPLETIONS BLOCK"

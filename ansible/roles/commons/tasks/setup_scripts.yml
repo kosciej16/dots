@@ -1,0 +1,10 @@
+- name: Create local bin directory 
+  file: 
+    state: directory
+    path: "{{ scripts_dir }}"
+
+- name: Add to path
+  lineinfile: 
+    path: "$HOME/.profile"
+    line: "export PATH=$PATH:{{ scripts_dir }}"
+

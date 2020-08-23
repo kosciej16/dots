@@ -1,0 +1,16 @@
+- name: Install git
+  package:
+    name: git
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Copy config files
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.{{ item }}"
+  with_items: [gitignore, gitconfig]
+
+- name: Copy scripts
+  copy:
+    src: "newtag"
+    dest: "{{ scripts_dir }}"

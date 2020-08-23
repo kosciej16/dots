@@ -15,10 +15,10 @@ nmap <leader>bl :ls<CR>
 " }}}
 " Easy navigation {{{
 " Windows
-noremap <C-H> <C-W>h
-noremap <C-K> <C-W>k
-noremap <C-J> <C-W>j
-noremap <C-L> <C-W>l
+" noremap <C-h> <C-W>h
+" noremap <C-k> <C-W>k
+" noremap <C-j> <C-W>j
+" noremap <C-l> <C-W>l
 " Insert
 inoremap jk <ESC>
 inoremap <C-e> <Esc>A

@@ -1,0 +1,10 @@
+- name: Copy dot files
+  copy:
+    src: "bashrc"
+    dest: "$HOME/.bashrc"
+
+- name: Copy aliases
+  copy:
+    src: "aliases"
+    dest: "{{ aliases_dir }}/misc"
+

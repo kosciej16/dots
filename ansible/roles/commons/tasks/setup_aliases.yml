@@ -1,0 +1,13 @@
+- name: Create aliases directory 
+  file: 
+    state: directory
+    path: "{{ aliases_dir }}"
+
+- name: Source aliases
+  blockinfile:
+    path: ~/.profile
+    block: |
+      for c in {{ aliases_dir }}/* ; do
+      . $c
+      done 2> /dev/null
+    marker: "# {mark} ANSIBLE ALIASES BLOCK"

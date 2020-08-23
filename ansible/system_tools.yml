@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  roles:
+    # - tmux
+    # - bash
+    # - git
+    # - taskwarrior
+    # - skhd
+    - weechat
