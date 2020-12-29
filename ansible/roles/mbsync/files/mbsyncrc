@@ -13,6 +13,7 @@ PassCmd "pass accounts.google.com/kd305513@gmail.com"
 Timeout 0
 SSLType IMAPS
 SSLVersions TLSv1.2
+AuthMechs PLAIN  # needed by macos
 
 IMAPStore home-remote
 Account home
@@ -42,28 +43,30 @@ Channel home-sent
 ######## Work account ###########
 #################################
 
-IMAPAccount work
-Host imap.gmail.com
-User krystian.dowolski@semantive.com
-PassCmd "pass accounts.google.com/krystian.dowolski@semantive.com"
-SSLType IMAPS
-SSLVersions TLSv1.2
+# IMAPAccount work
+# Host imap.gmail.com
+# User krystian.dowolski@revolut.com
+# # PassCmd "pass accounts.google.com/krystian.dowolski@revolut.com"
+# Pass "uahhctxmranefrge"
+# SSLType IMAPS
+# SSLVersions TLSv1.2
+# AuthMechs PLAIN  # needed by macos
 
 
-IMAPStore work-remote
-Account work
+# IMAPStore work-remote
+# Account work
 
-MaildirStore work-local
-Path ~/.mail/work/
+# MaildirStore work-local
+# Path ~/.mail/work/
 
-Channel work-inbox
-Master :work-remote:"INBOX"
-Slave :work-local:inbox
+# Channel work-inbox
+# Master :work-remote:"INBOX"
+# Slave :work-local:inbox
 
-Channel work-sent
-Master :work-remote:"[Gmail]/Wys&AUI-ane"
-Slave :work-local:sent
+# Channel work-sent
+# Master :work-remote:"[Gmail]/Wys&AUI-ane"
+# Slave :work-local:sent
 
-Group work
-Channel work-inbox
-Channel work-sent
+# Group work
+# Channel work-inbox
+# Channel work-sent

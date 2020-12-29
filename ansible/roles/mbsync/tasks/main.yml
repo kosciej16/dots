@@ -1,0 +1,59 @@
+- name: Install isync
+  package:
+    name: isync
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Create mail directories
+  file:
+    state: directory
+    path: "{{ mail_dir }}/{{ item }}"
+  with_items: [work, home]
+
+- name: Copy config
+  copy:
+    src: "mbsyncrc"
+    dest: "$HOME/.mbsyncrc"
+
+- name: Systemd
+  block:
+    - name: Create user systemd directory
+      file:
+        path: "{{ config_dir }}/systemd/user"
+        state: directory
+
+    - name: Copy systemd files
+      copy:
+        src: "{{ local_dir }}/mbsync/{{ item }}"
+        dest: "{{ config_dir }}/systemd/user/"
+        with_items: [mbsync.service, mbsync.timer]
+
+    - name: Enable mbsync timer
+      systemd:
+        name: mbsync.timer
+        enabled: yes
+        user: yes
+        state: started
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+
+- name: Launchctl
+  block:
+    - name: Copy launchctl plist file
+      copy:
+        src: "mbsync.plist"
+        dest: "~/Library/LaunchAgents/"
+
+    - name: Load file
+      shell: launchctl load ~/Library/LaunchAgents/mbsync.plist
+
+    - name: Start file
+      shell: launchctl start mbsync
+
+
+    # - name: Doesnt work
+    #   community.general.launchd:
+    #     name: mbsync
+    #     state: started
+  when:
+    - ansible_facts['distribution'] == "MacOSX"
