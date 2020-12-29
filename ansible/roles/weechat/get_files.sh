@@ -1,1 +1,1 @@
-cp ~/.weecchat/irc.conf files
+cp ~/.weechat/irc.conf files

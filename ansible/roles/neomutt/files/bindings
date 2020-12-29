@@ -1,0 +1,68 @@
+# bind index,pager B sidebar-toggle-visible
+# 
+
+bind index,pager g noop
+
+bind index J sidebar-next
+bind index K sidebar-prev
+bind index L sidebar-open
+bind index gg first-entry
+bind index G last-entry
+
+bind pager j next-line
+bind pager k previous-line
+bind pager h previous-entry
+bind pager l next-entry
+bind pager gg top
+bind pager G bottom
+
+bind index \Cc noop
+bind index \Cc last-entry
+
+bind browser,pager,index        N   search-opposite
+
+macro index,browser \Cr "<enter-command>source ~/.config/neomutt/muttrc<enter>"
+# macro index,pager gt "|mutt2task<enter>"
+macro index,pager t "<pipe-message>mutt2task.py<enter>"
+
+
+macro index A "<modify-labels>+archive -unread -inbox<enter>" "Archive message"
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+macro index \\\\ "<vfolder-from-query>" "Search mailbox"
+
+macro index,pager \cs "<pipe-message> env BROWSER=qt urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cs "<pipe-entry> env BROWSER=qt urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
+bind pager,index                d   noop
+bind pager,index                dd   delete-message
+
+# Threads
+bind pager,index                dT  delete-thread
+bind pager,index                dt  delete-subthread
+bind pager,index                gt  next-thread
+bind pager,index                gT  previous-thread
+bind index                      za  collapse-thread
+bind index                      zA  collapse-all # Missing :folddisable/foldenable
+
+macro index,pager <f2> \
+    "<pipe-message> formail -X from:|awk -F'[<>]' '{print $2}' > ~/tescik\
+:set my_sender=\"`cat ~/tescik`\"<enter>\
+<limit> ~f $my_sender"
+
+macro index,pager ,e "<pipe-message>formail -X from:|awk -F'[<>]' '{print $2}'>~/tescik<enter>\ :set my_sender=\"`cat ~/tescik`\"\nl~f \"$my_sender\"\n"
+
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.config/neomutt/test1<enter><change-folder>work<enter>'
+
+bind index R        group-reply
+macro editor \Cp <up>
+macro editor \Cn <down>

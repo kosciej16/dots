@@ -38,12 +38,34 @@ complete -C /home/kosciej/.local/bin/aws_completer aws
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-if [[ -n $DISPLAY ]]; then
-  copy_line_to_x_clipboard () {
-    printf %s "$READLINE_LINE" | xclip -selection CLIPBOARD
-  }
-  bind -x '"\C-y": copy_line_to_x_clipboard'
-fi
+# if [[ -n $DISPLAY ]]; then
+#   copy_line_to_x_clipboard () {
+#     printf %s "$READLINE_LINE" | xclip -selection CLIPBOARD
+#   }
+#   bind -x '"\C-y": copy_line_to_x_clipboard'
+# fi
+
+# macos binding for copy
+bind '"\C-g":"\C-e\C-u pbcopy <<"EOF"\n\C-y\nEOF\n"'
+
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    ## If env folder is found then activate the vitualenv
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/bin/activate
+      fi
+  else
+    ## check the current folder belong to earlier VIRTUAL_ENV folder
+    # if yes then do nothing
+    # else deactivate
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
 
 # ZSH version TODO
 # if [[ -n $DISPLAY ]]; then
@@ -88,3 +110,27 @@ export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] "
 # cd .
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+source <(kubectl completion bash)
+
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+export PATH="/Users/krystian.dowolski/.pyenv/shims:${PATH}"
+export PYENV_SHELL=bash
+source '/usr/local/Cellar/pyenv/1.2.21/libexec/../completions/pyenv.bash'
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")";;
+  *)
+    command pyenv "$command" "$@";;
+  esac
+}

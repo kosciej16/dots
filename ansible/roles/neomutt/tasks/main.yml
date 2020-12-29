@@ -1,0 +1,20 @@
+- name: Install neomutt
+  package:
+    name: neomutt
+    state: present
+  when:
+    - ansible_facts['distribution'] == "MacOSX"
+
+- name: Install neomutt dependencies
+  pip:
+    name: urlscan
+
+- name: Install neomutt dependencies
+  pip:
+    name: urlscan
+
+- name: Copy neomutt configuration
+  copy:
+    src: "{{ item }}"
+    dest: "{{ config_dir }}/neomutt/"
+  with_items: [bindings, colors, mailboxes, mailcap, muttrc, printing.sh]

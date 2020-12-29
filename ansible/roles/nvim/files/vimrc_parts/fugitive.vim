@@ -1,5 +1,6 @@
 nnoremap <leader>gw :Gwrite!<cr>
 nnoremap <leader>gr :Gread<space>
+nnoremap <leader>gr :Git fetch <bar> :Git reset --hard origin/master
 nnoremap <leader>ge :Gedit<space>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>

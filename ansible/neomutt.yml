@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   roles:
-    - mbsync
-    - msmtp
-    - notmuch
+    - neomutt
+    # - mbsync
+    # - msmtp
+    # - notmuch

@@ -1,0 +1,8 @@
+set virtual_spoolfile=yes
+set folder=~/.mail
+virtual-mailboxes "home" "notmuch://?query=not tag:archive and folder:home/inbox"
+virtual-mailboxes "home/sent" "notmuch://?query=folder:home/sent"
+virtual-mailboxes "home/archive" "notmuch://?query=tag:archive and folder:home/inbox"
+virtual-mailboxes "work" "notmuch://?query=tag:inbox and not tag:archive and folder:work/inbox"
+virtual-mailboxes "work/sent" "notmuch://?query=folder:work/sent"
+virtual-mailboxes "work/archive" "notmuch://?query=tag:archive and folder:work/inbox"

@@ -1,0 +1,8 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+# text/html; links -dump %s; nametemplate=%s.html; copiousoutput
+text/calendar; printics.sh %s; copiousoutput; print=khal import --batch -a email@somewhere.com %s
+application/ics; printics.sh %s; copiousoutput; print=khal import --batch -a email@somewhere.com %s
+image/*; eog %s
+application/pgp-keys; pgp -f < %s ; copiousoutput
+application/pdf; evince %s
+application/*; background-xdg-open.sh %s

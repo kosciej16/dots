@@ -15,7 +15,7 @@
     stp = stash pop
     files = diff-tree --no-commit-id --name-only -r
 [user]
-	email = kd305513@gmail.com
+	email = krystian.dowolski@revolut.com
 	name = kosciej
 [push]
 	default = current
@@ -24,5 +24,6 @@
 
 [core]
 	excludesfile = ~/.gitignore
+	editor = nvim
 [hub]
 	protocol = ssh

@@ -1,6 +1,7 @@
 == notmuch ==
 == [mbsync](mbsync) ==
 == imapfilter ==
+/usr/local/opt/imapfilter/samples
 
 
 # S	skip beyond quoted text

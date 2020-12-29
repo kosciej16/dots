@@ -1,34 +1,34 @@
 {
     "list.normalMappings": {
-        "<C-c>": "do:exit"
+        "<C-c>": "do:exit",
+        "q": "do:exit"
     },
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
+
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
-    "python.jediPath": "~/.local/lib/python3.6/site-packages/",
 
-    "python.formatting.yapfPath": "~/.local/bin/yapf",
-    "python.formatting.blackPath": "~/.local/bin/black",
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["-l", 120, "-S"],
+    "python.formatting.blackPath": "~/.local/bin/black",
+    "python.formatting.blackArgs": ["-l", "99"],
 
-    "python.trace.server": "verbose",
-    "python.filetypes": [
-        "python"
-    ],
-    "python.linting.pylintPath": "~/.local/bin/pylint",
-    "python.linting.pylintArgs": ["--max-line-length=100", "--enable=W0614"],
-    "python.linting.pylint": "~/.local/bin/pylint",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "~/.local/bin/flake8",
     "python.linting.flake8Args": ["--max-line-length=100"],
-    "python.linting.pylintEnabled": true,
-    "python.settings.pyls.enable": true,
-    "python.settings.pyls.trace.server": "verbose",
-    "python.settings.pyls.commandPath": "",
-    "python.settings.pyls.configurationSources": [
-        "pycodestyle"
-    ]
+
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyPath": "~/.local/bin/mypy",
+
+    "python.linting.pylintPath": "~/.local/bin/pylint",
+    "python.linting.pylintArgs": ["--max-line-length=100", "--enable=W0614"],
+
+    "python.sortImports.path": "isort",
+    "python.sortImports.args": ["-w 100"],
+
+    "python.analysis.stubPath": "~/stub"
 }

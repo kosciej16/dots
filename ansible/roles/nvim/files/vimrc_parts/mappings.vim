@@ -13,18 +13,16 @@ endfunction
 
 nmap <leader>bl :ls<CR>
 " }}}
-" Easy navigation {{{
-" Windows
-" noremap <C-h> <C-W>h
-" noremap <C-k> <C-W>k
-" noremap <C-j> <C-W>j
-" noremap <C-l> <C-W>l
+" Copy file to buffer {{{
+noremap <leader>fr :let @+ = expand("%")<CR>
+noremap <leader>ff :let @+ = expand("%:p")<CR>
+noremap <leader>fn :let @+ = expand("%:t")<CR>
+noremap <leader>fd :let @+ = expand("%:p:h")<CR>
+noremap <leader>fc :%y+<CR>
+" }}}
+" SOM {{{
 " Insert
 inoremap jk <ESC>
-inoremap <C-e> <Esc>A
-inoremap <C-a> <Esc>I
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
 nnoremap ' `
 nnoremap ` '
 nnoremap Y y$
@@ -32,12 +30,7 @@ nnoremap Y y$
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Reselect text that was just pasted with ,v
 nnoremap gv `[V`]
-nnoremap , za
 
-" Copy file to buffer
-noremap <leader>ff :let @+ = expand("%:p")<CR>
-noremap <leader>fn :let @+ = expand("%:t")<CR>
-noremap <leader>fd :let @+ = expand("%:h")<CR>
 
 nnoremap <C-n> :set relativenumber!<CR>
 " Pull word under cursor into LHS of a substitute
@@ -85,6 +78,8 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 " noremap <leader>dl dd<c-w><c-l>P<c-w><c-h>
 " noremap <leader>dh dd<c-w><c-h>P<c-w><c-l>
 tnoremap <Esc> <C-\><C-n>
+
+map vb <C-v>
 " }}}
 " {{{ Open files
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>

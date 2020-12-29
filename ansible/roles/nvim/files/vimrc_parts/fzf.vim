@@ -17,6 +17,7 @@ let fzf_dot_files =  expand("~/.bashrc") . "\n"
             \ . expand("~/.mbsyncrc") . "\n"
             \ . globpath("~/.config/neomutt/", "*") . "\n"
             \ . globpath("~/.config/tmux/", "*") . "\n"
+            \ . globpath("~/.aliases/", "*") . "\n"
 map ,d :call fzf#run(fzf#wrap({'source': split(fzf_dot_files)}))<cr>
 
 nmap <C-p> :Files<cr>
