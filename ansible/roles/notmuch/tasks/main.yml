@@ -1,0 +1,23 @@
+- name: notmuch
+  block:
+  - name: Install notmuch
+    package:
+      name: notmuch
+      state: present
+    become: "{{ ansible_os_family != 'Darwin' }}"
+
+  - name: Copy notmuch hooks
+    copy:
+      src: "hooks"
+      dest: "{{ mail_dir }}/.notmuch"
+      mode: 0755
+
+  - name: Copy notmuch config
+    copy:
+      src: "notmuch-config"
+      dest: "$HOME/.notmuch-config"
+
+  - name: Init notmuch database
+    command: "notmuch new"
+    args:
+        chdir: "{{ mail_dir }}"
