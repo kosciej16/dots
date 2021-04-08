@@ -14,21 +14,21 @@
     "diagnostic.virtualTextCurrentLineOnly": false,
 
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "~/.local/bin/black",
+    "python.formatting.blackPath": "~/.pyenv/shims/black",
     "python.formatting.blackArgs": ["-l", "99"],
 
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "~/.local/bin/flake8",
+    "python.linting.flake8Path": "~/.pyenv/shims/flake8",
     "python.linting.flake8Args": ["--max-line-length=100"],
 
     "python.linting.mypyEnabled": false,
-    "python.linting.mypyPath": "~/.local/bin/mypy",
+    "python.linting.mypyPath": "~/.pyenv/shims/mypy",
 
-    "python.linting.pylintPath": "~/.local/bin/pylint",
+    "python.linting.pylintPath": "~/.pyenv/shims/pylint",
     "python.linting.pylintArgs": ["--max-line-length=100", "--enable=W0614"],
 
     "python.sortImports.path": "isort",
     "python.sortImports.args": ["-w 100"],
 
-    "python.analysis.stubPath": "~/stub"
+    "python.analysis.typeshedPaths": ["/Users/krystian.dowolski/repos/typeshed/"]
 }

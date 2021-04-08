@@ -2,6 +2,8 @@
 nnoremap <leader>rr :Rg <c-r><c-w> --glob "!tests"<CR>
 nnoremap <leader>ra :Rg --hidden<SPACE>
 nnoremap <leader>re :Rg --hidden <c-r><c-w><CR>
+" search current directory
+nnoremap <leader>rd :Rg <c-r><c-w> "%:p:h"<CR>
 " search for filename nnoremap <leader>rf :Rg %:t:r<CR>
 " search for word in clipboard
 nnoremap <leader>rw :Rg --hidden <c-r>"<CR>

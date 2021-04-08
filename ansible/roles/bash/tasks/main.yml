@@ -8,3 +8,7 @@
     src: "aliases"
     dest: "{{ aliases_dir }}/misc"
 
+- name: Copy scripts
+  copy:
+    src: "bin/*"
+    dest: "{{ scripts_dir }}/"

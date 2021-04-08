@@ -63,9 +63,9 @@ Plug 'tell-k/vim-autoflake'
 Plug 'mgedmin/python-imports.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'benmills/vimux'
 
 Plug 'ludovicchabant/vim-gutentags'
 
-let g:ansible_unindent_after_newline = 1
 call plug#end()
 filetype plugin indent on    " required

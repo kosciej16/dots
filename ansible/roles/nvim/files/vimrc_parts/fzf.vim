@@ -3,7 +3,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 let fzf_vim_files = globpath("~/.config/nvim/vimrc_parts", "*") . "\n"
             \ . globpath("~/.config/nvim/ftplugin/**", "*.vim") . "\n"
             \ . expand("~/.config/nvim/coc-settings.json") . "\n"
-            \ . expand("~/.config/nvim/init.vim.json") . "\n"
+            \ . expand("~/.config/nvim/init.vim") . "\n"
 
 map ,v :call fzf#run(fzf#wrap({'source': split(fzf_vim_files)}))<cr>
 

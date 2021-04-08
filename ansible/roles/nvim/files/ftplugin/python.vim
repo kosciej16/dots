@@ -5,7 +5,7 @@ noremap <leader>pm mt?def<CR>O@pytest.mark.mojmarker1<ESC>'t
 
 " isort {{{
 let g:vim_isort_python_version = 'python3'
-nnoremap <leader>po :Isort<cr>
+nnoremap <leader>po :!isort -w 99 %<cr>
 " }}}
 " auto import {{{
 map <leader>pi    mz:ImportName<CR>'z

@@ -1,0 +1,65 @@
+conflu https://revolut.atlassian.net/wiki/spaces/CRED/overview?homepageId=1253802491
+gcp https://console.cloud.google.com/home/dashboard?organizationId=367080375030&project=revolut-dev-data
+for_now https://drive.google.com/file/d/1b8nLKfjUh0wAGCNKTJ7GGRRVELzxbmp6/view
+tc https://ci.revolut.com/project/DServices_DeployDev_Credit?branch=%3Cdefault%3E&buildTypeTab=overview
+karabiner https://karabiner-elements.pqrs.org/
+chunkwm https://medium.com/@douglasshooker/tiling-your-windows-on-osx-92ac20453560
+metabase https://metabase.revolutlabs.com/
+helpdesk https://revolut.atlassian.net/servicedesk/customer/portals
+helios access https://bitbucket.org/revolut/data-infra/src/master/config/user_roles.yaml
+warden https://bitbucket.org/revolut/warden/pull-requests/
+data-platform https://bitbucket.org/revolut/tf-data-platform/pull-requests/
+vault https://revolut.atlassian.net/wiki/spaces/BD/pages/1349484662/Data+Infra+Vault
+onboarding https://revolut.atlassian.net/wiki/spaces/BD/pages/624853075/Data+Engineers+-+Account+setup+and+onboarding
+board https://revolut.atlassian.net/secure/RapidBoard.jspa?rapidView=333&projectKey=CRED&view=planning&selectedIssue=CRED-5772&issueLimit=100
+gc[ https://console.cloud.google.com/kubernetes/list?project=revolut-dev-data&organizationId=367080375030
+bob https://app.hibob.com/time-off/my-time-off
+wiw https://appx.wheniwork.com/scheduler
+ops https://people.revolut.com/employees/general/3330
+doesnt work https://apitools.dev/swagger-parser/online/index.html?allow-json=yes&allow-yaml=yes&allow-text=yes&allow-empty=yes&allow-unknown=yes&refs-external=yes&refs-circular=yes&validate-schema=yes&validate-spec=yes&method=validate&url=#
+impostor https://bitbucket.org/revolut/impostor/pull-requests/
+flower http://127.0.0.1:5555/tasks
+penny https://bitbucket.org/revolut/penny/pull-requests/
+broker https://bitbucket.org/revolut/information-broker/pull-requests/
+sentry https://sentry.io/organizations/revolut/issues/?project=5398269
+network_host https://github.com/docker/for-mac/issues/2716
+a https://github.com/ivanov/vim-ipython/
+d https://github.com/ivanov/vim-ipython/
+vim/ipython https://github.com/ivanov/vim-ipython/
+skills https://people.revolut.com/role/competency-matrix/43
+helms https://ci.revolut.codes/viewLog.html?buildId=3657272&buildTypeId=Dservices_Deploydev_Credit_Impostor&tab=buildLog&_focus=403&state=403#_state=403
+helms2 https://ci.revolut.codes/viewLog.html?buildId=3654835&buildTypeId=Dservices_Deploydev_Credit_Warden&tab=buildLog&_focus=428&state=428#_state=428
+fast api https://fastapi.tiangolo.com/tutorial/sql-databases/
+api.json https://console.cloud.google.com/storage/browser/_details/revolut-dev-data-warden/api.json?organizationId=367080375030&project=revolut-dev-data
+api_logs https://console.cloud.google.com/logs/query;query=resource.type%3D%22k8s_container%22%20resource.labels.cluster_name%3D%22data-dev-1950%22%20resource.labels.namespace_name%3D%22credit%22%20resource.labels.container_name%3D%22warden-worker%22%0Aseverity%3D%2528INFO%20OR%20NOTICE%2529;timeRange=2020-09-14T12:48:05.530Z%2F2020-09-14T17:17:33.277Z;summaryFields=:true:32:beginning?customFacets=&scrollTimestamp=2020-09-14T11:15:29.419699181Z&dateRangeUnbound=backwardInTime&angularJsUrl=%2Flogs%2Fviewer%3ForganizationId%3D367080375030%26project%3Drevolut-dev-data%26minLogLevel%3D0%26expandAll%3Dfalse%26timestamp%3D2020-09-14T11:29:58.209000000Z%26customFacets%3D%26limitCustomFacetWidth%3Dtrue%26dateRangeEnd%3D2020-09-14T11:29:08.801Z%26interval%3DPT1H%26resource%3Dk8s_container%252Fcluster_name%252Fdata-dev-1950%252Fnamespace_name%252Fcredit%252Fcontainer_name%252Fimpostor%26scrollTimestamp%3D2020-09-14T11:15:29.419699181Z%26dateRangeUnbound%3DbackwardInTime&organizationId=367080375030&project=revolut-dev-data
+gcp configmap https://console.cloud.google.com/kubernetes/configmap/europe-west2/data-dev-1950/credit/warden/details?organizationId=367080375030&project=revolut-dev-data&pageState=(%22savedViews%22:(%22i%22:%2232da5b03b883496db4eaf06860b5d1dc%22,%22c%22:%5B%5D,%22n%22:%5B%5D))
+ib https://bitbucket.org/revolut/information-broker/src/master/
+rq http://localhost:9181/
+logs https://console.cloud.google.com/logs/query;query=resource.type%3D%22k8s_container%22%20resource.labels.cluster_name%3D%22data-dev-1950%22%20resource.labels.namespace_name%3D%22credit%22;timeRange=PT1H;summaryFields=:true:32:beginning?customFacets=&scrollTimestamp=2020-09-14T11:15:29.419699181Z&dateRangeUnbound=backwardInTime&angularJsUrl=%2Flogs%2Fviewer%3ForganizationId%3D367080375030%26project%3Drevolut-dev-data%26minLogLevel%3D0%26expandAll%3Dfalse%26timestamp%3D2020-09-14T11:29:58.209000000Z%26customFacets%3D%26limitCustomFacetWidth%3Dtrue%26dateRangeEnd%3D2020-09-14T11:29:08.801Z%26interval%3DPT1H%26resource%3Dk8s_container%252Fcluster_name%252Fdata-dev-1950%252Fnamespace_name%252Fcredit%252Fcontainer_name%252Fimpostor%26scrollTimestamp%3D2020-09-14T11:15:29.419699181Z%26dateRangeUnbound%3DbackwardInTime&organizationId=367080375030&project=revolut-dev-data
+prod_logs https://console.cloud.google.com/logs/query;query=resource.type%3D%22k8s_container%22%20resource.labels.cluster_name%3D%22data-prod-35e2%22%20resource.labels.namespace_name%3D%22credit%22?project=revolut-prod-data
+admin http://localhost:8000/admin/api/person/
+git-toolbelt https://github.com/nvie/git-toolbelt#git-shatter-by-file
+kubernetes https://blog.pipetail.io/posts/2020-05-04-most-common-mistakes-k8s/
+teams https://revolut.atlassian.net/wiki/spaces/CRED/pages/1475163291/Credit+Department+Structure
+sql performance https://docs.sqlalchemy.org/en/13/faq/performance.html#i-m-inserting-400-000-rows-with-the-orm-and-it-s-really-slow
+pytest fixture https://stackoverflow.com/questions/50132703/pytest-fixture-for-a-class-through-self-not-as-method-argument
+helios https://bitbucket.org/revolut/data-helios/pull-requests/
+tmp https://revolut.atlassian.net/browse/DATA-846
+access request https://revolut.atlassian.net/servicedesk/customer/portal/120/group/378/create/12829
+gwent revealed https://www.playgwent.com/en/updates/way-of-the-witcher/card-reveals
+gcs https://console.cloud.google.com/storage/browser/revolut-dev-data-warden;tab=objects?forceOnBucketsSortingFiltering=false&organizationId=367080375030&project=revolut-dev-data&prefix=&forceOnObjectsSortingFiltering=false
+swagger https://editor.swagger.io/
+gcp logs https://console.cloud.google.com/logs/query;query=resource.labels.container_name%3D%22warden-worker%22;timeRange=2020-11-24T02:00:00.093Z%2F2020-11-24T02:00:18.093Z?project=revolut-prod-data
+monithor https://bitbucket.org/revolut/monithor/pull-requests/
+p read https://docs.python.org/release/3.0.1/howto/unicode.html
+fastapi https://www.youtube.com/watch?v=u8GSFEg5lnU
+scheduler https://github.com/samuelcolvin/arq
+fastapi utils https://fastapi-utils.davidmontague.xyz/
+nocolon https://github.com/paradoxxxzero/nocolon
+lunch https://smartlunch.pl/employees/order
+estimates https://docs.google.com/spreadsheets/d/18i4LGJWF6-pLDaj4LBY3PAvuZFG1PWGwUpi1zjNVdPA/edit#gid=1052291375
+onboarding underwriting https://revolut.atlassian.net/wiki/spaces/CRED/pages/1721541798/Warden+FAQ
+users https://docs.google.com/spreadsheets/d/1cpxn_rK0SFHJDGITUPvEUhCGhsBfQVChPWNL9vGY7do/edit#gid=0
+work https://docs.google.com/document/d/1l50mRKJvxe7dUw2Nm3ZTucyJb7k9fAfrFcFJ7smj7qE/edit#
+snippet https://bitbucket.org/revolut/workspace/snippets/XB8bMd/finding-a-pod-in-cluster-based-on-its-name
+equifax https://developer.equifax.com/user/login?destination=/documentation&autologout_timeout=1

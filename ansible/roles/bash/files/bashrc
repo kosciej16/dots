@@ -134,3 +134,12 @@ pyenv() {
     command pyenv "$command" "$@";;
   esac
 }
+
+eval "$(direnv hook bash)"
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "(venv) "
+  fi
+}
+export -f show_virtual_env
+PS1='$(show_virtual_env)'$PS1

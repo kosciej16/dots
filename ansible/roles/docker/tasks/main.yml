@@ -1,0 +1,9 @@
+- name: Install docker
+  homebrew:
+    name: docker
+    state: present
+
+- name: Copy aliases
+  copy:
+    src: "docker"
+    dest: "{{ aliases_dir }}/docker"

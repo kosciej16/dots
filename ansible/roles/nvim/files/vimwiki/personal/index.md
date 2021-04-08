@@ -1,3 +1,4 @@
+[polski angielski](polski-angielski)
 [macos](macos)
 
 == [khal](khal) ==
