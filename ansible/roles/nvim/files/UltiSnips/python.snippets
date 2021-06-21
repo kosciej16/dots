@@ -40,6 +40,7 @@ self.$1 = $1
 endsnippet
 
 snippet lg "logger" b
+import logging
 logger = logging.getLogger(__name__)
 endsnippet
 
@@ -101,4 +102,8 @@ endsnippet
 
 snippet rc
 print(resp.content)
+endsnippet
+
+snippet ba
+from pydantic import BaseModel
 endsnippet

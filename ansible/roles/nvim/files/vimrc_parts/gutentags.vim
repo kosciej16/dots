@@ -2,12 +2,13 @@ let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['package.json', '.git']
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
 let g:gutentags_generate_on_new = 1
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_extra_args = ['--tag-relative=yes', '--fields=+ailmnS']
 let g:gutentags_ctags_exclude = [
       \ '*.git', '*.svg', '*.hg',
-      \ '*/tests/*',
       \ 'build',
       \ 'dist',
       \ '*sites/*/files/*',
@@ -51,4 +52,8 @@ let g:gutentags_ctags_exclude = [
       \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ '*.yaml',
+      \ '*.vim',
+      \ '*.tex',
+      \ '*.sh',
       \ ]

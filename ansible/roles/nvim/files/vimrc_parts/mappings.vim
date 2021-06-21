@@ -86,4 +86,5 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 nnoremap <silent> <leader>es :so $MYVIMRC<CR>
 nnoremap <silent> <leader>et :e /tmp/som.py<CR>
 nnoremap <silent> <leader>ei :e ~/.config/nvim/bundle/python-imports.vim/myimports.cfg<CR>
+nnoremap <silent> <leader>ee :e .env<CR>
 " }}}

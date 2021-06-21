@@ -37,7 +37,7 @@ Plug 'honza/vim-snippets'
 
 
 " Plug 'kshenoy/vim-signature'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Plug 'majutsushi/tagbar'
 " Plug 'mattn/emmet-vim'
 " Plug 'mbbill/undotree'
