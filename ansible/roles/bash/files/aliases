@@ -14,6 +14,7 @@ alias pip=pip3
 alias cdc='cd $(pbpaste)'
 
 alias ip=ipython
+alias p=python
 
 alias lat="pdflatex -output-directory=~/tmp"
 

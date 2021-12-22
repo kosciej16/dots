@@ -11,7 +11,8 @@ nnoremap <leader>gc :Git commit<cr>
 nnoremap <leader>gu :Git add -u<cr>
 nnoremap <leader>gq :Git add -u <bar> :Git commit --amend --no-edit <bar> :Git push -f<cr>
 nnoremap <leader>gb :Git blame<cr>
-nnoremap <leader>go :.GBrowse<cr>
+nnoremap <leader>goo :.GBrowse<cr>
+nnoremap <leader>goy :.GBrowse!<cr>
 vnoremap <leader>go :GBrowse<cr>
 
 autocmd User fugitive

@@ -118,7 +118,7 @@ source <(kubectl completion bash)
 
 export PATH="/Users/krystian.dowolski/.pyenv/shims:${PATH}"
 export PYENV_SHELL=bash
-source '/usr/local/Cellar/pyenv/1.2.21/libexec/../completions/pyenv.bash'
+source '/usr/local/Cellar/pyenv/2.0.6/libexec/../completions/pyenv.bash'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
@@ -143,3 +143,9 @@ show_virtual_env() {
 }
 export -f show_virtual_env
 PS1='$(show_virtual_env)'$PS1
+
+new() {
+    printf "layout python3\nexport PYTHONPATH=.:src" > .envrc
+    direnv allow
+}
+

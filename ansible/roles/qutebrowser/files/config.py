@@ -12,6 +12,7 @@ c.url.searchengines = {
     "p": "https://google.com/search?q=python%20{}",
     "gm": "https://www.google.com/maps/place/{}",
     "an": "https://google.com/search?q=ansible%20{}",
+    "c": "https://revolut.atlassian.net/wiki/search?text={}",
     "tpb": "http://thepiratebay.org/search/{}",
     "bgg": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q={}",
     "isz": "https://i-szop.pl/szukaj2/1/{}",

@@ -9,6 +9,7 @@
 
     "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.willSaveHandlerTimeout": 1000,
 
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
@@ -33,5 +34,7 @@
     "python.sortImports.path": "~/.pyenv/shims/isort",
     "python.sortImports.args": ["-w 99"],
 
-    "python.analysis.typeshedPaths": ["/Users/krystian.dowolski/repos/typeshed/"]
+    "python.analysis.typeshedPaths": ["/Users/krystian.dowolski/repos/typeshed/"],
+    "vetur.format.options.useTabs": true,
+    "vetur.trace.server": "verbose"
 }
