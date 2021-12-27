@@ -8,14 +8,8 @@
 - name: Copy config files
   copy:
     src: "{{ item }}"
-    dest: "{{ tmux_config_dir }}"
-  with_items: [tmux.conf, appearance.conf]
-
-- name: Copy aliases
-  copy:
-    src: "{{ item }}"
-    dest: "{{ tmux_config_dir }}"
-  with_items: [tmux.conf, appearance.conf]
+    dest: "{{ tmux_config_dir }}/"
+  with_items: [tmux.conf, appearance.conf, ressurect.conf]
 
 - name: Clone tmux plugin manager repository
   git:

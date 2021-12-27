@@ -30,7 +30,7 @@
 - name: Copy config file
   copy:
     src: "config.py"
-    dest: "{{ qute_config_dir }}"
+    dest: "{{ qute_config_dir }}/"
 
 - name: Profiles
   block:
@@ -58,4 +58,5 @@
         src: "{{ userscripts_dir }}"
         dest: "{{ profiles_dir }}/{{ item }}/data/userscripts"
         state: link
+        force: yes
       with_items: [kosciej]

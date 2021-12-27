@@ -1,32 +1,27 @@
 # prefer to install from precompiled binary
 
-vars:
-  nvimApp: "/usr/local/bin/nvim"
-
 - name: Download nvim.appimage
   get_url:
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    dest: "{{ nvimApp }}"
+    dest: "{{ nvim_app }}"
     mode: 0777
+  become: yes
 
 - name: Add nvim as defaults
-  when:
-    - ansible_facts['distribution'] == "Ubuntu"
-    block:
-      - name: Add nvim as default for editor
-        alternatives:
-          name: editor
-          path: "{{ nvimApp }}"
-          link: /usr/bin/editor
-          priority: 60
-      - name: Add nvim as default for vim
-        alternatives:
-          name: vim
-          path: "{{ nvimApp }}"
-          link: /usr/bin/vim
-          priority: 60
-    become: yes
-    become_user: "{{ targetUser | default(ansible_user_id) }} "
+  block:
+    - name: Add nvim as default for editor
+      alternatives:
+        name: editor
+        path: "{{ nvim_app }}"
+        link: /usr/bin/editor
+        priority: 60
+    - name: Add nvim as default for vim
+      alternatives:
+        name: vim
+        path: "{{ nvim_app }}"
+        link: /usr/bin/vim
+        priority: 60
+  become: yes
 
 - name: Install Plugin dependencies
   package:

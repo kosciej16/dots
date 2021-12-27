@@ -15,7 +15,7 @@
   copy:
     src: "{{ item }}"
     dest: "{{ target_dir }}/"
-  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, vimwiki]
+  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, vimwiki, init.vim]
 
 - name: Install nvim plugins
   shell: nvim -E -s -c "source {{ target_dir }}/init.vim" -c PlugInstall -c qa
