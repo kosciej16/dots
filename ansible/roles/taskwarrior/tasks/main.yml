@@ -1,6 +1,6 @@
 - name: Install taskwarrior
   package:
-    name: task
+    name: taskwarrior
     state: present
   become: "{{ ansible_os_family != 'Darwin' }}"
 

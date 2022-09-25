@@ -10,5 +10,5 @@
 
 - name: Copy scripts
   copy:
-    src: "bin/*"
+    src: "bin/new_role"
     dest: "{{ scripts_dir }}/"

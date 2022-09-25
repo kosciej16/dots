@@ -1,5 +1,6 @@
 --- #
-ansible_python_interpreter: /usr/local/bin/python3
+ansible_python_interpreter: /usr/bin/python3
+ansible_become_passwrod: a
 config_dir: $HOME/.config
 repo_dir: $HOME/repos
 scripts_dir: $HOME/bin

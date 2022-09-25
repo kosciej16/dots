@@ -5,9 +5,41 @@
   when:
     - ansible_facts['distribution'] == "MacOSX"
 
-- name: Install neomutt dependencies
-  pip:
-    name: urlscan
+- name: Install neomutt
+  block:
+  - name: Clone neomutt repository
+    git:
+      repo: 'git@github.com:neomutt/neomutt.git'
+      dest: "{{ repo_dir }}/neomutt"
+
+  # Some ansible problem
+  # - apt_repository:
+  #     repo: deb-src http://pl.archive.ubuntu.com/ubuntu/ focal universe
+  #     state: present
+
+  - name: Install neomutt dependencies
+    apt:
+      name: neomutt
+      state: build-dep
+    become: yes
+
+  - name: Configure
+    command: ./configure --notmuch
+    args:
+      chdir: "{{ neomutt_repo_dir }}"
+
+  - name: Make
+    make:
+      chdir: "{{ neomutt_repo_dir }}"
+
+  - name: Make install
+    make:
+      chdir: "{{ neomutt_repo_dir }}"
+      target: install
+    become: yes
+    become_user: "{{ ansible_ssh_user }}"
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
 
 - name: Install neomutt dependencies
   pip:

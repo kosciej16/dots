@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
+- hosts: ubuntu
   roles:
-    # - nvim
-    - python
-    - coc
+    - nvim
+    # - python
+    # - coc

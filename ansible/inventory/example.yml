@@ -1,5 +1,5 @@
 all:
   hosts:
     ubuntu:
-      ansible_host: 127.0.0.1
-      ansible_ssh_user: user
+      ansible_host: 192.168.100.63
+      ansible_ssh_user: kosciej

@@ -24,15 +24,15 @@
 
     - name: Copy systemd files
       copy:
-        src: "{{ local_dir }}/mbsync/{{ item }}"
+        src: "{{ item }}"
         dest: "{{ config_dir }}/systemd/user/"
-        with_items: [mbsync.service, mbsync.timer]
+      with_items: [mbsync.service, mbsync.timer]
 
     - name: Enable mbsync timer
       systemd:
         name: mbsync.timer
         enabled: yes
-        user: yes
+        scope: user
         state: started
   when:
     - ansible_facts['distribution'] == "Ubuntu"

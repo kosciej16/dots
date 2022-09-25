@@ -1,6 +1,6 @@
 - include_tasks: install_linux.yml
   when:
-    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution'] != "MacOSX"
 
 - include_tasks: install_mac.yml
   when:

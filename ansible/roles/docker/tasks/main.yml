@@ -1,7 +1,8 @@
 - name: Install docker
-  homebrew:
+  package:
     name: docker
     state: present
+  become: yes
 
 - name: Copy aliases
   copy:

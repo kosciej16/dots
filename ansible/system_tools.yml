@@ -1,10 +1,10 @@
 ---
 - hosts: localhost
   roles:
-    - tmux
-    - bash
-    - git
-    - taskwarrior
-    - skhd
+    # - tmux
+    # - bash
+    # - git
+    # - taskwarrior
+    # - skhd
     - weechat
-    - docker
+    # - docker
