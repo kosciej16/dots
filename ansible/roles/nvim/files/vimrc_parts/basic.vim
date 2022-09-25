@@ -3,6 +3,11 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
+augroup filetype_python
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python setlocal foldlevel=4
+augroup END
 " }}}
 " Basic {{{
 syntax on
@@ -27,7 +32,7 @@ set hidden
 set smartindent
 set nrformats=
 set tags=~/.nvim/python_tags;/
-set synmaxcol=150  " avoid slow rendering for long lines
+set synmaxcol=1500  " avoid slow rendering for long lines
 " set diffopt+=vertical
 
 " set shortmess+=c CHECK IT

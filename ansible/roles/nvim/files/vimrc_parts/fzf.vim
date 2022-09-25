@@ -7,7 +7,8 @@ let fzf_vim_files = globpath("~/.config/nvim/vimrc_parts", "*") . "\n"
 
 map ,v :call fzf#run(fzf#wrap({'source': split(fzf_vim_files)}))<cr>
 
-let fzf_dot_files =  expand("~/.bashrc") . "\n"
+let fzf_dot_files =  expand("~/.zshrc") . "\n"
+            \ . expand("~/.zshenv") . "\n"
             \ . expand("~/.profile") . "\n"
             \ . expand("~/repos/other/new_comp/steps") . "\n"
             \ . expand("~/.gitconfig") . "\n"
@@ -15,8 +16,11 @@ let fzf_dot_files =  expand("~/.bashrc") . "\n"
             \ . expand("~/.config/vdirsyncer/config") . "\n"
             \ . expand("~/.config/qutebrowser/config.py") . "\n"
             \ . expand("~/.mbsyncrc") . "\n"
+            \ . expand("~/.msmtprc") . "\n"
             \ . globpath("~/.config/neomutt/", "*") . "\n"
             \ . globpath("~/.config/tmux/", "*") . "\n"
+            \ . globpath("~/.config/bspwm//", "*") . "\n"
+            \ . globpath("~/.config/sxhkd/", "*") . "\n"
             \ . globpath("~/.aliases/", "*") . "\n"
 map ,d :call fzf#run(fzf#wrap({'source': split(fzf_dot_files)}))<cr>
 

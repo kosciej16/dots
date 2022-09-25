@@ -6,3 +6,6 @@
 
 # S	skip beyond quoted text
 # T	toggle display of quoted text
+
+# Problems
+attach multiple files

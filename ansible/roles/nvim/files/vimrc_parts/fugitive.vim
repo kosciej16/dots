@@ -9,7 +9,8 @@ nnoremap <leader>gfm :Gdiff origin/master
 nnoremap <leader>ga :Git commit --amend --no-edit
 nnoremap <leader>gc :Git commit<cr>
 nnoremap <leader>gu :Git add -u<cr>
-nnoremap <leader>gq :Git add -u <bar> :Git commit --amend --no-edit <bar> :Git push -f<cr>
+nnoremap <leader>gq :Git add -u <bar> :Git commit --amend --no-edit --no-verify <bar> :Git push -f<cr>
+" nnoremap <leader>gq :Git add -u <bar> :Git commit -m "tmp" <bar> :Git push -f<cr>
 nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>goo :.GBrowse<cr>
 nnoremap <leader>goy :.GBrowse!<cr>

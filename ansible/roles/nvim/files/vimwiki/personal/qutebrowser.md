@@ -8,3 +8,6 @@
 
 [questions](questions)
 [random](random)
+
+dropdown doesnt work
+https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest

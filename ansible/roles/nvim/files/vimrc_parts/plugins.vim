@@ -14,8 +14,10 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-obsession'
+
 Plug 'lambdalisue/suda.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'rhysd/clever-f.vim'
 Plug 'vimwiki/vimwiki'
@@ -42,7 +44,6 @@ Plug 'lervag/vimtex'
 " Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 " Plug 'mbbill/undotree'
-" Plug 'dense-analysis/ale'
 " Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-abolish'
@@ -59,14 +60,16 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'tell-k/vim-autoflake'
-Plug 'mgedmin/python-imports.vim'
+" Plug 'mgedmin/python-imports.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benmills/vimux'
 
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'hashivim/vim-terraform'
+
+" Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 filetype plugin indent on    " required
