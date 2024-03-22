@@ -1,3 +1,0 @@
-Luke Smith
-Greg Hurell
-

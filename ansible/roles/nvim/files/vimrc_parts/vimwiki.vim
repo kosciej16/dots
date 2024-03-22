@@ -7,7 +7,7 @@ let wiki_1.syntax = 'markdown'
 let wiki_1.ext = '.md'
 
 let wiki_2 = {}
-let wiki_2.path = '~/.config/nvim/vimwiki/work'
+let wiki_2.path = '~/.config/nvim/vimwiki/sf'
 let wiki_2.syntax = 'markdown'
 let wiki_2.ext = '.md'
 

@@ -30,6 +30,6 @@ function! AccentDemo()
   call airline#parts#define_accent('h', 'italic')
   let g:airline_section_a = airline#section#create(keys)
 endfunction
-autocmd VimEnter * call AccentDemo()
+" autocmd VimEnter * call AccentDemo()
 
 let g:airline_theme='violet'

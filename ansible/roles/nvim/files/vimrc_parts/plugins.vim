@@ -15,6 +15,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
+Plug 'vifm/vifm.vim'
 
 Plug 'lambdalisue/suda.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -1,1 +1,4 @@
-cp -r ~/.config/nvim/{vimrc_parts,colors,ftplugin,UltiSnips,vimwiki,init.vim} files
+#!/bin/bash 
+cp -r ~/.config/nvim/{vimrc_parts,colors,ftplugin,UltiSnips,init.vim} files
+tar czf files/vimwiki.tar.gz ~/.config/nvim/vimwiki
+ansible-vault encrypt files/vimwiki.tar.gz --vault-password-file <(echo `pass ansible`)

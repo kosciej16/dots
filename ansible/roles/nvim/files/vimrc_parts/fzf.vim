@@ -4,6 +4,7 @@ let fzf_vim_files = globpath("~/.config/nvim/vimrc_parts", "*") . "\n"
             \ . globpath("~/.config/nvim/ftplugin/**", "*.vim") . "\n"
             \ . expand("~/.config/nvim/coc-settings.json") . "\n"
             \ . expand("~/.config/nvim/init.vim") . "\n"
+            \ . expand("~/.config/vifm/vifmrc") . "\n"
 
 map ,v :call fzf#run(fzf#wrap({'source': split(fzf_vim_files)}))<cr>
 

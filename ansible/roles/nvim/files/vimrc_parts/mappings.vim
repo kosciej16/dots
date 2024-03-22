@@ -18,6 +18,8 @@ noremap <leader>fr :let @+ = expand("%")<CR>
 noremap <leader>ff :let @+ = expand("%:p")<CR>
 noremap <leader>fn :let @+ = expand("%:t")<CR>
 noremap <leader>fd :let @+ = expand("%:p:h")<CR>
+noremap <leader>fl :let @+ = join([expand('%'),  line(".")], ':')<CR>
+noremap <leader>fi :let @+ = substitute(expand('%:r'), "/", ".", "g")<CR>
 noremap <leader>fc :%y+<CR>
 " }}}
 " SOM {{{

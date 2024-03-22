@@ -8,10 +8,11 @@ source ~/.config/nvim/vimrc_parts/plugins.vim
 source ~/.config/nvim/vimrc_parts/airline.vim
 source ~/.config/nvim/vimrc_parts/autoflake.vim
 source ~/.config/nvim/vimrc_parts/coc.vim
-" source ~/.config/nvim/vimrc_parts/easymotion.vim
+source ~/.config/nvim/vimrc_parts/commentary.vim
+source ~/.config/nvim/vimrc_parts/easymotion.vim
 source ~/.config/nvim/vimrc_parts/fugitive.vim
 source ~/.config/nvim/vimrc_parts/fzf.vim
-" source ~/.config/nvim/vimrc_parts/gutentags.vim
+source ~/.config/nvim/vimrc_parts/gutentags.vim
 " source ~/.config/nvim/vimrc_parts/nerdcomment.vim
 source ~/.config/nvim/vimrc_parts/nerdtree.vim
 source ~/.config/nvim/vimrc_parts/rg.vim
