@@ -14,12 +14,19 @@ endfunction
 nmap <leader>bl :ls<CR>
 " }}}
 " Copy file to buffer {{{
+" relative - .config/nvim/vimrc_parts/mappings.vim
 noremap <leader>fr :let @+ = expand("%")<CR>
+" absolute - /home/kosciej/.config/nvim/vimrc_parts/mappings.vim
 noremap <leader>ff :let @+ = expand("%:p")<CR>
+" name - mappings.vim
 noremap <leader>fn :let @+ = expand("%:t")<CR>
+" directory - /home/kosciej/.config/nvim/vimrc_parts
 noremap <leader>fd :let @+ = expand("%:p:h")<CR>
+" with line -  .config/nvim/vimrc_parts/mappings.vim:25
 noremap <leader>fl :let @+ = join([expand('%'),  line(".")], ':')<CR>
+" as import -  .config.nvim.vimrc_parts.mappings
 noremap <leader>fi :let @+ = substitute(expand('%:r'), "/", ".", "g")<CR>
+" content
 noremap <leader>fc :%y+<CR>
 " }}}
 " SOM {{{

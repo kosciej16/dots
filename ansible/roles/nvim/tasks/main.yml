@@ -11,11 +11,17 @@
     path: "{{ target_dir }}"
     state: directory
 
+- name: Copy vimwiki
+  ansible.builtin.unarchive:
+    src: vimwiki.tar.gz
+    dest: "{{ target_dir }}"
+    decrypt: yes
+
 - name: Copy neovim configuration
   copy:
     src: "{{ item }}"
     dest: "{{ target_dir }}/"
-  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, vimwiki, init.vim]
+  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, init.vim]
 
 - name: Install nvim plugins
   shell: nvim -E -s -c "source {{ target_dir }}/init.vim" -c PlugInstall -c qa

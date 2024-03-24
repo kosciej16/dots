@@ -1,4 +1,4 @@
 ---
-target_dir: $HOME/.config/nvim
+target_dir: "{{ ansible_env.HOME }}/.config/nvim"
 bin_dir: /usr/local/bin
 nvim_app: "{{ bin_dir }}/nvim"
