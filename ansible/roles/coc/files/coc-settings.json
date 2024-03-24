@@ -1,4 +1,22 @@
 {
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "filetypes": ["go"]
+        },
+        "terraform": {
+            "command": "terraform-ls",
+            "args": [
+                "serve"
+            ],
+            "filetypes": [
+                "terraform",
+                "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+        }
+    },
     "list.normalMappings": {
         "<C-c>": "do:exit",
         "q": "do:exit"
@@ -6,35 +24,39 @@
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
-
     "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
-    "coc.preferences.willSaveHandlerTimeout": 1000,
-
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python"
+    ],
+    "coc.preferences.willSaveHandlerTimeout": 5000,
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
+    "python.analysis.exclude": [],
+    "pyright.trace.server": "verbose",
 
-    "python.analysis.diagnosticMode": "workspace",
+    "python.venvPath": "~/.pyenv/versions/",
     "python.analysis.indexing": true,
-
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "~/.pyenv/shims/black",
-    "python.formatting.blackArgs": ["-l", "99"],
-
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "~/.pyenv/shims/flake8",
-    "python.linting.flake8Args": ["--max-line-length=100"],
-
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.formatting.provider": "ruff",
+    "python.formatting.blackPath": "/home/kosciej/.pyenv/shims/black",
+    "python.formatting.blackArgs": [
+        "-l",
+        "120"
+    ],
+    "python.linting.ruffEnabled": true,
     "python.linting.mypyEnabled": false,
     "python.linting.mypyPath": "~/.pyenv/shims/mypy",
-
     "python.linting.pylintPath": "~/.pyenv/shims/pylint",
-    "python.linting.pylintArgs": ["--max-line-length=100", "--enable=W0614"],
-
+    "python.linting.pylintArgs": [
+        "--max-line-length=120",
+        "--enable=W0614"
+    ],
+    "pyright.organizeimports.provider": "ruff",
     "python.sortImports.path": "~/.pyenv/shims/isort",
-    "python.sortImports.args": ["-w 99"],
-
-    "python.analysis.typeshedPaths": ["/Users/krystian.dowolski/repos/typeshed/"],
+    "python.sortImports.args": [
+        "-w 120"
+    ],
     "vetur.format.options.useTabs": true,
     "vetur.trace.server": "verbose"
 }
