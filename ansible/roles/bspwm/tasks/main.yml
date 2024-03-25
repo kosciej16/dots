@@ -1,0 +1,53 @@
+- name: Install bspwm
+  package:
+    name: bspwm
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Make sure config directory exists
+  file:
+    path: "{{ config_dir }}/bspwm"
+    state: directory
+
+- name: Copy config files
+  ansible.builtin.synchronize:
+    src: "{{ role_path }}/files/bspwm"
+    dest: "{{ config_dir }}/bspwm"
+    mode: push
+    rsync_opts:
+      - "--no-perms"
+  delegate_to: localhost
+
+- name: Copy xsessionrc
+  copy:
+    src: xsessionrc
+    dest: "{{ ansible_env.HOME }}/.xsessionrc"
+
+- name: Install dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+  with_items: ["libxft-dev", "libx11-dev"]
+
+- name: Clone repository
+  ansible.builtin.git:
+    repo: "https://git.suckless.org/st"
+    dest: "{{ repo_dir }}/st"
+
+- name: Run make install
+  ansible.builtin.shell:
+    cmd: make clean install
+    chdir: "{{ repo_dir }}/st"
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Clone repository
+  ansible.builtin.git:
+    repo: "https://github.com/robm/dzen.git"
+    dest: "{{ repo_dir }}/dzen"
+
+- name: Run make install
+  ansible.builtin.shell:
+    cmd: make clean install
+    chdir: "{{ repo_dir }}/dzen"
+  become: "{{ ansible_os_family != 'Darwin' }}"

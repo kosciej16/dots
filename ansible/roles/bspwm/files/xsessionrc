@@ -1,0 +1,8 @@
+# !/bin/bash
+xinput set-prop 12 "libinput Tapping Enabled" 1
+setxkbmap -option ctrl:nocaps
+setxkbmap pl
+xsetroot -cursor_name left_ptr
+xset r rate 200 70
+export BSPWM_SOCKET=/home/kosciej/tmp/socket
+exec bspwm

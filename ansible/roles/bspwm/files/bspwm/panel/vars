@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export PANEL_DIR=/home/kosciej/.config/bspwm/panel
+export BITMAP_DIR=$PANEL_DIR/bitmaps
+mkdir /home/kosciej/tmp
+export LEFT_FIFO=/home/kosciej/tmp/leftstat.fifo
+export RIGHT_FIFO=/home/kosciej/tmp/rightstat.fifo
+
+export COLOR_RED="#F21108"
+export COLOR_DEFAULT="#FFFFFF"
+export COLOR_GREEN="#00DD00"
+export SEP=" ^fg($COLOR_RED)| ^fg()"
