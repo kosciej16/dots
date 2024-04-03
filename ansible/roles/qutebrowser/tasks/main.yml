@@ -60,3 +60,20 @@
         state: link
         force: yes
       with_items: [kosciej]
+
+- name: Create userscipts directory
+  file: 
+    state: directory
+    path: "{{ userscripts_dir }}"
+
+- name: qute-pass userscript
+  get_url:
+    url: "https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/misc/userscripts/qute-pass"
+    dest: "{{ userscripts_dir }}/qute-pass"
+    mode: 0755
+
+- name: Install libs with pip
+  pip:
+    name: tldextract
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"

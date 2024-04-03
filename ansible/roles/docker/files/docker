@@ -28,9 +28,3 @@ alias dxl="docker context ls"
 alias dxi="docker context inspect"
 alias dxu="docker context use"
 alias dxp="docker context prune"
-
-foo() {
-    for f in worker beat api postgres redis helios ; do docker container rm -f "warden-$f" ; done
-}
-
-alias dcrw="foo"

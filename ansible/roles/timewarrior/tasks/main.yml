@@ -1,0 +1,35 @@
+- name: Check if timew is already installed
+  command: which timew
+  register: timew_installed
+  ignore_errors: yes
+
+- block:
+  - name: Install cmake
+    ansible.builtin.package:
+      name: cmake
+      state: present
+    become: yes
+
+  - name: Get tarball
+    ansible.builtin.get_url:
+      url: "https://github.com/GothenburgBitFactory/timewarrior/releases/download/v{{ version }}/timew-{{ version }}.tar.gz"
+      dest: /tmp/timew.tar.gz
+
+  - name: Extract TimeWarrior source
+    ansible.builtin.unarchive:
+      src: /tmp/timew.tar.gz
+      dest: /tmp
+      remote_src: true
+
+  - name: Build TimeWarrior from source
+    ansible.builtin.shell: |
+      cd "/tmp/timew-{{ version }}"
+      cmake -DCMAKE_BUILD_TYPE=Release .
+      make
+
+  - name: Install TimeWarrior
+    make:
+      chdir: "/tmp/timew-{{ version }}"
+      target: install
+    become: yes
+  when: timew_installed.rc != 0

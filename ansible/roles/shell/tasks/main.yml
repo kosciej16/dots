@@ -1,0 +1,17 @@
+- name: Include bash.yaml
+  include_tasks: bash.yml
+  when: shell_type == 'bash'
+
+- name: Include zsh.yaml
+  include_tasks: zsh.yml
+  when: shell_type == 'zsh'
+
+- name: Copy aliases
+  copy:
+    src: "aliases"
+    dest: "{{ aliases_dir }}/misc"
+
+- name: Copy scripts
+  copy:
+    src: "bin/new_role"
+    dest: "{{ scripts_dir }}/"

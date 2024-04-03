@@ -1,0 +1,50 @@
+- name: Install khal and dependencies
+  block:
+    - name: Install khal and dependencies
+      ansible.builtin.shell: "pipx install {{ item }}"
+      with_items: ["vdirsyncer", "khal"]
+      environment:
+        PATH: "{{ local_bin_dir }}"
+
+    - name: Install vdirsyncer lib
+      ansible.builtin.shell: "pipx inject vdirsyncer aiohttp-oauthlib"
+      environment:
+        PATH: "{{ local_bin_dir }}"
+
+- name: Make sure config directories exist
+  ansible.builtin.file:
+    path: "{{ config_dir }}/{{ item }}"
+    state: directory
+  with_items: [khal, vdirsyncer]
+
+- name: Copy khal config
+  ansible.builtin.copy:
+    src: "config"
+    dest: "{{ config_dir }}/khal/"
+
+- name: Template vdirsyncer configuration
+  ansible.builtin.template:
+    src: vdirsyncer.conf.j2
+    dest: "{{ config_dir }}/vdirsyncer/config"
+  no_log: true
+
+- name: Copy aliases
+  ansible.builtin.copy:
+    src: "aliases"
+    dest: "{{ aliases_dir }}/khal"
+
+- name: Add sourcing aliases
+  blockinfile:
+    path: ~/.profile
+    block: |
+      for c in ~/.aliases/* ; do
+        . $c
+      done
+
+- name: Enable vdirsyncer service
+  import_tasks: roles/commons/tasks/enable_service.yml
+  vars:
+    name: vdirsyncer
+
+- debug: 
+    msg: Remember to run vdirsyncer discover!

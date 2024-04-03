@@ -6,22 +6,17 @@
     state: directory
     path: "{{ config_dir }}/coc/extensions"
 
-- name: Install node
+- name: Install Node
   block:
-  - name: Check if n is already installed
-    ansible.builtin.stat:
-      path: "$HOME/n"
-    register: n_installed
-
-  - name: Install n, the Node.js version manager
-    ansible.builtin.shell:
+  - name: Install n
+    import_tasks: roles/commons/tasks/install_with_curl.yml
+    vars:
+      name: n
       cmd: curl -L https://bit.ly/n-install | bash -s -- -y
-    when: not n_installed.stat.exists
 
-  - name: Add n to PATH
-    lineinfile:
-      path: ~/.profile
-      line: "export PATH=$PATH:$HOME/n/bin"
+  - name: Install Node with n
+    ansible.builtin.command: "{{ local_bin_dir }}/n lts"
+    become: yes
 
 - name: Copy config file
   copy:

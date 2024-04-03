@@ -8,17 +8,20 @@ set folder=~/.mail
 set save_history=10000
 set history=10000
 
-folder-hook home "set sendmail = '/usr/bin/msmtp -a home'"
+folder-hook home "source ~/.config/neomutt/conf/home"
+folder-hook itsg "source ~/.config/neomutt/conf/itsg"
+folder-hook starfish "set sendmail = '/usr/bin/msmtp -a starfish'"
+
 set new_mail_command="notify-send NOWY %f"
 set use_from=no                         # smtp server fills that
-folder-hook work "set sendmail = '/usr/bin/msmtp -a work'"
+folder-hook home "set index_format = '[%Z] %?X?A&-? %D  %-20.20F  %s'"
 folder-hook sent "set index_format = '[%Z] %?X?A&-? %D %t %s'"
 set abort_key = "<ESC>"
 
 set wait_key = no
 set mbox_type = Maildir
 set timeout = 3
-set mail_check = 0
+set mail_check_stats
 set delete
 unset mark_old
 unset beep_new
@@ -40,7 +43,6 @@ set forward_quote                    # include message in forwards
 set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
 set date_format = "%d.%m.%Y %H:%M"
 set index_format = "[%Z] %?X?A&-? %D  %-20.20F  %s"
-set sort = threads
 set charset = "utf-8"
 set uncollapse_jump
 # set sort_aux = reverse-last-date-received
@@ -69,10 +71,17 @@ alternative_order text/html text/plain text/enriched
 #
 # sidebar patch config
 set sidebar_visible
-set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set sidebar_format = "%D %* [%?N?%N / ?%S]"
 set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_width = 25
+set editor="nvim"
+
+set use_threads=yes sort=last-date sort_aux=date
+
+# set sort_aux = reverse-last-date-received
+set collapse_all = yes
+
 
 auto_view text/html
 alternative_order multipart/mixed text/plain text/calendar application/ics text/html
@@ -81,3 +90,4 @@ alternative_order multipart/mixed text/plain text/calendar application/ics text/
 source ~/.config/neomutt/colors
 # source ~/.config/neomutt/aliases
 source ~/.config/neomutt/bindings
+

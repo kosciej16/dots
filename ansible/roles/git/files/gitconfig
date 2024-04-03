@@ -1,7 +1,11 @@
 [alias]
 	co = checkout
     ci = commit
-    cm = commit --amend
+    cm = commit --amend -n
+    cf = commit --fixup HEAD -n
+    sf = "!sh -c 'ticket_number=$(git log -1 --pretty=%B | grep -oE \"^[A-Z]+-[0-9]+\" | head -n 1) && git commit -nm \"${ticket_number} Fixup\";' -"
+
+    dc = diff --cached
     br = branch
     st = status -s
     cherry = cherry-pick
@@ -13,11 +17,12 @@
     reb5 = rebase -i HEAD~5
     rab = rebase --abort
     rco = rebase --continue
+    s = stash --keep-index
     stp = stash pop
     files = diff-tree --no-commit-id --name-only -r
 [user]
-	email = krystian.dowolski@revolut.com
-	name = kosciej
+	email = krystian.dowolski@solvinity.com
+	name = Krystian Dowolski
 [push]
 	default = current
 [pull]
@@ -28,3 +33,19 @@
 	editor = nvim
 [hub]
 	protocol = ssh
+[merge]
+	tool = vimdiff
+[credential]
+	helper = cache --timeout=2628000
+
+[includeIf "gitdir:~/repos/itsg/"]
+  path = .gitconfig-sf
+[includeIf "gitdir:~/work/sm/"]
+  path = .gitconfig-sm
+[includeIf "gitdir:~/hiauto/repos/"]
+  path = .gitconfig-hi
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

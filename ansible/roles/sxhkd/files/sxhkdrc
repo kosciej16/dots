@@ -1,0 +1,187 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	st
+
+# program launcher
+super + @space
+    rofi -no-config -no-lazy-grab -show drun -modi drun
+	
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+super + n
+    systemctl --user start mbsync
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+XF86AudioMute
+  pactl set-sink-mute 0 toggle
+
+XF86AudioLowerVolume
+  amixer set Master 3%-; pactl set-sink-volume bluez_sink.F8_5C_7E_85_35_E1.a2dp_sink -3%
+
+XF86AudioRaiseVolume
+  amixer set Master 3%+; pactl set-sink-volume bluez_sink.F8_5C_7E_85_35_E1.a2dp_sink +3%
+
+XF86MonBrightness{Up,Down}
+  brightnessctl s 10000{+,-}
+
+shift + XF86MonBrightnessDown
+  brightnessctl s 1
+
+XF86AudioPlay
+  /home/kosciej/.cargo/bin/spt pb -t
+
+shift + XF86AudioPlay
+  /home/kosciej/.cargo/bin/spt pb -n
+# XF86Display => F7
+# XF86WLAN => F8
+# XF87Tools => F9
+# XF86Search => F10
+# XF86LaunchA => F11
+# XF86Explorer => F12
+
+Print
+    scrot ~/Images/screenshots/%Y%m%d_%H%M%S.png
+
+ctrl + @Print
+    scrot -s ~/Images/screenshots/%Y%m%d_%H%M%S.png
+
+alt + @Print
+    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+@button9
+    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+@button8
+    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+alt + @q
+    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+alt + m
+    mute_skype
+
+super + shift + Right
+    bspc node -m DP-3
+
+super + shift + Left
+    bspc node -m eDP-1
+    
+super + right
+    bspc monitor -f next
+
+super + Right
+    bspc monitor -f next
+
+super + left
+    bspc monitor -f prev

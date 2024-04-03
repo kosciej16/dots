@@ -1,0 +1,38 @@
+- name: Install zsh
+  ansible.builtin.package:
+    name: zsh
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Install ohmyzsh
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: .oh-my-zsh
+    cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+- name: Copy zsh dot files
+  copy:
+    src: "zshrc"
+    dest: "$HOME/.zshrc"
+
+- name: Change user's login shell to Zsh
+  ansible.builtin.user:
+    name: "{{ ansible_ssh_user }}"
+    shell: /bin/zsh
+  become: yes
+
+- name: Install direnv from git
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: direnv
+    path: "{{ local_bin_dir }}/direnv"
+    cmd: curl -sfL https://direnv.net/install.sh | bash
+  environment:
+    bin_path: "{{ ansible_env.HOME }}/.local/bin"
+
+- name: Install fzf zsh plugin
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: fzf-zsh-plugin
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/fzf-zsh-plugin"
+    cmd: git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin

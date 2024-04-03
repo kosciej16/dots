@@ -59,14 +59,13 @@ Plug 'psliwka/vim-smoothie'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'tell-k/vim-autoflake'
+" Plug 'tell-k/vim-autoflake'
 " Plug 'mgedmin/python-imports.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'benmills/vimux'
+Plug 'preservim/vimux'
 
 Plug 'hashivim/vim-terraform'
 

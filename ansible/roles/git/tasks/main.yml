@@ -8,9 +8,4 @@
   copy:
     src: "{{ item }}"
     dest: "$HOME/.{{ item }}"
-  with_items: [gitignore, gitconfig]
-
-- name: Copy scripts
-  copy:
-    src: "newtag"
-    dest: "{{ scripts_dir }}"
+  with_items: [gitignore, gitconfig, gitconfig-sf]

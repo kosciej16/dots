@@ -22,7 +22,7 @@
             PATH: "{{ ansible_env.PATH }}:.local/bin"
 
         - name: Install vdirsyncer lib
-          shell: "pipx inject vdirsyncer requests-oauthlib"
+          shell: "pipx inject vdirsyncer aiohttp-oauthlib"
           environment:
             PATH: "{{ ansible_env.PATH }}:.local/bin"
 
@@ -58,10 +58,10 @@
             dest: "{{ configDir }}/systemd/user/"
           with_items: [vdirsyncer.service, vdirsyncer.timer]
 
-        # - name: Discover calendars
-        #   shell: "vdirsyncer discover"
-        #   environment:
-        #     PATH: "{{ ansible_env.PATH }}:$HOME/.local/bin"
+        - name: Discover calendars
+          shell: "vdirsyncer discover"
+          environment:
+            PATH: "{{ ansible_env.PATH }}:$HOME/.local/bin"
 
         - name: Enable vdirsyncer timer
           systemd:

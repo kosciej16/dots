@@ -51,3 +51,12 @@
     cmd: make clean install
     chdir: "{{ repo_dir }}/dzen"
   become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Install acpi
+  ansible.builtin.package:
+    name: acpi
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+# TODO
+# handle different network interface name

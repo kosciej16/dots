@@ -30,4 +30,4 @@ source ~/.config/nvim/vimrc_parts/autopaste.vim
 source ~/.config/nvim/vimrc_parts/basic.vim
 source ~/.config/nvim/vimrc_parts/mappings.vim
 
-let g:python3_host_prog = "$HOME/neovim/bin/python"
+let g:python3_host_prog = "$HOME/pynvim/bin/python"

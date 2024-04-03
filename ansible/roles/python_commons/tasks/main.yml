@@ -7,8 +7,10 @@
     - ansible_facts['distribution'] == "MacOSX"
 
 - name: Install pipx
-  pip:
-    name: pipx
+  package:
+    name: [pipx]
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
 
 - name: Add pipx binaries to PATH
   shell: pipx ensurepath

@@ -1,10 +1,15 @@
 ---
-- hosts: localhost
+- hosts: ubuntu
   roles:
-    # - tmux
-    # - bash
+    # - { role: shell, shell_type: 'zsh' }
     # - git
     # - taskwarrior
-    # - skhd
-    - weechat
+    # - weechat
     # - docker
+    # TODO podman?
+    # - { role: docker, become: yes }
+    # TODO vimf
+    - khal
+    # - { role: timewarrior, version: 1.7.1 }
+    # - tmux
+    # - bspwm

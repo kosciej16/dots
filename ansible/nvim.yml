@@ -2,5 +2,5 @@
 - hosts: ubuntu
   roles:
     - nvim
-    # - python
-    # - coc
+    - python
+    - coc

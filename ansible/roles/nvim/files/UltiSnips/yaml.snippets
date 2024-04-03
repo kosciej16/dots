@@ -11,14 +11,14 @@ endsnippet
 
 snippet brew "ansible homebrew"
 - name: Install $1
-  homebrew:
+  ansible.builtin.homebrew:
     name: $1
     state: ${2:present}
 endsnippet
 
 snippet pack "ansible package"
 - name: Install $1
-  package:
+  ansible.builtin.package:
     name: $1
     state: ${2:present}
   become: "{{ ansible_os_family != 'Darwin' }}"
@@ -26,29 +26,33 @@ endsnippet
 
 snippet file "ansible file with home path"
 - name: $1
-  file:
+  ansible.builtin.file:
     path: $HOME/$2
     state: ${3:directory}
 endsnippet
 
 snippet filec "ansible file with config_dir path"
 - name: $1
-  file:
+  ansible.builtin.file:
     path: "{{ config_dir }}/$2"
     state: ${3:directory}
 endsnippet
 
 snippet copy "ansible copy with home path"
 - name: Copy config files
-  copy:
+  ansible.builtin.copy:
     src: $1
     dest: $HOME/$2
 endsnippet
 
 snippet copyc "ansible copy with config_dir path"
 - name: Copy config files
-  copy:
+  ansible.builtin.copy:
     src: $1
     dest: "{{ config_dir }}"/$2
 endsnippet
 
+snippet debug "ansible debug"
+- name: Debug var
+  debug: "msg=var: '{{ var.stdout }}'"
+endsnippet

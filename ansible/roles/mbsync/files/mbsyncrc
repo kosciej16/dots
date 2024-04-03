@@ -1,7 +1,3 @@
-#################################
-######## Account mailbox ########
-#################################
-
 Create Both
 Expunge Both
 SyncState *
@@ -9,7 +5,7 @@ SyncState *
 IMAPAccount home
 Host imap.gmail.com
 User kd305513@gmail.com
-PassCmd "pass accounts.google.com/kd305513@gmail.com"
+PassCmd "pass apps/kd305513@gmail.com"
 Timeout 0
 SSLType IMAPS
 SSLVersions TLSv1.2
@@ -30,16 +26,46 @@ Master :home-remote:"[Gmail]/Sent Mail"
 # Master :home-remote:"[Gmail]/Wys&AUI-ane"
 Slave :home-local:sent
 
-Channel home-robocze
-Master :home-remote:"[Gmail]/Drafts"
-# Master :mailbox-remote:"[Gmail]/Wersje robocze"
-Slave :home-local:robocze
-
-Channel home-mutt_archive
-Master :home-remote:"mutt_archive"
-Slave :home-local:mutt_archive
-
 Group home
 Channel home-inbox
 Channel home-sent
-Channel home-mutt_archive
+
+
+IMAPStore itsg-remote
+Host itsg.home.pl
+Port 993
+User kdowolski@itsg.com.pl
+PassCmd "pass poczta.home.pl/kdowolski@itsg.com.pl"
+SSLType IMAPS
+
+MaildirStore itsg-local
+Path ~/.mail/itsg/
+INBOX ~/.mail/itsg/inbox
+
+Channel itsg-inbox
+Expunge Both
+Master :itsg-remote:
+Slave :itsg-local:
+Patterns * !"[Gmail]/All Mail"
+
+IMAPStore starfish-remote
+Host imap.gmail.com
+User kdowolski@starfishstorage.com
+PassCmd "accounts.google.com/kdowolski@starfishstorage.com"
+Timeout 0
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+MaildirStore starfish-local
+Path ~/.mail/starfish/
+Subfolders Verbatim
+INBOX ~/.mail/starfish/inbox
+
+Channel starfish-inbox
+Expunge Both
+Master :starfish-remote:
+Slave :starfish-local:
+Patterns * !"[Gmail]/All Mail"
+
+Group starfish
+Channel starfish-inbox

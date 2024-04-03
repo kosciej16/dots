@@ -1,2 +1,1 @@
-config_dir: $HOME/.config
 ansible_python_interpreter: /usr/local/bin/python3

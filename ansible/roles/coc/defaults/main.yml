@@ -1,2 +1,2 @@
 ---
-config_dir: $HOME/.config
+config_dir: "{{ ansible_env.HOME }}/.config"

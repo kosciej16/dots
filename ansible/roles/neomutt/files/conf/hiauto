@@ -1,0 +1,7 @@
+# vim: set ft=muttrc:
+
+set sendmail = '/usr/bin/msmtp -a hiauto'
+set record = '+hiauto/sent-mutt'
+set alias_file = '~/.config/neomutt/aliases/hiauto'
+unalias *
+source $alias_file

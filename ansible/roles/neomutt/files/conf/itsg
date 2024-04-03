@@ -1,0 +1,7 @@
+# vim: set ft=muttrc:
+
+set sendmail = '/usr/bin/msmtp -a itsg'
+set record = '+itsg/SENT'
+set alias_file = '~/.config/neomutt/aliases/itsg'
+unalias *
+source $alias_file

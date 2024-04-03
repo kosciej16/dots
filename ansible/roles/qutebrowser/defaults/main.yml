@@ -1,5 +1,5 @@
 profiles_dir: "$HOME/.qutebrowser"
-config_dir: $HOME/.config
+config_dir: "{{ ansible_env.HOME }}/.config"
 repo_dir: $HOME/repos
 output_dir: "{{ repo_dir }}/qutebrowser"
 qute_config_dir: "{{ config_dir}}/qutebrowser"

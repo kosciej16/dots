@@ -1,45 +1,15 @@
-- name: Install pass and dependencies
+- name: Install pass
   package:
-    name: [pass, choose-gui]
+    name: pass
     state: present
   become: "{{ ansible_os_family != 'Darwin' }}"
 
+# Need to configure ssh forwarding
 - name: Clone pass repository
   git:
     repo: 'git@github.com:kosciej16/pass.git'
     dest: $HOME/.password-store
     accept_hostkey: yes
 
-- name: Create gnupg director
-  file: 
-    state: directory
-    path: "$HOME/.gnupg"
-
-- name: Copy gnpug keys
-  command: cp -r $HOME/.password-store/gnupg $HOME/.gnupg
-
-- name: Get gpg key id
-  shell: (gpg -K | grep -A1 sec | tail -1)
-  register: gpg_key_id
-
-# gpg-connect-agent reloadagent /bye
-
-- name: Init pass database
-  shell: "pass init {{ gpg_key_id.stdout }}"
-
-- name: Install libs with pip
-  pip:
-    name: tldextract
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/home/vm/.local/bin"
-
-- name: Create userscipts directory
-  file: 
-    state: directory
-    path: "{{ userscripts_dir }}"
-
-- name: qute-pass userscript
-  get_url:
-    url: "https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/misc/userscripts/qute-pass"
-    dest: "{{ userscripts_dir }}/qute-pass"
-    mode: 0755
+# gpg --import private.asc is needed, however it asks interactively
+# for a password and couldn't automate that

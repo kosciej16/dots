@@ -1,9 +1,12 @@
 --- #
 ansible_python_interpreter: /usr/bin/python3
-configDir: $HOME/.config
-repoDir: $HOME/repos
-scriptsDir: $HOME/bin
+ansible_become_password: a
+config_dir: "{{ ansible_env.HOME }}/.config"
+repo_dir: "{{ ansible_env.HOME }}/repos"
+bin_dir: /usr/local/bin
+scripts_dir: "{{ ansible_env.HOME }}/bin"
+local_bin_dir: "{{ ansible_env.HOME }}/.local/bin"
 appDir: "{{ scriptsDir }}/app"
-localRoot: "{{playbook_dir | dirname | dirname}}"
-completionDir: $HOME/.completions
-aliasesDir: $HOME/.aliases
+# localRoot: "{{playbook_dir | dirname | dirname}}"
+completions_dir: $HOME/.completions
+aliases_dir: $HOME/.aliases

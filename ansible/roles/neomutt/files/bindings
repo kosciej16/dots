@@ -30,8 +30,8 @@ macro index A "<modify-labels>+archive -unread -inbox<enter>" "Archive message"
 macro index c "<change-vfolder>?" "Change to vfolder overview"
 macro index \\\\ "<vfolder-from-query>" "Search mailbox"
 
-macro index,pager \cs "<pipe-message> env BROWSER=qt urlscan<Enter>" "call urlscan to extract URLs out of a message"
-macro attach,compose \cs "<pipe-entry> env BROWSER=qt urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro index,pager \cs "<pipe-message> env BROWSER=qute urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cs "<pipe-entry> env BROWSER=qute urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 # Scrolling
 bind attach,browser,pager,index \CF next-page
@@ -44,7 +44,8 @@ bind index                      \Ce next-line
 bind index                      \Cy previous-line
 
 bind pager,index                d   noop
-bind pager,index                dd   delete-message
+bind pager,index                D   delete-message
+bind pager,index                dd   delete-pattern
 
 # Threads
 bind pager,index                dT  delete-thread
@@ -54,15 +55,28 @@ bind pager,index                gT  previous-thread
 bind index                      za  collapse-thread
 bind index                      zA  collapse-all # Missing :folddisable/foldenable
 
+bind pager,index                c   noop
+# macro pager,index cc  "<pipe-message>grep '^From: ' | sed -e 's/From: //' -e 's/ .*//' > jim<enter>"
+# macro pager,index cp  '<enter-command>set my_sender="`cat jim`"<enter><enter-command>echo $my_sender<enter>'
+
+macro pager,index               cc  "<pipe-message> formail -X from:|awk -F'[<>]' '{print $2}' > /tmp/neomut_from<enter>"
+macro pager,index               cp  '<enter-command>set my_sender="`cat /tmp/neomut_from`"<enter><limit> ~f $my_sender<enter>'
+macro pager,index               ca  cccp
+# macro pager,index               cp  '<enter-command>set my_sender="`cat /tmp/neomut_from`"<enter><limit> -f $my_sender<enter>'
+macro pager,index               cp  '<enter-command>set my_sender="`cat /tmp/neomut_from`"<enter><limit> ~f $my_sender<enter>'
+# macro pager,index               cp  ":set my_sender='`cat ~/tescik`'<enter><limit> ~f $my_sender<enter>"
+
 macro index,pager <f2> \
-    "<pipe-message> formail -X from:|awk -F'[<>]' '{print $2}' > ~/tescik\
+    "<pipe-message> formail -X from:|awk -F'[<>]' '{print $2}' > ~/tescik<enter>\
 :set my_sender=\"`cat ~/tescik`\"<enter>\
-<limit> ~f $my_sender"
+<limit> ~f $my_sender"<enter>"
 
 macro index,pager ,e "<pipe-message>formail -X from:|awk -F'[<>]' '{print $2}'>~/tescik<enter>\ :set my_sender=\"`cat ~/tescik`\"\nl~f \"$my_sender\"\n"
 
 macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.config/neomutt/test1<enter><change-folder>work<enter>'
 
-bind index R        group-reply
+bind pager,index R        group-reply
 macro editor \Cp <up>
 macro editor \Cn <down>
+
+bind pager,index gn next-new

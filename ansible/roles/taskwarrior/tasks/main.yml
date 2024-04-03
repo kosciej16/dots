@@ -6,7 +6,26 @@
 
 - name: Copy aliases
   copy: 
-    src: "aliases"
+    src: "taskwarrior"
     dest: "{{ aliases_dir }}/taskwarrior"
 
+- name: Copy configs
+  copy: 
+    src: taskrc
+    dest: "{{ ansible_env.HOME }}/.taskrc"
 
+- name: Ensure .task directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.task"
+    state: directory
+    mode: '0755'
+
+- name: Copy .task directory content
+  ansible.builtin.copy: 
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    directory_mode: '0755'
+  loop:
+    - { src: "task/", dest: "{{ ansible_env.HOME }}/.task" }
+  loop_control:
+    label: "{{ item.src }}"

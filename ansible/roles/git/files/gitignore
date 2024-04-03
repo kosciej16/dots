@@ -4,3 +4,5 @@ kosciej_snippets
 kmain.py
 .envrc
 .direnv
+**/Session.vim
+__pycache__

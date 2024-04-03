@@ -1,0 +1,17 @@
+- name: Create user systemd directory
+  ansible.builtin.file:
+    path: "{{ config_dir }}/systemd/user"
+    state: directory
+
+- name: Copy systemd files
+  ansible.builtin.copy:
+    src: "{{ name }}.{{ item }}"
+    dest: "{{ config_dir }}/systemd/user/"
+  with_items: [service, timer]
+
+- name: Enable {{ name }} timer
+  ansible.builtin.systemd:
+    name: "{{ name }}.timer"
+    enabled: yes
+    scope: user
+    state: started

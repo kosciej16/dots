@@ -50,7 +50,7 @@
 
     - name: Install usefull tools
       package:
-        name: [ripgrep, xclip, autojump]
+        name: [ripgrep, xclip]
         state: present
       become: yes
 

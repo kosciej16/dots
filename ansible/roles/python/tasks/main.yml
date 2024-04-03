@@ -25,3 +25,17 @@
     name: pynvim
     virtualenv: $HOME/pynvim
     virtualenv_command: "{{ ansible_python_interpreter }} -m venv"
+
+- name: Install pyenv from git
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: .pyenv
+    cmd: curl https://pyenv.run | bash
+    with_symlink: true
+
+- name: Add pyenv shims handler
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    line: eval "$(pyenv init -)"
+  with_items:
+    [.profile, .zshrc, .bashrc]

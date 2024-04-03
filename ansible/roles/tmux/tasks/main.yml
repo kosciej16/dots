@@ -1,4 +1,11 @@
 
+# TODO Install from source?
+# git clone https://github.com/tmux/tmux.git
+# cd tmux
+# sh autogen.sh
+# ./configure
+# make && sudo make install
+
 - name: Install tmux
   package:
     name: tmux
@@ -7,11 +14,11 @@
 
 - name: Copy config files
   copy:
-    src: "{{ item }}"
+    src: "{{ item }}.conf"
     dest: "{{ tmux_config_dir }}/"
-  with_items: [tmux.conf, appearance.conf, ressurect.conf]
+  with_items: [tmux, bindings, mouse_b, ressurect]
 
 - name: Clone tmux plugin manager repository
   git:
     repo: 'https://github.com/tmux-plugins/tpm'
-    dest: "$HOME/.config/tmux/plugins/tpm"
+    dest: "{{ tmux_config_dir }}/plugins/tpm"

@@ -50,8 +50,8 @@ primary_email=kd305513@gmail.com
 #
 
 [new]
-tags=new;
 ignore=
+# tags=new;
 
 # Search configuration
 #

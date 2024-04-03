@@ -1,0 +1,4 @@
+- name: Copy dot files
+  copy:
+    src: "bashrc"
+    dest: "$HOME/.bashrc"

@@ -1,0 +1,89 @@
+{"description":"som","entry":"20220105T141319Z","modified":"20220105T141319Z","status":"pending","uuid":"809a0789-74d6-400b-9916-90861098ad89"}
+{"description":"som","end":"20220105T141359Z","entry":"20220105T141319Z","modified":"20220105T141359Z","status":"completed","uuid":"809a0789-74d6-400b-9916-90861098ad89"}
+{"description":"Working brightness changes","entry":"20220105T180556Z","modified":"20220105T180556Z","project":"pc","status":"pending","tags":["sxhkd"],"uuid":"0a0459f3-7b80-4aba-8deb-d5932f08d2b6"}
+{"description":"mopidy catching sound from browser","entry":"20220106T093205Z","modified":"20220106T093205Z","project":"pc","status":"pending","tags":["audio"],"uuid":"63d07f76-a44c-478d-875f-a88d3ef12b0b"}
+{"description":"mopidy catching sound from browser","entry":"20220106T093205Z","modified":"20220106T093221Z","project":"pc","status":"pending","tags":["audio"],"uuid":"63d07f76-a44c-478d-875f-a88d3ef12b0b","annotations":[{"entry":"20220106T093221Z","description":"https:\/\/docs.mopidy.com\/en\/latest\/running\/service\/"}]}
+{"description":"set qt as default browser","entry":"20220106T093309Z","modified":"20220106T093309Z","project":"pc","status":"pending","tags":["qute"],"uuid":"8bc037ad-299a-4485-90f9-00d46fc2f327"}
+{"description":"investigate segfaults","entry":"20220106T093321Z","modified":"20220106T093321Z","project":"pc","status":"pending","tags":["qute"],"uuid":"59c668ad-b756-4c08-9176-753eeb30e4bf"}
+{"description":"revalidate config files","entry":"20220106T093345Z","modified":"20220106T093345Z","project":"pc","status":"pending","tags":["qute"],"uuid":"74ce65f5-75f5-43ae-aff2-1193b43cd1f0"}
+{"description":"setup calendar linux","entry":"20220325T100401Z","modified":"20220325T100401Z","project":"pc","status":"pending","uuid":"98f6e769-2035-4f9a-91b9-170f174fdcaa"}
+{"description":"setup calendar linux","entry":"20220325T100401Z","modified":"20220325T100426Z","project":"pc","status":"pending","tags":["linux"],"uuid":"98f6e769-2035-4f9a-91b9-170f174fdcaa"}
+{"description":"setup neomutt","entry":"20220325T100438Z","modified":"20220325T100438Z","project":"pc","status":"pending","tags":["linux"],"uuid":"a3a6d148-32b9-4989-a2cc-a09b6198a7f3"}
+{"description":"setup dzen","entry":"20220325T100501Z","modified":"20220325T100501Z","project":"pc","status":"pending","tags":["linux"],"uuid":"8648bb29-8194-4f94-a2fc-645130671b0e"}
+{"description":"setup network applet","entry":"20220325T100531Z","modified":"20220325T100531Z","project":"pc","status":"pending","tags":["wm"],"uuid":"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"}
+{"description":"setup dunst","entry":"20220325T100546Z","modified":"20220325T100546Z","project":"pc","status":"pending","tags":["wm"],"uuid":"ec4e5b2e-758d-4435-8f20-6c8b0b700cb6"}
+{"description":"integrate with passwd","entry":"20220325T100610Z","modified":"20220325T100610Z","project":"pc","status":"pending","tags":["qute"],"uuid":"669c118f-108c-4417-9482-e7b0fd39d49a"}
+{"description":"bubu escape","due":"20220327T101553Z","entry":"20220325T101553Z","modified":"20220325T101553Z","status":"pending","uuid":"82c4481f-7f4a-43f8-b3cf-9e4cd7fd01fc"}
+{"description":"bubu escape","due":"20220327T101553Z","end":"20220405T190622Z","entry":"20220325T101553Z","modified":"20220405T190622Z","status":"completed","uuid":"82c4481f-7f4a-43f8-b3cf-9e4cd7fd01fc"}
+{"description":"odpisac Stefanowi na linkedin :due today","entry":"20220412T120135Z","modified":"20220412T120135Z","status":"pending","uuid":"65f40718-8193-4bc0-8c61-1587ad234466"}
+{"description":"odpisac Stefanowi na linkedin","due":"20220411T220000Z","entry":"20220412T120207Z","modified":"20220412T120207Z","status":"pending","uuid":"0f15c9ee-eb50-4d80-becb-5b8e3831a2aa"}
+{"description":"facebook lajki Kasia","entry":"20220419T130935Z","modified":"20220419T130935Z","status":"pending","uuid":"4b5e987f-f453-42bd-b723-3868778782ef"}
+{"description":"odpisac Stefanowi na linkedin","due":"20220411T220000Z","end":"20220421T181702Z","entry":"20220412T120207Z","modified":"20220421T181702Z","status":"completed","uuid":"0f15c9ee-eb50-4d80-becb-5b8e3831a2aa"}
+{"description":"headphones","entry":"20220426T213750Z","modified":"20220426T213750Z","status":"pending","uuid":"87bf724b-93d6-4ed2-a356-53e19b100d02"}
+{"description":"odpisac Stefanowi na linkedin :due today","end":"20220502T122751Z","entry":"20220412T120135Z","modified":"20220502T122751Z","status":"completed","uuid":"65f40718-8193-4bc0-8c61-1587ad234466"}
+{"description":"vimf","entry":"20220503T145943Z","modified":"20220503T145943Z","project":"pc","status":"pending","uuid":"9f57d7d3-c0e5-449e-8c04-0f301185956f"}
+{"description":"setup calendar linux","entry":"20220325T100401Z","modified":"20220503T150057Z","project":"pc","start":"20220503T150057Z","status":"pending","tags":["linux"],"uuid":"98f6e769-2035-4f9a-91b9-170f174fdcaa"}
+{"description":"setup calendar linux","entry":"20220325T100401Z","modified":"20220503T190229Z","project":"pc","status":"pending","tags":["linux"],"uuid":"98f6e769-2035-4f9a-91b9-170f174fdcaa"}
+{"description":"setup network applet","entry":"20220325T100531Z","modified":"20220503T200033Z","project":"pc","status":"pending","tags":["dzen"],"uuid":"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"}
+{"description":"volume","entry":"20220503T200432Z","modified":"20220503T200432Z","project":"pc","status":"pending","tags":["dzen"],"uuid":"76e24a18-7621-4c77-b6f4-043247a9f261"}
+{"description":"windows","entry":"20220503T200442Z","modified":"20220503T200442Z","project":"pc","status":"pending","tags":["dzen"],"uuid":"e5a0ff7b-54df-4a79-8af0-f3501bb29e63"}
+{"description":"music","entry":"20220503T200446Z","modified":"20220503T200446Z","project":"pc","status":"pending","tags":["dzen"],"uuid":"43651d1d-ecaf-419e-a1f7-fcd668ab6927"}
+{"description":"use in terminal","entry":"20220503T201232Z","modified":"20220503T201232Z","project":"pc","status":"pending","tags":["slack"],"uuid":"688b2d2d-29a8-4fd6-9799-da154e65d5b9"}
+{"description":"oagarnąć utwory","entry":"20220504T080026Z","modified":"20220504T080026Z","project":"JtM","status":"pending","uuid":"fd8736ad-c0d8-4219-95e6-fd677d724831"}
+{"description":"pick up terminal","entry":"20220504T090756Z","modified":"20220504T090756Z","project":"pc","status":"pending","uuid":"cfbcb2a8-1e80-4f90-8aea-b22d1aa3ed6a"}
+{"description":"bspwm hangs on popup window","entry":"20220504T093457Z","modified":"20220504T093457Z","project":"pt","status":"pending","tags":["wm"],"uuid":"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"}
+{"description":"bspwm hangs on popup window","entry":"20220504T093457Z","modified":"20220504T093545Z","priority":"H","project":"pt","status":"pending","tags":["wm"],"uuid":"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"}
+{"description":"check inventories","entry":"20220504T103352Z","modified":"20220504T103352Z","project":"pc","status":"pending","tags":["ansible"],"uuid":"37bf0ad9-968f-4471-8f51-a68356e138b4"}
+{"description":"pick up terminal","end":"20220505T001056Z","entry":"20220504T090756Z","modified":"20220505T001056Z","project":"pc","status":"completed","uuid":"cfbcb2a8-1e80-4f90-8aea-b22d1aa3ed6a"}
+{"description":"Przygotować hinty","entry":"20220505T091049Z","modified":"20220505T091049Z","project":"JtM","status":"pending","uuid":"81abc318-6e16-481f-9404-61432a1d28a6"}
+{"description":"volume","end":"20220508T224805Z","entry":"20220503T200432Z","modified":"20220508T224805Z","project":"pc","status":"completed","tags":["dzen"],"uuid":"76e24a18-7621-4c77-b6f4-043247a9f261"}
+{"description":"test nvim","entry":"20220702T100515Z","modified":"20220702T100515Z","project":"pc","status":"pending","tags":["ansible"],"uuid":"8c388e46-12c1-4942-90bf-7bc2ff53c770"}
+{"description":"test qutebrowser","entry":"20220702T100532Z","modified":"20220702T100532Z","project":"pc","status":"pending","tags":["ansible"],"uuid":"824ab770-9d47-4796-a6e5-5d2df75de8c6"}
+{"description":"change to zsh","entry":"20220702T100605Z","modified":"20220702T100605Z","project":"pc","status":"pending","tags":["shell"],"uuid":"be3411bf-0626-4bc7-9652-b93583fbbe8c"}
+{"description":"koszulki","due":"20220719T220000Z","entry":"20220719T200100Z","modified":"20220719T200100Z","status":"pending","uuid":"3571cc23-1fce-46ba-831d-c8f5492fd1f6"}
+{"description":"koszulki","due":"20220719T220001Z","entry":"20220719T200107Z","modified":"20220719T200107Z","status":"pending","uuid":"3bd17046-bcf2-411e-adcd-19ded635dcf3"}
+{"description":"koszulki","due":"20220720T220000Z","entry":"20220719T200138Z","modified":"20220719T200138Z","status":"pending","uuid":"b920aef4-9b47-4445-82b4-206c31cb61a2"}
+{"description":"koszulki","due":"20220719T220000Z","end":"20220719T200207Z","entry":"20220719T200100Z","modified":"20220719T200209Z","status":"deleted","uuid":"3571cc23-1fce-46ba-831d-c8f5492fd1f6"}
+{"description":"koszulki","due":"20220719T220001Z","end":"20220719T200211Z","entry":"20220719T200107Z","modified":"20220719T200212Z","status":"deleted","uuid":"3bd17046-bcf2-411e-adcd-19ded635dcf3"}
+{"description":"koszulki","due":"20220720T220000Z","end":"20220726T133640Z","entry":"20220719T200138Z","modified":"20220726T133640Z","status":"completed","uuid":"b920aef4-9b47-4445-82b4-206c31cb61a2"}
+{"description":"Working brightness changes","end":"20220802T081105Z","entry":"20220105T180556Z","modified":"20220802T081105Z","project":"pc","status":"completed","tags":["sxhkd"],"uuid":"0a0459f3-7b80-4aba-8deb-d5932f08d2b6"}
+{"description":"set qt as default browser","end":"20220804T124606Z","entry":"20220106T093309Z","modified":"20220804T124606Z","project":"pc","status":"completed","tags":["qute"],"uuid":"8bc037ad-299a-4485-90f9-00d46fc2f327"}
+{"description":"headphones sound","entry":"20220805T161410Z","modified":"20220805T161410Z","project":"pc","status":"pending","uuid":"58ba7d50-8221-42de-a4ad-c0ffa3468d62"}
+{"description":"gpg password agent unlimited cache","entry":"20220829T065807Z","modified":"20220829T065807Z","status":"pending","uuid":"3998f3ce-bd30-4bbf-b65e-5d3fd2525e98"}
+{"description":"add shortcut to fetch neomutt data","entry":"20220829T070024Z","modified":"20220829T070024Z","project":"pc","status":"pending","tags":["bspwm"],"uuid":"7f93d0d1-1097-42ba-938b-a3e60a1db0c0"}
+{"description":"find a way for organize contacts","entry":"20220907T175134Z","modified":"20220907T175134Z","status":"pending","uuid":"05bd7ce4-e1de-4975-b61b-b880beb30274"}
+{"description":"copy line to clipboard","entry":"20220907T181428Z","modified":"20220907T181428Z","project":"pc","status":"pending","uuid":"b3d5e0e9-8937-4f52-ae3a-061acca703be"}
+{"description":"setup network applet","end":"20220907T181432Z","entry":"20220325T100531Z","modified":"20220907T181432Z","project":"pc","status":"completed","tags":["dzen"],"uuid":"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"}
+{"description":"low battery warning","entry":"20220908T091912Z","modified":"20220908T091912Z","project":"pc","status":"pending","uuid":"c28e6a84-b741-4baf-8974-a3104e94465e"}
+{"description":"windows","end":"20220908T095306Z","entry":"20220503T200442Z","modified":"20220908T095306Z","project":"pc","status":"completed","tags":["dzen"],"uuid":"e5a0ff7b-54df-4a79-8af0-f3501bb29e63"}
+{"description":"mopidy catching sound from browser","end":"20220908T100422Z","entry":"20220106T093205Z","modified":"20220908T100422Z","project":"pc","status":"completed","tags":["audio"],"uuid":"63d07f76-a44c-478d-875f-a88d3ef12b0b","annotations":[{"entry":"20220106T093221Z","description":"https:\/\/docs.mopidy.com\/en\/latest\/running\/service\/"}]}
+{"description":"setup neomutt","end":"20220908T100447Z","entry":"20220325T100438Z","modified":"20220908T100447Z","project":"pc","status":"completed","tags":["linux"],"uuid":"a3a6d148-32b9-4989-a2cc-a09b6198a7f3"}
+{"description":"setup dzen","end":"20220908T100449Z","entry":"20220325T100501Z","modified":"20220908T100449Z","project":"pc","status":"completed","tags":["linux"],"uuid":"8648bb29-8194-4f94-a2fc-645130671b0e"}
+{"description":"use in terminal","end":"20220908T100457Z","entry":"20220503T201232Z","modified":"20220908T100457Z","project":"pc","status":"completed","tags":["slack"],"uuid":"688b2d2d-29a8-4fd6-9799-da154e65d5b9"}
+{"description":"headphones sound","end":"20220908T100537Z","entry":"20220805T161410Z","modified":"20220908T100537Z","project":"pc","status":"completed","uuid":"58ba7d50-8221-42de-a4ad-c0ffa3468d62"}
+{"description":"facebook lajki Kasia","end":"20220908T100542Z","entry":"20220419T130935Z","modified":"20220908T100542Z","status":"completed","uuid":"4b5e987f-f453-42bd-b723-3868778782ef"}
+{"description":"investigate segfaults","end":"20220908T100602Z","entry":"20220106T093321Z","modified":"20220908T100602Z","project":"pc","status":"completed","tags":["qute"],"uuid":"59c668ad-b756-4c08-9176-753eeb30e4bf"}
+{"description":"change to zsh","end":"20220908T160840Z","entry":"20220702T100605Z","modified":"20220908T160840Z","project":"pc","status":"completed","tags":["shell"],"uuid":"be3411bf-0626-4bc7-9652-b93583fbbe8c"}
+{"description":"copy line to clipboard","end":"20220909T161231Z","entry":"20220907T181428Z","modified":"20220909T161231Z","project":"pc","status":"completed","uuid":"b3d5e0e9-8937-4f52-ae3a-061acca703be"}
+{"description":"add shortcut to fetch neomutt data","end":"20220909T161249Z","entry":"20220829T070024Z","modified":"20220909T161249Z","project":"pc","status":"completed","tags":["bspwm"],"uuid":"7f93d0d1-1097-42ba-938b-a3e60a1db0c0"}
+{"description":"open file in browser","entry":"20220909T161314Z","modified":"20220909T161314Z","project":"pc","status":"pending","tags":["qute"],"uuid":"7b8ca76b-be17-43c9-95b4-4a2eb9558c7c"}
+{"description":"dunst shortcuts and config :dunst","entry":"20220909T170750Z","modified":"20220909T170750Z","project":"pc","status":"pending","uuid":"004f03cc-97fd-4688-8ad7-8a8b2741f0ee"}
+{"description":"dunst shortcuts and config","entry":"20220909T170755Z","modified":"20220909T170755Z","project":"pc","status":"pending","tags":["dunst"],"uuid":"cdf741b7-4b0c-47f1-8dc3-91e34e368692"}
+{"description":"dunst shortcuts and config :dunst","end":"20220909T170805Z","entry":"20220909T170750Z","modified":"20220909T170808Z","project":"pc","status":"deleted","uuid":"004f03cc-97fd-4688-8ad7-8a8b2741f0ee"}
+{"description":"coc stucks trying to analyze stl libraries","entry":"20220912T193708Z","modified":"20220912T193708Z","priority":"H","project":"PC","status":"pending","uuid":"30e6fd90-c6cb-4e20-9ea8-0edb859a8f9d"}
+{"description":"bspwm hangs on popup window","end":"20230112T101156Z","entry":"20220504T093457Z","modified":"20230112T101156Z","priority":"H","project":"pt","status":"completed","tags":["wm"],"uuid":"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"}
+{"description":"szanta kambuzowa","due":"20230331T215959Z","entry":"20230321T123402Z","modified":"20230321T123402Z","status":"pending","uuid":"67a806c4-3c5b-4f33-b2cd-d41349aa947c"}
+{"description":":sm komendy dla Michała","entry":"20230517T124226Z","modified":"20230517T124226Z","status":"pending","uuid":"ae7e2452-04da-4d9e-b7f0-5f76a006a68b"}
+{"description":":sm komendy dla Michała","end":"20230517T124238Z","entry":"20230517T124226Z","modified":"20230517T124240Z","status":"deleted","uuid":"ae7e2452-04da-4d9e-b7f0-5f76a006a68b"}
+{"description":"komendy dla Michała","entry":"20230517T124314Z","modified":"20230517T124314Z","status":"pending","tags":["sm"],"uuid":"749bf86f-bcfa-4510-a1a1-b48ac524d56d"}
+{"description":"komendy dla Michała","entry":"20230517T124339Z","modified":"20230517T124339Z","project":"sm","status":"pending","uuid":"2851dd70-0034-48f4-825a-672a21660ad5"}
+{"description":"komendy dla Michała","end":"20230517T124354Z","entry":"20230517T124314Z","modified":"20230517T124354Z","status":"completed","tags":["sm"],"uuid":"749bf86f-bcfa-4510-a1a1-b48ac524d56d"}
+{"description":"fryzjer","due":"20230605T220000Z","entry":"20230522T151520Z","modified":"20230522T151520Z","status":"pending","uuid":"39ff8dc3-654a-42e4-9303-34addcd9cc83"}
+{"description":"fryzjer","due":"20230605T220000Z","end":"20230603T135704Z","entry":"20230522T151520Z","modified":"20230603T135704Z","status":"completed","uuid":"39ff8dc3-654a-42e4-9303-34addcd9cc83"}
+{"description":"buy new stuff on escapewelt","entry":"20230707T082030Z","modified":"20230707T082030Z","status":"pending","uuid":"55c5d688-95d7-4196-80e8-20f516ba024d"}
+{"description":"buy new stuff on escapewelt","entry":"20230707T082030Z","modified":"20230707T082052Z","status":"pending","uuid":"55c5d688-95d7-4196-80e8-20f516ba024d","annotations":[{"entry":"20230707T082052Z","description":"https:\/\/www.kickstarter.com\/projects\/escapewelt\/quest-tower-the-fascinating-escape-room-in-your-hands"}]}
+{"description":"Learn language server","entry":"20230716T162520Z","modified":"20230716T162520Z","status":"pending","uuid":"ae41bdbc-4489-4266-9c49-e61098201c2c"}
+{"description":"neomutt home credentials doesn't work","entry":"20230803T110520Z","modified":"20230803T110520Z","project":"pc","status":"pending","uuid":"cd12a600-67fa-4ab1-b24e-1e2e66e0bc20"}
+{"description":"neomutt home credentials doesn't work","end":"20231003T205430Z","entry":"20230803T110520Z","modified":"20231003T205430Z","project":"pc","status":"completed","uuid":"cd12a600-67fa-4ab1-b24e-1e2e66e0bc20"}
+{"description":"komendy dla Michała","end":"20240321T233636Z","entry":"20230517T124339Z","modified":"20240321T233640Z","project":"sm","status":"deleted","uuid":"2851dd70-0034-48f4-825a-672a21660ad5"}
+{"description":"laptop orange","due":"20240328T115253Z","entry":"20240326T115253Z","modified":"20240326T115253Z","status":"pending","uuid":"8fdc39ed-aeeb-4e99-8bcb-1ed7c1ca4862"}

@@ -1,1 +1,2 @@
-cp $HOME/.config/tmux/{tmux.conf,appearance.conf,ressurect.conf} files
+#!/bin/bash
+cp $HOME/.config/tmux/{tmux,bindings,ressurect,mouse_b}.conf files

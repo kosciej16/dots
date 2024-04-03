@@ -1,0 +1,1 @@
+neomutt_repo_dir: "{{ repo_dir }}/neomutt"

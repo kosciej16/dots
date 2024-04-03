@@ -32,6 +32,7 @@ nmap <C-[> :Buffers<cr>
 nmap ,l :Lines<cr>
 nmap ,m :Marks<cr>
 nmap ,o :Locate<space>
+nmap ,c :Commits<cr>
 
 " map ,v :call fzf#run({'source': map(split(vim_files), 'fnamemodify(v:val, ":t:r")'),
 " 

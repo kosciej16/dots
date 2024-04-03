@@ -1,0 +1,22 @@
+- name: "Install {{ name }}"
+  block:
+  - name: Strip dots
+    ansible.builtin.set_fact:
+      stripped: "{{ name | regex_replace('^\\.+', '') }}"
+
+  - name: Check if {{ stripped }} is already installed
+    ansible.builtin.stat:
+      path: "{{ path | default(ansible_env.HOME + '/' + name)}}"
+    register: is_installed
+
+  - name: "Install {{ stripped }}"
+    ansible.builtin.shell:
+      cmd: "{{ cmd }}"
+    when: not is_installed.stat.exists
+
+  - name: "Create symlink to {{ stripped }}"
+    file:
+      src: "{{ ansible_env.HOME }}/{{ name }}/bin/{{ stripped }}"
+      dest: "{{ local_bin_dir }}/{{ stripped }}"
+      state: link
+    when: with_symlink is defined

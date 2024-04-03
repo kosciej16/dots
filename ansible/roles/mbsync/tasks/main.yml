@@ -8,32 +8,17 @@
   file:
     state: directory
     path: "{{ mail_dir }}/{{ item }}"
-  with_items: [work, home]
+  with_items: [home, itsg, starfish]
 
 - name: Copy config
   copy:
     src: "mbsyncrc"
     dest: "$HOME/.mbsyncrc"
 
-- name: Systemd
-  block:
-    - name: Create user systemd directory
-      file:
-        path: "{{ config_dir }}/systemd/user"
-        state: directory
-
-    - name: Copy systemd files
-      copy:
-        src: "{{ item }}"
-        dest: "{{ config_dir }}/systemd/user/"
-      with_items: [mbsync.service, mbsync.timer]
-
-    - name: Enable mbsync timer
-      systemd:
-        name: mbsync.timer
-        enabled: yes
-        scope: user
-        state: started
+- name: Enable mbsync service
+  import_tasks: roles/commons/tasks/enable_service.yml
+  vars:
+    name: mbsync
   when:
     - ansible_facts['distribution'] == "Ubuntu"
 
@@ -49,8 +34,6 @@
 
     - name: Start file
       shell: launchctl start mbsync
-
-
     # - name: Doesnt work
     #   community.general.launchd:
     #     name: mbsync

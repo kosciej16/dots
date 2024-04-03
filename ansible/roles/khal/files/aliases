@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias k='khal'
+alias khi='khal interactive'

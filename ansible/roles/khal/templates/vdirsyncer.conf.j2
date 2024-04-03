@@ -1,0 +1,18 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair main]
+a = "main_local"
+b = "main_remote"
+collections = ["from a", "from b"]
+
+[storage main_local]
+type = "filesystem"
+path = "~/.calendars/"
+fileext = ".ics"
+
+[storage main_remote]
+type = "google_calendar"
+token_file = "~/.vdirsyncer/google_token"
+client_id = "791838405096-c3eg2qcp2vjekdmq6fgchq38al94jj5k.apps.googleusercontent.com"
+client_secret = "{{ home_gmail_secret }}"

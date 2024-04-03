@@ -1,0 +1,304 @@
+time 1641391999
+new [description:"som" entry:"1641391999" modified:"1641391999" status:"pending" uuid:"809a0789-74d6-400b-9916-90861098ad89"]
+---
+time 1641392039
+old [description:"som" entry:"1641391999" modified:"1641391999" status:"pending" uuid:"809a0789-74d6-400b-9916-90861098ad89"]
+new [description:"som" end:"1641392039" entry:"1641391999" modified:"1641392039" status:"completed" uuid:"809a0789-74d6-400b-9916-90861098ad89"]
+---
+time 1641405956
+new [description:"Working brightness changes" entry:"1641405956" modified:"1641405956" project:"pc" status:"pending" tags:"sxhkd" uuid:"0a0459f3-7b80-4aba-8deb-d5932f08d2b6"]
+---
+time 1641461525
+new [description:"mopidy catching sound from browser" entry:"1641461525" modified:"1641461525" project:"pc" status:"pending" tags:"audio" uuid:"63d07f76-a44c-478d-875f-a88d3ef12b0b"]
+---
+time 1641461541
+old [description:"mopidy catching sound from browser" entry:"1641461525" modified:"1641461525" project:"pc" status:"pending" tags:"audio" uuid:"63d07f76-a44c-478d-875f-a88d3ef12b0b"]
+new [annotation_1641461541:"https:\/\/docs.mopidy.com\/en\/latest\/running\/service\/" description:"mopidy catching sound from browser" entry:"1641461525" modified:"1641461541" project:"pc" status:"pending" tags:"audio" uuid:"63d07f76-a44c-478d-875f-a88d3ef12b0b"]
+---
+time 1641461589
+new [description:"set qt as default browser" entry:"1641461589" modified:"1641461589" project:"pc" status:"pending" tags:"qute" uuid:"8bc037ad-299a-4485-90f9-00d46fc2f327"]
+---
+time 1641461601
+new [description:"investigate segfaults" entry:"1641461601" modified:"1641461601" project:"pc" status:"pending" tags:"qute" uuid:"59c668ad-b756-4c08-9176-753eeb30e4bf"]
+---
+time 1641461625
+new [description:"revalidate config files" entry:"1641461625" modified:"1641461625" project:"pc" status:"pending" tags:"qute" uuid:"74ce65f5-75f5-43ae-aff2-1193b43cd1f0"]
+---
+time 1648202641
+new [description:"setup calendar linux" entry:"1648202641" modified:"1648202641" project:"pc" status:"pending" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+---
+time 1648202666
+old [description:"setup calendar linux" entry:"1648202641" modified:"1648202641" project:"pc" status:"pending" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+new [description:"setup calendar linux" entry:"1648202641" modified:"1648202666" project:"pc" status:"pending" tags:"linux" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+---
+time 1648202678
+new [description:"setup neomutt" entry:"1648202678" modified:"1648202678" project:"pc" status:"pending" tags:"linux" uuid:"a3a6d148-32b9-4989-a2cc-a09b6198a7f3"]
+---
+time 1648202701
+new [description:"setup dzen" entry:"1648202701" modified:"1648202701" project:"pc" status:"pending" tags:"linux" uuid:"8648bb29-8194-4f94-a2fc-645130671b0e"]
+---
+time 1648202731
+new [description:"setup network applet" entry:"1648202731" modified:"1648202731" project:"pc" status:"pending" tags:"wm" uuid:"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"]
+---
+time 1648202746
+new [description:"setup dunst" entry:"1648202746" modified:"1648202746" project:"pc" status:"pending" tags:"wm" uuid:"ec4e5b2e-758d-4435-8f20-6c8b0b700cb6"]
+---
+time 1648202770
+new [description:"integrate with passwd" entry:"1648202770" modified:"1648202770" project:"pc" status:"pending" tags:"qute" uuid:"669c118f-108c-4417-9482-e7b0fd39d49a"]
+---
+time 1648203353
+new [description:"bubu escape" due:"1648376153" entry:"1648203353" modified:"1648203353" status:"pending" uuid:"82c4481f-7f4a-43f8-b3cf-9e4cd7fd01fc"]
+---
+time 1649185582
+old [description:"bubu escape" due:"1648376153" entry:"1648203353" modified:"1648203353" status:"pending" uuid:"82c4481f-7f4a-43f8-b3cf-9e4cd7fd01fc"]
+new [description:"bubu escape" due:"1648376153" end:"1649185582" entry:"1648203353" modified:"1649185582" status:"completed" uuid:"82c4481f-7f4a-43f8-b3cf-9e4cd7fd01fc"]
+---
+time 1649764895
+new [description:"odpisac Stefanowi na linkedin :due today" entry:"1649764895" modified:"1649764895" status:"pending" uuid:"65f40718-8193-4bc0-8c61-1587ad234466"]
+---
+time 1649764927
+new [description:"odpisac Stefanowi na linkedin" due:"1649714400" entry:"1649764927" modified:"1649764927" status:"pending" uuid:"0f15c9ee-eb50-4d80-becb-5b8e3831a2aa"]
+---
+time 1650373775
+new [description:"facebook lajki Kasia" entry:"1650373775" modified:"1650373775" status:"pending" uuid:"4b5e987f-f453-42bd-b723-3868778782ef"]
+---
+time 1650565022
+old [description:"odpisac Stefanowi na linkedin" due:"1649714400" entry:"1649764927" modified:"1649764927" status:"pending" uuid:"0f15c9ee-eb50-4d80-becb-5b8e3831a2aa"]
+new [description:"odpisac Stefanowi na linkedin" due:"1649714400" end:"1650565022" entry:"1649764927" modified:"1650565022" status:"completed" uuid:"0f15c9ee-eb50-4d80-becb-5b8e3831a2aa"]
+---
+time 1651009070
+new [description:"headphones" entry:"1651009070" modified:"1651009070" status:"pending" uuid:"87bf724b-93d6-4ed2-a356-53e19b100d02"]
+---
+time 1651494471
+old [description:"odpisac Stefanowi na linkedin :due today" entry:"1649764895" modified:"1649764895" status:"pending" uuid:"65f40718-8193-4bc0-8c61-1587ad234466"]
+new [description:"odpisac Stefanowi na linkedin :due today" end:"1651494471" entry:"1649764895" modified:"1651494471" status:"completed" uuid:"65f40718-8193-4bc0-8c61-1587ad234466"]
+---
+time 1651589983
+new [description:"vimf" entry:"1651589983" modified:"1651589983" project:"pc" status:"pending" uuid:"9f57d7d3-c0e5-449e-8c04-0f301185956f"]
+---
+time 1651590057
+old [description:"setup calendar linux" entry:"1648202641" modified:"1648202666" project:"pc" status:"pending" tags:"linux" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+new [description:"setup calendar linux" entry:"1648202641" modified:"1651590057" project:"pc" start:"1651590057" status:"pending" tags:"linux" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+---
+time 1651604549
+old [description:"setup calendar linux" entry:"1648202641" modified:"1651590057" project:"pc" start:"1651590057" status:"pending" tags:"linux" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+new [description:"setup calendar linux" entry:"1648202641" modified:"1651604549" project:"pc" status:"pending" tags:"linux" uuid:"98f6e769-2035-4f9a-91b9-170f174fdcaa"]
+---
+time 1651608033
+old [description:"setup network applet" entry:"1648202731" modified:"1648202731" project:"pc" status:"pending" tags:"wm" uuid:"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"]
+new [description:"setup network applet" entry:"1648202731" modified:"1651608033" project:"pc" status:"pending" tags:"dzen" uuid:"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"]
+---
+time 1651608272
+new [description:"volume" entry:"1651608272" modified:"1651608272" project:"pc" status:"pending" tags:"dzen" uuid:"76e24a18-7621-4c77-b6f4-043247a9f261"]
+---
+time 1651608282
+new [description:"windows" entry:"1651608282" modified:"1651608282" project:"pc" status:"pending" tags:"dzen" uuid:"e5a0ff7b-54df-4a79-8af0-f3501bb29e63"]
+---
+time 1651608286
+new [description:"music" entry:"1651608286" modified:"1651608286" project:"pc" status:"pending" tags:"dzen" uuid:"43651d1d-ecaf-419e-a1f7-fcd668ab6927"]
+---
+time 1651608752
+new [description:"use in terminal" entry:"1651608752" modified:"1651608752" project:"pc" status:"pending" tags:"slack" uuid:"688b2d2d-29a8-4fd6-9799-da154e65d5b9"]
+---
+time 1651651226
+new [description:"oagarnąć utwory" entry:"1651651226" modified:"1651651226" project:"JtM" status:"pending" uuid:"fd8736ad-c0d8-4219-95e6-fd677d724831"]
+---
+time 1651655276
+new [description:"pick up terminal" entry:"1651655276" modified:"1651655276" project:"pc" status:"pending" uuid:"cfbcb2a8-1e80-4f90-8aea-b22d1aa3ed6a"]
+---
+time 1651656897
+new [description:"bspwm hangs on popup window" entry:"1651656897" modified:"1651656897" project:"pt" status:"pending" tags:"wm" uuid:"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"]
+---
+time 1651656945
+old [description:"bspwm hangs on popup window" entry:"1651656897" modified:"1651656897" project:"pt" status:"pending" tags:"wm" uuid:"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"]
+new [description:"bspwm hangs on popup window" entry:"1651656897" modified:"1651656945" priority:"H" project:"pt" status:"pending" tags:"wm" uuid:"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"]
+---
+time 1651660432
+new [description:"check inventories" entry:"1651660432" modified:"1651660432" project:"pc" status:"pending" tags:"ansible" uuid:"37bf0ad9-968f-4471-8f51-a68356e138b4"]
+---
+time 1651709456
+old [description:"pick up terminal" entry:"1651655276" modified:"1651655276" project:"pc" status:"pending" uuid:"cfbcb2a8-1e80-4f90-8aea-b22d1aa3ed6a"]
+new [description:"pick up terminal" end:"1651709456" entry:"1651655276" modified:"1651709456" project:"pc" status:"completed" uuid:"cfbcb2a8-1e80-4f90-8aea-b22d1aa3ed6a"]
+---
+time 1651741849
+new [description:"Przygotować hinty" entry:"1651741849" modified:"1651741849" project:"JtM" status:"pending" uuid:"81abc318-6e16-481f-9404-61432a1d28a6"]
+---
+time 1652050085
+old [description:"volume" entry:"1651608272" modified:"1651608272" project:"pc" status:"pending" tags:"dzen" uuid:"76e24a18-7621-4c77-b6f4-043247a9f261"]
+new [description:"volume" end:"1652050085" entry:"1651608272" modified:"1652050085" project:"pc" status:"completed" tags:"dzen" uuid:"76e24a18-7621-4c77-b6f4-043247a9f261"]
+---
+time 1656756315
+new [description:"test nvim" entry:"1656756315" modified:"1656756315" project:"pc" status:"pending" tags:"ansible" uuid:"8c388e46-12c1-4942-90bf-7bc2ff53c770"]
+---
+time 1656756332
+new [description:"test qutebrowser" entry:"1656756332" modified:"1656756332" project:"pc" status:"pending" tags:"ansible" uuid:"824ab770-9d47-4796-a6e5-5d2df75de8c6"]
+---
+time 1656756365
+new [description:"change to zsh" entry:"1656756365" modified:"1656756365" project:"pc" status:"pending" tags:"shell" uuid:"be3411bf-0626-4bc7-9652-b93583fbbe8c"]
+---
+time 1658260860
+new [description:"koszulki" due:"1658268000" entry:"1658260860" modified:"1658260860" status:"pending" uuid:"3571cc23-1fce-46ba-831d-c8f5492fd1f6"]
+---
+time 1658260867
+new [description:"koszulki" due:"1658268001" entry:"1658260867" modified:"1658260867" status:"pending" uuid:"3bd17046-bcf2-411e-adcd-19ded635dcf3"]
+---
+time 1658260898
+new [description:"koszulki" due:"1658354400" entry:"1658260898" modified:"1658260898" status:"pending" uuid:"b920aef4-9b47-4445-82b4-206c31cb61a2"]
+---
+time 1658260929
+old [description:"koszulki" due:"1658268000" entry:"1658260860" modified:"1658260860" status:"pending" uuid:"3571cc23-1fce-46ba-831d-c8f5492fd1f6"]
+new [description:"koszulki" due:"1658268000" end:"1658260927" entry:"1658260860" modified:"1658260929" status:"deleted" uuid:"3571cc23-1fce-46ba-831d-c8f5492fd1f6"]
+---
+time 1658260932
+old [description:"koszulki" due:"1658268001" entry:"1658260867" modified:"1658260867" status:"pending" uuid:"3bd17046-bcf2-411e-adcd-19ded635dcf3"]
+new [description:"koszulki" due:"1658268001" end:"1658260931" entry:"1658260867" modified:"1658260932" status:"deleted" uuid:"3bd17046-bcf2-411e-adcd-19ded635dcf3"]
+---
+time 1658842600
+old [description:"koszulki" due:"1658354400" entry:"1658260898" modified:"1658260898" status:"pending" uuid:"b920aef4-9b47-4445-82b4-206c31cb61a2"]
+new [description:"koszulki" due:"1658354400" end:"1658842600" entry:"1658260898" modified:"1658842600" status:"completed" uuid:"b920aef4-9b47-4445-82b4-206c31cb61a2"]
+---
+time 1659427865
+old [description:"Working brightness changes" entry:"1641405956" modified:"1641405956" project:"pc" status:"pending" tags:"sxhkd" uuid:"0a0459f3-7b80-4aba-8deb-d5932f08d2b6"]
+new [description:"Working brightness changes" end:"1659427865" entry:"1641405956" modified:"1659427865" project:"pc" status:"completed" tags:"sxhkd" uuid:"0a0459f3-7b80-4aba-8deb-d5932f08d2b6"]
+---
+time 1659617166
+old [description:"set qt as default browser" entry:"1641461589" modified:"1641461589" project:"pc" status:"pending" tags:"qute" uuid:"8bc037ad-299a-4485-90f9-00d46fc2f327"]
+new [description:"set qt as default browser" end:"1659617166" entry:"1641461589" modified:"1659617166" project:"pc" status:"completed" tags:"qute" uuid:"8bc037ad-299a-4485-90f9-00d46fc2f327"]
+---
+time 1659716050
+new [description:"headphones sound" entry:"1659716050" modified:"1659716050" project:"pc" status:"pending" uuid:"58ba7d50-8221-42de-a4ad-c0ffa3468d62"]
+---
+time 1661756287
+new [description:"gpg password agent unlimited cache" entry:"1661756287" modified:"1661756287" status:"pending" uuid:"3998f3ce-bd30-4bbf-b65e-5d3fd2525e98"]
+---
+time 1661756424
+new [description:"add shortcut to fetch neomutt data" entry:"1661756424" modified:"1661756424" project:"pc" status:"pending" tags:"bspwm" uuid:"7f93d0d1-1097-42ba-938b-a3e60a1db0c0"]
+---
+time 1662573094
+new [description:"find a way for organize contacts" entry:"1662573094" modified:"1662573094" status:"pending" uuid:"05bd7ce4-e1de-4975-b61b-b880beb30274"]
+---
+time 1662574468
+new [description:"copy line to clipboard" entry:"1662574468" modified:"1662574468" project:"pc" status:"pending" uuid:"b3d5e0e9-8937-4f52-ae3a-061acca703be"]
+---
+time 1662574472
+old [description:"setup network applet" entry:"1648202731" modified:"1651608033" project:"pc" status:"pending" tags:"dzen" uuid:"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"]
+new [description:"setup network applet" end:"1662574472" entry:"1648202731" modified:"1662574472" project:"pc" status:"completed" tags:"dzen" uuid:"dcc2a03d-a982-4d5c-97c4-fba01cdbd7ca"]
+---
+time 1662628752
+new [description:"low battery warning" entry:"1662628752" modified:"1662628752" project:"pc" status:"pending" uuid:"c28e6a84-b741-4baf-8974-a3104e94465e"]
+---
+time 1662630786
+old [description:"windows" entry:"1651608282" modified:"1651608282" project:"pc" status:"pending" tags:"dzen" uuid:"e5a0ff7b-54df-4a79-8af0-f3501bb29e63"]
+new [description:"windows" end:"1662630786" entry:"1651608282" modified:"1662630786" project:"pc" status:"completed" tags:"dzen" uuid:"e5a0ff7b-54df-4a79-8af0-f3501bb29e63"]
+---
+time 1662631462
+old [annotation_1641461541:"https:\/\/docs.mopidy.com\/en\/latest\/running\/service\/" description:"mopidy catching sound from browser" entry:"1641461525" modified:"1641461541" project:"pc" status:"pending" tags:"audio" uuid:"63d07f76-a44c-478d-875f-a88d3ef12b0b"]
+new [annotation_1641461541:"https:\/\/docs.mopidy.com\/en\/latest\/running\/service\/" description:"mopidy catching sound from browser" end:"1662631462" entry:"1641461525" modified:"1662631462" project:"pc" status:"completed" tags:"audio" uuid:"63d07f76-a44c-478d-875f-a88d3ef12b0b"]
+---
+time 1662631487
+old [description:"setup neomutt" entry:"1648202678" modified:"1648202678" project:"pc" status:"pending" tags:"linux" uuid:"a3a6d148-32b9-4989-a2cc-a09b6198a7f3"]
+new [description:"setup neomutt" end:"1662631487" entry:"1648202678" modified:"1662631487" project:"pc" status:"completed" tags:"linux" uuid:"a3a6d148-32b9-4989-a2cc-a09b6198a7f3"]
+---
+time 1662631489
+old [description:"setup dzen" entry:"1648202701" modified:"1648202701" project:"pc" status:"pending" tags:"linux" uuid:"8648bb29-8194-4f94-a2fc-645130671b0e"]
+new [description:"setup dzen" end:"1662631489" entry:"1648202701" modified:"1662631489" project:"pc" status:"completed" tags:"linux" uuid:"8648bb29-8194-4f94-a2fc-645130671b0e"]
+---
+time 1662631497
+old [description:"use in terminal" entry:"1651608752" modified:"1651608752" project:"pc" status:"pending" tags:"slack" uuid:"688b2d2d-29a8-4fd6-9799-da154e65d5b9"]
+new [description:"use in terminal" end:"1662631497" entry:"1651608752" modified:"1662631497" project:"pc" status:"completed" tags:"slack" uuid:"688b2d2d-29a8-4fd6-9799-da154e65d5b9"]
+---
+time 1662631537
+old [description:"headphones sound" entry:"1659716050" modified:"1659716050" project:"pc" status:"pending" uuid:"58ba7d50-8221-42de-a4ad-c0ffa3468d62"]
+new [description:"headphones sound" end:"1662631537" entry:"1659716050" modified:"1662631537" project:"pc" status:"completed" uuid:"58ba7d50-8221-42de-a4ad-c0ffa3468d62"]
+---
+time 1662631542
+old [description:"facebook lajki Kasia" entry:"1650373775" modified:"1650373775" status:"pending" uuid:"4b5e987f-f453-42bd-b723-3868778782ef"]
+new [description:"facebook lajki Kasia" end:"1662631542" entry:"1650373775" modified:"1662631542" status:"completed" uuid:"4b5e987f-f453-42bd-b723-3868778782ef"]
+---
+time 1662631562
+old [description:"investigate segfaults" entry:"1641461601" modified:"1641461601" project:"pc" status:"pending" tags:"qute" uuid:"59c668ad-b756-4c08-9176-753eeb30e4bf"]
+new [description:"investigate segfaults" end:"1662631562" entry:"1641461601" modified:"1662631562" project:"pc" status:"completed" tags:"qute" uuid:"59c668ad-b756-4c08-9176-753eeb30e4bf"]
+---
+time 1662653320
+old [description:"change to zsh" entry:"1656756365" modified:"1656756365" project:"pc" status:"pending" tags:"shell" uuid:"be3411bf-0626-4bc7-9652-b93583fbbe8c"]
+new [description:"change to zsh" end:"1662653320" entry:"1656756365" modified:"1662653320" project:"pc" status:"completed" tags:"shell" uuid:"be3411bf-0626-4bc7-9652-b93583fbbe8c"]
+---
+time 1662739951
+old [description:"copy line to clipboard" entry:"1662574468" modified:"1662574468" project:"pc" status:"pending" uuid:"b3d5e0e9-8937-4f52-ae3a-061acca703be"]
+new [description:"copy line to clipboard" end:"1662739951" entry:"1662574468" modified:"1662739951" project:"pc" status:"completed" uuid:"b3d5e0e9-8937-4f52-ae3a-061acca703be"]
+---
+time 1662739969
+old [description:"add shortcut to fetch neomutt data" entry:"1661756424" modified:"1661756424" project:"pc" status:"pending" tags:"bspwm" uuid:"7f93d0d1-1097-42ba-938b-a3e60a1db0c0"]
+new [description:"add shortcut to fetch neomutt data" end:"1662739969" entry:"1661756424" modified:"1662739969" project:"pc" status:"completed" tags:"bspwm" uuid:"7f93d0d1-1097-42ba-938b-a3e60a1db0c0"]
+---
+time 1662739994
+new [description:"open file in browser" entry:"1662739994" modified:"1662739994" project:"pc" status:"pending" tags:"qute" uuid:"7b8ca76b-be17-43c9-95b4-4a2eb9558c7c"]
+---
+time 1662743270
+new [description:"dunst shortcuts and config :dunst" entry:"1662743270" modified:"1662743270" project:"pc" status:"pending" uuid:"004f03cc-97fd-4688-8ad7-8a8b2741f0ee"]
+---
+time 1662743275
+new [description:"dunst shortcuts and config" entry:"1662743275" modified:"1662743275" project:"pc" status:"pending" tags:"dunst" uuid:"cdf741b7-4b0c-47f1-8dc3-91e34e368692"]
+---
+time 1662743288
+old [description:"dunst shortcuts and config :dunst" entry:"1662743270" modified:"1662743270" project:"pc" status:"pending" uuid:"004f03cc-97fd-4688-8ad7-8a8b2741f0ee"]
+new [description:"dunst shortcuts and config :dunst" end:"1662743285" entry:"1662743270" modified:"1662743288" project:"pc" status:"deleted" uuid:"004f03cc-97fd-4688-8ad7-8a8b2741f0ee"]
+---
+time 1663011428
+new [description:"coc stucks trying to analyze stl libraries" entry:"1663011428" modified:"1663011428" priority:"H" project:"PC" status:"pending" uuid:"30e6fd90-c6cb-4e20-9ea8-0edb859a8f9d"]
+---
+time 1673518316
+old [description:"bspwm hangs on popup window" entry:"1651656897" modified:"1651656945" priority:"H" project:"pt" status:"pending" tags:"wm" uuid:"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"]
+new [description:"bspwm hangs on popup window" end:"1673518316" entry:"1651656897" modified:"1673518316" priority:"H" project:"pt" status:"completed" tags:"wm" uuid:"488f7b73-aff9-4202-bdd7-b250a2b7e5a8"]
+---
+time 1679402042
+new [description:"szanta kambuzowa" due:"1680299999" entry:"1679402042" modified:"1679402042" status:"pending" uuid:"67a806c4-3c5b-4f33-b2cd-d41349aa947c"]
+---
+time 1684327346
+new [description:":sm komendy dla Michała" entry:"1684327346" modified:"1684327346" status:"pending" uuid:"ae7e2452-04da-4d9e-b7f0-5f76a006a68b"]
+---
+time 1684327360
+old [description:":sm komendy dla Michała" entry:"1684327346" modified:"1684327346" status:"pending" uuid:"ae7e2452-04da-4d9e-b7f0-5f76a006a68b"]
+new [description:":sm komendy dla Michała" end:"1684327358" entry:"1684327346" modified:"1684327360" status:"deleted" uuid:"ae7e2452-04da-4d9e-b7f0-5f76a006a68b"]
+---
+time 1684327394
+new [description:"komendy dla Michała" entry:"1684327394" modified:"1684327394" status:"pending" tags:"sm" uuid:"749bf86f-bcfa-4510-a1a1-b48ac524d56d"]
+---
+time 1684327419
+new [description:"komendy dla Michała" entry:"1684327419" modified:"1684327419" project:"sm" status:"pending" uuid:"2851dd70-0034-48f4-825a-672a21660ad5"]
+---
+time 1684327434
+old [description:"komendy dla Michała" entry:"1684327394" modified:"1684327394" status:"pending" tags:"sm" uuid:"749bf86f-bcfa-4510-a1a1-b48ac524d56d"]
+new [description:"komendy dla Michała" end:"1684327434" entry:"1684327394" modified:"1684327434" status:"completed" tags:"sm" uuid:"749bf86f-bcfa-4510-a1a1-b48ac524d56d"]
+---
+time 1684768520
+new [description:"fryzjer" due:"1686002400" entry:"1684768520" modified:"1684768520" status:"pending" uuid:"39ff8dc3-654a-42e4-9303-34addcd9cc83"]
+---
+time 1685800624
+old [description:"fryzjer" due:"1686002400" entry:"1684768520" modified:"1684768520" status:"pending" uuid:"39ff8dc3-654a-42e4-9303-34addcd9cc83"]
+new [description:"fryzjer" due:"1686002400" end:"1685800624" entry:"1684768520" modified:"1685800624" status:"completed" uuid:"39ff8dc3-654a-42e4-9303-34addcd9cc83"]
+---
+time 1688718030
+new [description:"buy new stuff on escapewelt" entry:"1688718030" modified:"1688718030" status:"pending" uuid:"55c5d688-95d7-4196-80e8-20f516ba024d"]
+---
+time 1688718052
+old [description:"buy new stuff on escapewelt" entry:"1688718030" modified:"1688718030" status:"pending" uuid:"55c5d688-95d7-4196-80e8-20f516ba024d"]
+new [annotation_1688718052:"https:\/\/www.kickstarter.com\/projects\/escapewelt\/quest-tower-the-fascinating-escape-room-in-your-hands" description:"buy new stuff on escapewelt" entry:"1688718030" modified:"1688718052" status:"pending" uuid:"55c5d688-95d7-4196-80e8-20f516ba024d"]
+---
+time 1689524720
+new [description:"Learn language server" entry:"1689524720" modified:"1689524720" status:"pending" uuid:"ae41bdbc-4489-4266-9c49-e61098201c2c"]
+---
+time 1691060720
+new [description:"neomutt home credentials doesn't work" entry:"1691060720" modified:"1691060720" project:"pc" status:"pending" uuid:"cd12a600-67fa-4ab1-b24e-1e2e66e0bc20"]
+---
+time 1696366470
+old [description:"neomutt home credentials doesn't work" entry:"1691060720" modified:"1691060720" project:"pc" status:"pending" uuid:"cd12a600-67fa-4ab1-b24e-1e2e66e0bc20"]
+new [description:"neomutt home credentials doesn't work" end:"1696366470" entry:"1691060720" modified:"1696366470" project:"pc" status:"completed" uuid:"cd12a600-67fa-4ab1-b24e-1e2e66e0bc20"]
+---
+time 1711064200
+old [description:"komendy dla Michała" entry:"1684327419" modified:"1684327419" project:"sm" status:"pending" uuid:"2851dd70-0034-48f4-825a-672a21660ad5"]
+new [description:"komendy dla Michała" end:"1711064196" entry:"1684327419" modified:"1711064200" project:"sm" status:"deleted" uuid:"2851dd70-0034-48f4-825a-672a21660ad5"]
+---
+time 1711453973
+new [description:"laptop orange" due:"1711626773" entry:"1711453973" modified:"1711453973" status:"pending" uuid:"8fdc39ed-aeeb-4e99-8bcb-1ed7c1ca4862"]
+---

@@ -1,7 +1,8 @@
 ---
-- hosts: localhost
+- hosts: ubuntu
   roles:
     # - mbsync
     # - notmuch
     # - msmtp
     - neomutt
+    # TODO imapfilter?

@@ -1,0 +1,24 @@
+# misc
+alias lst='ls -thor'
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
+
+mkcd() { mkdir -p "$@" && cd "$@"; }
+
+# alias python=python3
+# alias pip="python3.10 -m pip"
+
+alias cdc='cd $(pbpaste)'
+
+alias ipy=ipython
+alias p=python
+alias lx=latexmk
+
+alias lat="pdflatex -output-directory=~/tmp"
+
+alias pipr="pip install --upgrade"
+alias xclip="xclip -selection CLIPBOARD"
+alias sudo='sudo '
