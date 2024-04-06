@@ -1,0 +1,9 @@
+- name: Install n
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: n
+    cmd: curl -L https://bit.ly/n-install | bash -s -- -y
+
+- name: Install Node with n
+  ansible.builtin.command: "{{ local_bin_dir }}/n lts"
+  become: yes
