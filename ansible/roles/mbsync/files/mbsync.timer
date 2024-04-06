@@ -4,7 +4,7 @@ ConditionPathExists=%h/.mbsyncrc
 
 [Timer]
 OnBootSec=1m
-OnUnitInactiveSec=1m
+OnUnitInactiveSec=60m
 
 [Install]
 WantedBy=default.target

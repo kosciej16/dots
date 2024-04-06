@@ -23,13 +23,16 @@ Slave :home-local:inbox
 
 Channel home-sent
 Master :home-remote:"[Gmail]/Sent Mail"
-# Master :home-remote:"[Gmail]/Wys&AUI-ane"
 Slave :home-local:sent
+
+# Channel home-robocze
+# Master :home-remote:"[Gmail]/Drafts"
+# # Master :mailbox-remote:"[Gmail]/Wersje robocze"
+# Slave :home-local:robocze
 
 Group home
 Channel home-inbox
 Channel home-sent
-
 
 IMAPStore itsg-remote
 Host itsg.home.pl
@@ -51,7 +54,7 @@ Patterns * !"[Gmail]/All Mail"
 IMAPStore starfish-remote
 Host imap.gmail.com
 User kdowolski@starfishstorage.com
-PassCmd "accounts.google.com/kdowolski@starfishstorage.com"
+PassCmd "pass accounts.google.com/kdowolski@starfishstorage.com"
 Timeout 0
 SSLType IMAPS
 SSLVersions TLSv1.2
