@@ -1,0 +1,22 @@
+#!/bin/bash
+
+alias t="task"
+alias ta="task add"
+alias ta1="task add due:eod"
+alias ta2="task add due:eod+1day"
+alias td="task done"
+alias t-="task delete"
+alias tm="task modify"
+alias tu="task undo"
+alias tw1="task modify wait:1d"
+
+alias tc="task context"
+alias tch="task context home"
+alias tcr="task context rev"
+
+alias tw="timew"
+alias tws="timew summary :ids"
+alias twt="timew start"
+alias twp="timew stop"
+alias twd="timew delete"
+alias twc="timew cancel"
