@@ -19,6 +19,7 @@
   import_tasks: roles/commons/tasks/enable_service.yml
   vars:
     name: mbsync
+    with_time: true
   when:
     - ansible_facts['distribution'] == "Ubuntu"
 

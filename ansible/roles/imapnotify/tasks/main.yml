@@ -1,0 +1,21 @@
+- name: Install imapnotify
+  community.general.npm:
+    name: imapnotify
+    global: true
+
+- name: Make sure config directory exists
+  file:
+    path: "{{ config_dir }}/imapnotify"
+    state: directory
+
+- name: Copy imapnotify config
+  copy:
+    src: "config.js"
+    dest: "{{ config_dir }}/imapnotify"
+
+- name: Enable mbsync service
+  import_tasks: roles/commons/tasks/enable_service.yml
+  vars:
+    name: imapnotify
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"

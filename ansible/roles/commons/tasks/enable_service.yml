@@ -3,11 +3,24 @@
     path: "{{ config_dir }}/systemd/user"
     state: directory
 
-- name: Copy systemd files
+- name: Copy systemd service
   ansible.builtin.copy:
-    src: "{{ name }}.{{ item }}"
+    src: "{{ name }}.service"
     dest: "{{ config_dir }}/systemd/user/"
-  with_items: [service, timer]
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: "{{ name }}.service"
+    enabled: yes
+    scope: user
+    state: started
+  when: not (with_timer | default(false) | bool)
+
+- name: Copy systemd timer
+  ansible.builtin.copy:
+    src: "{{ name }}.timer"
+    dest: "{{ config_dir }}/systemd/user/"
+  when: with_timer | default(false) | bool
 
 - name: Enable {{ name }} timer
   ansible.builtin.systemd:
@@ -15,3 +28,4 @@
     enabled: yes
     scope: user
     state: started
+  when: with_timer | default(false) | bool

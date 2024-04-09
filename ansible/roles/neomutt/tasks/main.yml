@@ -12,9 +12,9 @@
       repo: 'https://github.com/neomutt/neomutt.git'
       dest: "{{ neomutt_repo_dir }}"
 
-  - name: nazwa
+  - name: Add apt repository with dependencies
     apt_repository:
-      repo: deb-src http://pl.archive.ubuntu.com/ubuntu/ jammy universe
+      repo: "deb-src http://pl.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
       state: present
     become: yes
 
