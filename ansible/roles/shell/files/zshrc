@@ -70,7 +70,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z fzf-zsh-plugin command-not-found virtualenv)
+plugins=(fzf-zsh-plugin command-not-found virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -168,3 +168,5 @@ layout_poetry() {
   export POETRY_ACTIVE=1
   PATH_add "$VENV/bin"
 }
+
+eval "$(zoxide init zsh)"
