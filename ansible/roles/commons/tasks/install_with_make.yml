@@ -1,0 +1,33 @@
+- name: Fetch name from repo url
+  ansible.builtin.set_fact:
+    name: "{{ repo | basename | splitext | first }}"
+
+- name: Clone {{ name }} repository
+  git:
+    repo: "{{ repo }}"
+    dest: "{{ repo_dir }}/{{ name }}"
+
+- name: Install dependencies of {{ name }}
+  apt:
+    name: " {{ name }}"
+    state: build-dep
+  become: yes
+  when: build_dep | default(false)
+
+- name: Configure
+  command: "./configure {{ configure_params }}"
+  args:
+    chdir: "{{ repo_dir }}/{{ name }}"
+  when: configure_params | default(false)
+
+- name: Make
+  make:
+    chdir: "{{ repo_dir }}/{{ name }}"
+    params: "{{ make_params | default(omit) }}"
+
+- name: Make install
+  make:
+    chdir: "{{ repo_dir }}/{{ name }}"
+    target: install
+    params: "{{ make_params | default(omit) }}"
+  become: yes

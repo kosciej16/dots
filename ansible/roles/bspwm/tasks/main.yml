@@ -30,7 +30,9 @@
   become: "{{ ansible_os_family != 'Darwin' }}"
   with_items: ["libxft-dev", "libx11-dev"]
 
-- name: Clone repository
+# TODO Create own fork
+# Change to install_with_make task
+- name: Clone suckless terminal repository
   ansible.builtin.git:
     repo: "https://git.suckless.org/st"
     dest: "{{ repo_dir }}/st"
@@ -41,7 +43,7 @@
     chdir: "{{ repo_dir }}/st"
   become: "{{ ansible_os_family != 'Darwin' }}"
 
-- name: Clone repository
+- name: Clone dzen repository
   ansible.builtin.git:
     repo: "https://github.com/robm/dzen.git"
     dest: "{{ repo_dir }}/dzen"

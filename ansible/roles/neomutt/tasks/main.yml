@@ -7,37 +7,18 @@
 
 - name: Install neomutt
   block:
-  - name: Clone neomutt repository
-    git:
-      repo: 'https://github.com/neomutt/neomutt.git'
-      dest: "{{ neomutt_repo_dir }}"
-
   - name: Add apt repository with dependencies
     apt_repository:
       repo: "deb-src http://pl.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
       state: present
     become: yes
 
-  - name: Install neomutt dependencies
-    apt:
-      name: neomutt
-      state: build-dep
-    become: yes
-
-  - name: Configure neomutt
-    command: ./configure --notmuch
-    args:
-      chdir: "{{ neomutt_repo_dir }}"
-
-  - name: Make
-    make:
-      chdir: "{{ neomutt_repo_dir }}"
-
-  - name: Make install
-    make:
-      chdir: "{{ neomutt_repo_dir }}"
-      target: install
-    become: yes
+  - name: Install neomutt
+    import_tasks: roles/commons/tasks/install_with_make.yml
+    vars:
+      repo: "https://github.com/neomutt/neomutt.git"
+      configure_params: "--notmuch"
+      build_dep: true
   when:
     - ansible_facts['distribution'] == "Ubuntu"
 
