@@ -29,3 +29,26 @@
     - { src: "task/", dest: "{{ ansible_env.HOME }}/.task" }
   loop_control:
     label: "{{ item.src }}"
+      
+# TODO separate role?
+- name: Install rust
+  import_tasks: roles/commons/tasks/install_with_curl.yml
+  vars:
+    name: .rustup
+    cmd: curl https://sh.rustup.rs -sSf | bash -s -- -y
+
+- name: Clone taskwarrior tui repository
+  git:
+    repo: "https://github.com/kdheepak/taskwarrior-tui.git"
+    dest: "{{ repo_dir }}/taskwarrior-tui"
+
+- name: Install taskwarrior tui
+  ansible.builtin.command: cargo build --release
+  args:
+    chdir: "{{ repo_dir }}/taskwarrior-tui"
+
+- name: "Create symlink to taskwarrior-tui"
+  file:
+    src: "{{ repo_dir }}/taskwarrior-tui/target/release/taskwarrior-tui"
+    dest: "{{ local_bin_dir }}/ttui"
+    state: link
