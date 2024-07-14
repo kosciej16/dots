@@ -3,13 +3,14 @@
   roles:
     # - { role: shell, shell_type: 'zsh' }
     # - git
-    # - taskwarrior
+    - taskwarrior
     # - weechat
     # - docker
     # TODO podman?
     # - { role: docker, become: yes }
     # TODO vimf
-    - khal
+    # - khal
     # - { role: timewarrior, version: 1.7.1 }
     # - tmux
     # - bspwm
+    # - dunst

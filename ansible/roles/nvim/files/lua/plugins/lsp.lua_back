@@ -1,0 +1,328 @@
+local M = {}
+map = vim.keymap.set
+
+-- vim.lsp.buf.add_workspace_folder()
+-- vim.lsp.buf.clear_references()
+-- vim.lsp.buf.code_action()
+-- vim.lsp.buf.completion()
+-- vim.lsp.buf.declaration()
+-- vim.lsp.buf.definition()
+-- vim.lsp.buf.document_highlight()
+-- vim.lsp.buf.document_symbol()
+-- vim.lsp.buf.execute_command()
+-- vim.lsp.buf.format()
+-- vim.lsp.buf.hover()
+-- vim.lsp.buf.implementation()
+-- vim.lsp.buf.incoming_calls()
+-- vim.lsp.buf.list_workspace_folders()
+-- vim.lsp.buf.outgoing_calls()
+-- vim.lsp.buf.rename()
+-- vim.lsp.buf.server_ready()
+-- vim.lsp.buf.signature_help()
+-- vim.lsp.buf.type_definition()
+-- vim.lsp.buf.workspace_symbol()
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+map('n', '<space>e', vim.diagnostic.open_float)
+map('n', '[d', vim.diagnostic.goto_prev)
+map('n', ']d', vim.diagnostic.goto_next)
+map('n', '<space>q', vim.diagnostic.setloclist)
+
+-- -- Use LspAttach autocommand to only map the following keys
+-- -- after the language server attaches to the current buffer
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+--   callback = function(ev)
+--     -- Enable completion triggered by <c-x><c-o>
+--     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+--     -- Buffer local mappings.
+--     -- See `:help vim.lsp.*` for documentation on any of the below functions
+--     local opts = { buffer = ev.buf }
+--     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+--     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+--     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+--     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+--     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+--     -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+--     -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+--     -- vim.keymap.set('n', '<space>wl', function()
+--     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--     -- end, opts)
+--     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+--     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+--     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+--     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+--     vim.keymap.set('n', '<space>f', function()
+--       vim.lsp.buf.format { async = true }
+--     end, opts)
+--   end,
+-- })
+
+M = {}
+map = vim.keymap.set
+-- export on_attach & capabilities
+M.on_attach = function(client, bufnr)
+  local function opts(desc)
+    return { buffer = bufnr, desc = "LSP " .. desc }
+  end
+
+  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+  map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
+  map("n", "K", vim.lsp.buf.hover, opts "hover information")
+  map("n", "gi", vim.lsp.buf.implementation, opts "Go to implementation")
+  map("i", "gc", vim.lsp.buf.completion, opts "Completion")
+  map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
+  -- map("n", "gz", function()
+  --   vim.lsp.buf.format { async = true }
+  -- end, opts)
+
+  map("n", "<leader>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts "List workspace folders")
+
+  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
+
+  -- map("n", "<leader>ra", function()
+  --   require "nvchad.lsp.renamer"()
+  -- end, opts "NvRenamer")
+
+  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
+  map("n", "gr", vim.lsp.buf.references, opts "Show references")
+
+  -- setup signature popup
+  -- if conf.signature and client.server_capabilities.signatureHelpProvider then
+  --   require("nvchad.lsp.signature").setup(client, bufnr)
+  -- end
+end
+
+-- disable semanticTokens
+
+-- M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- M.capabilities.textDocument.completion.completionItem = {
+--   documentationFormat = { "markdown", "plaintext" },
+--   snippetSupport = true,
+--   preselectSupport = true,
+--   insertReplaceSupport = true,
+--   labelDetailsSupport = true,
+--   deprecatedSupport = true,
+--   commitCharactersSupport = true,
+--   tagSupport = { valueSet = { 1 } },
+--   resolveSupport = {
+--     properties = {
+--       "documentation",
+--       "detail",
+--       "additionalTextEdits",
+--     },
+--   },
+-- }
+
+-- require("lspconfig").pyright.setup({
+--     on_attach = M.on_attach,
+--     on_init = M.on_init,
+--     capabilities = M.capabilities,
+--     filetypes = {"python"},
+-- })
+-- require("lspconfig").ruff.setup({
+--     on_attach = function(client, bufnr)
+--         vim.api.nvim_clear_autocmds({
+--             group = augroup,
+--             buffer = bufnr,
+--         })
+--         -- vim.api.nvim_create_autocmd("BufWritePre", {
+--         --     group = augroup,
+--         --     buffer = bufnr,
+--         --     callback = function()
+--         --         vim.lsp.buf.format {bufnr = bufnr, async = true }
+--         --     end,
+--         -- })
+--     end
+-- })
+-- M.defaults = function()
+--   dofile(vim.g.base46_cache .. "lsp")
+--   require "nvchad.lsp"
+
+--   require("lspconfig").lua_ls.setup {
+--     on_attach = M.on_attach,
+--     capabilities = M.capabilities,
+--     on_init = M.on_init,
+
+--     settings = {
+--       Lua = {
+--         diagnostics = {
+--           globals = { "vim" },
+--         },
+--         workspace = {
+--           library = {
+--             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+--             [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+--             [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+--             [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+--           },
+--           maxPreload = 100000,
+--           preloadFileSize = 10000,
+--         },
+--       },
+--     },
+--   }
+-- end
+
+
+-- setup must be called before loading
+-- vim.cmd.colorscheme "catppuccin"
+
+return {
+      {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      -- autopairing of (){}[] etc
+      -- {
+      --   "windwp/nvim-autopairs",
+      --   opts = {
+      --     fast_wrap = {},
+      --     disable_filetype = { "TelescopePrompt", "vim" },
+      --   },
+      --   config = function(_, opts)
+      --     require("nvim-autopairs").setup(opts)
+      --
+      --     -- setup cmp for autopairs
+      --     local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+      --     require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+      --   end,
+      -- },
+
+      -- cmp sources plugins
+      {
+        -- "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+      },
+    },
+    -- opts = function()
+    --   return require "plugins.configs.cmp"
+    -- end,
+    config = function()
+        require("cmp").setup({
+            sources = {
+                { name = "nvim_lsp" },
+                -- { name = "luasnip" },
+                { name = "buffer" },
+                { name = "nvim_lua" },
+                { name = "path" },
+            }
+        })
+
+    end,
+  },
+
+    -- {
+    --     "hrsh7th/nvim-cmp",
+    --     config = function()
+    --      local cmp = require'cmp'
+    --
+    --
+    --       cmp.setup({
+    --           snippet = {
+    --               -- REQUIRED - you must specify a snippet engine
+    --               expand = function(args)
+    --                   vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    --                   -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    --                   -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+    --                   -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    --                   -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+    --               end,
+    --           },
+    --           window = {
+    --               -- completion = cmp.config.window.bordered(),
+    --               -- documentation = cmp.config.window.bordered(),
+    --           },
+    --           mapping = cmp.mapping.preset.insert({
+    --               ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    --               ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    --               ['<C-Space>'] = cmp.mapping.complete(),
+    --               ['<C-e>'] = cmp.mapping.abort(),
+    --               ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    --           }),
+    --           sources = cmp.config.sources({
+    --               { name = 'nvim_lsp' },
+    --               { name = 'vsnip' }, -- For vsnip users.
+    --               -- { name = 'luasnip' }, -- For luasnip users.
+    --               -- { name = 'ultisnips' }, -- For ultisnips users.
+    --               -- { name = 'snippy' }, -- For snippy users.
+    --           }, {
+    --               { name = 'buffer' },
+    --           })
+    --       })
+    --
+    --       -- Set configuration for specific filetype.
+    --       cmp.setup.filetype('gitcommit', {
+    --           sources = cmp.config.sources({
+    --               { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    --           }, {
+    --               { name = 'buffer' },
+    --           })
+    --       })
+    --
+    --       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    --       cmp.setup.cmdline({ '/', '?' }, {
+    --           mapping = cmp.mapping.preset.cmdline(),
+    --           sources = {
+    --               { name = 'buffer' }
+    --           }
+    --       })
+    --
+    --       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    --       cmp.setup.cmdline(':', {
+    --           mapping = cmp.mapping.preset.cmdline(),
+    --           sources = cmp.config.sources({
+    --               { name = 'path' }
+    --           }, {
+    --               { name = 'cmdline' }
+    --           }),
+    --           matching = { disallow_symbol_nonprefix_matching = false }
+    --       })
+    --
+    --       -- Set up lspconfig.
+    --       -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    --       -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+    --       -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+    --       --     capabilities = capabilities
+    --       -- }
+    --     end
+    -- },
+          {
+              "neovim/nvim-lspconfig",
+              dependencies = {
+                  "williamboman/mason.nvim",
+                  {"williamboman/mason-lspconfig.nvim", after = "mason.nvim"},
+              },
+              config = function()
+                  require("mason").setup()
+                  require("mason-lspconfig").setup({
+                      ensure_installed = { "pyright", "lua_ls"}, -- List of LSP servers to automatically install
+                  })
+
+                  -- local mason_registry = require("mason-registry")
+                  -- if not mason_registry.is_installed("pyright") then
+                  --     mason_registry.get_package("pyright"):install()
+                  --     -- mason_registry.install_package("pyright")
+                  -- end
+
+                  -- Set up pyright with nvim-lspconfig
+                  require("lspconfig").pyright.setup({
+                      on_attach = M.on_attach,
+                  })
+                  require("lspconfig").lua_ls.setup({
+                      on_attach = M.on_attach,
+                  })
+              end
+          }
+      }
+

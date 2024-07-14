@@ -28,9 +28,15 @@
     name: "{{ item }}"
     state: present
   become: "{{ ansible_os_family != 'Darwin' }}"
-  with_items: ["libxft-dev", "libx11-dev"]
+  with_items: ["libxft-dev", "libx11-dev", "ncal"]
 
 # TODO Create own fork
+# TODO emojis doesn't work with libXft < 2.5, need to install it manually
+# https://gitlab.freedesktop.org/xorg/lib/libxft
+# sudo apt-get install autotools-dev
+# sudo apt-get install automake
+# sudo apt install xutils-dev for xorg-macros
+# ./autogen.sh && ./configure && make && sudo make install
 # Change to install_with_make task
 - name: Clone suckless terminal repository
   ansible.builtin.git:

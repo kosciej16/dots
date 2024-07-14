@@ -21,7 +21,4 @@
   copy:
     src: "{{ item }}"
     dest: "{{ target_dir }}/"
-  with_items: [vimrc_parts, colors, ftplugin, UltiSnips, init.vim]
-
-- name: Install nvim plugins
-  shell: nvim -E -s -c "source {{ target_dir }}/init.vim" -c PlugInstall -c qa
+  with_items: [ftplugin, init.lua, lua]

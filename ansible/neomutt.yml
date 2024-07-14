@@ -1,9 +1,9 @@
 ---
-- hosts: localhost
+- hosts: ubuntu
   roles:
-    - mbsync
-    - notmuch
-    - msmtp
+    # - mbsync
+    # - notmuch
+    # - msmtp
     # TODO It randomly deletes the email, need to switch to goimapnotify
     # - imapnotify
     - neomutt
