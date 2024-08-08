@@ -1,0 +1,39 @@
+- name: Install dependencies
+  package:
+    name: [build-essential, autotools-dev, autoconf, kbd]
+    state: present
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+  # - name: Install neomutt
+  #   import_tasks: roles/commons/tasks/install_with_make.yml
+  #   vars:
+  #     repo: "https://github.com/kernc/logkeys.git"
+  #     build_dep: true
+  # when:
+  #   - ansible_facts['distribution'] == "Ubuntu"
+
+# - name: "Get zip"
+#   ansible.builtin.get_url:
+#     url: "https://github.com/kernc/logkeys/archive/master.zip"
+#     dest: "/tmp"
+#
+- name: Make sure config directories exist
+  ansible.builtin.file:
+    path: "etc/logkeys"
+    state: directory
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Copy logkeys keyboard map
+  ansible.builtin.copy:
+    src: "pl.map"
+    dest: "etc/logkeys/"
+  become: "{{ ansible_os_family != 'Darwin' }}"
+
+- name: Enable logkeys service
+  import_tasks: roles/commons/tasks/enable_service.yml
+  vars:
+    name: logkeys
+    globally: yes
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+  become: yes

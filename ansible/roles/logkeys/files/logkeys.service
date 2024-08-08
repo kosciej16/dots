@@ -1,0 +1,10 @@
+[Unit]
+Description=Logkeys
+
+[Service]
+ExecStart=logkeys -s -o /var/log/logkeys/out.log -m /etc/logkeys/pl.map --no-daemon
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

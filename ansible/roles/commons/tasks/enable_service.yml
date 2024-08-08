@@ -1,25 +1,29 @@
+- name: Set systemd directory path
+  ansible.builtin.set_fact:
+    path: "{{ '/etc/systemd/system/' if (globally | default(false)) else '{{ config_dir }}/systemd/user' }}"
+
 - name: Create user systemd directory
   ansible.builtin.file:
-    path: "{{ config_dir }}/systemd/user"
+    path: "{{ path }}"
     state: directory
 
 - name: Copy systemd service
   ansible.builtin.copy:
     src: "{{ name }}.service"
-    dest: "{{ config_dir }}/systemd/user/"
+    dest: "{{ path }}"
 
 - name: Enable service
   ansible.builtin.systemd:
     name: "{{ name }}.service"
     enabled: yes
-    scope: user
+    scope: system
     state: started
   when: not (with_timer | default(false) | bool)
 
 - name: Copy systemd timer
   ansible.builtin.copy:
     src: "{{ name }}.timer"
-    dest: "{{ config_dir }}/systemd/user/"
+    dest: "{{ path }}"
   when: with_timer | default(false) | bool
 
 - name: Enable {{ name }} timer
