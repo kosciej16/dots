@@ -1,24 +1,3 @@
--- {
---     "nvim-neotest/neotest",
---     dependencies = {
---         "nvim-neotest/nvim-nio",
---         "nvim-lua/plenary.nvim",
---         "antoinemadec/FixCursorHold.nvim",
---         "nvim-treesitter/nvim-treesitter",
---         "tree-sitter/tree-sitter-python",
---         "nvim-neotest/neotest-python",
---     },
---     config = function()
---         map("n", "<leader>tt", ':lua require("neotest").run.run()<CR>')
---
---         require("neotest").setup({
---             adapters = {
---                 require("neotest-python")
---             }
---         })
---     end
--- }
---
 return {
     'vim-test/vim-test',
     dependencies = {

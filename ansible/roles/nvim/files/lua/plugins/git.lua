@@ -20,7 +20,6 @@ return {
             map("n", "<leader>gb", ":Git blame<cr>")
             map("n", "<leader>goo", ":.GBrowse<cr>")
             map("n", "<leader>goy", ":.GBrowse!<cr>")
-            map("n", "<leader>go", ":GBrowse<cr>")
 
             vim.api.nvim_create_autocmd("User", {
                 pattern = "fugitive",
@@ -33,7 +32,7 @@ return {
                 end
             })
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = {"fugitiveblame", "fugitive"},
+                pattern = { "fugitiveblame", "fugitive" },
                 callback = function()
                     -- Set the buffer-local keymap
                     vim.api.nvim_buf_set_keymap(0, 'n', 'q', 'gq', { silent = true })
@@ -43,17 +42,65 @@ return {
     },
     "tpope/vim-rhubarb",
     {
+        'junegunn/gv.vim',
+        keys = {
+            { "<leader>gvf", ":GV!<cr>",                   desc = "Search commits touch file" },
+            { "<leader>gvm", ":GV --author=kdowolski<cr>", desc = "Search mine commits " },
+            { "<leader>gva", ":GV<cr>",                    desc = "Search all commits " },
+            { "<leader>gvw", ":GV -S",                     desc = "Search for word existence" },
+        }
+    },
+    {
         'shumphrey/fugitive-gitlab.vim',
         init = function()
-            vim.g.fugitive_gitlab_domains = {'https://ci-gitlab.corpnet.pl'}
+            vim.g.fugitive_gitlab_domains = { 'https://ci-gitlab.corpnet.pl' }
             vim.api.nvim_create_user_command(
-            'Browse',
-            function (opts)
-                vim.fn.system { 'xdg-open', opts.fargs[1] }
-            end,
-            { nargs = 1 }
+                'Browse',
+                function(opts)
+                    vim.fn.system { 'xdg-open', opts.fargs[1] }
+                end,
+                { nargs = 1 }
             )
         end
     },
+    {
+        "kdheepak/lazygit.nvim",
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        -- setting the keybinding for LazyGit with 'keys' is recommended in
+        -- order to load the plugin when the command is run for the first time
+        keys = {
+            { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+        }
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        opts = {},
+    },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",  -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
 
+            -- Only one of these is needed, not both.
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config = true
+    },
+    {
+        "FabijanZulj/blame.nvim",
+        config = function()
+            require("blame").setup()
+        end
+    },
 }
