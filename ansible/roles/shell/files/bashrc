@@ -147,3 +147,5 @@ clone () {
     cp envrc.example .envrc 2> /dev/null
     direnv allow 2> /dev/null
 }
+. "$HOME/.cargo/env"
+source /home/kosciej/repos/itsg/local/starfish/scripts/starfish_dev_rc.sh

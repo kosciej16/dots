@@ -1,0 +1,4 @@
+# sudo apt install yasm libfribidi-dev
+# https://github.com/mpv-player/mpv-build
+# ./rebuild -j4
+# ./install

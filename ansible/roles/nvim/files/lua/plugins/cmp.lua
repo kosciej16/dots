@@ -1,5 +1,16 @@
 return {
     {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+    {
         "L3MON4D3/LuaSnip",
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
@@ -32,7 +43,7 @@ return {
             {
                 "hrsh7th/cmp-nvim-lua",
                 "hrsh7th/cmp-nvim-lsp",
-                -- "hrsh7th/cmp-buffer",
+                "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-path",
                 -- 'hrsh7th/cmp-cmdline',
                 -- {
@@ -77,17 +88,17 @@ return {
                 }),
 
                 sources = {
+                    { name = "lazydev" },
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
-
-                    -- {
-                    --     name = "buffer",
-                    --     option = {
-                    --         get_bufnrs = function()
-                    --             return vim.api.nvim_list_bufs()
-                    --         end
-                    --     },
-                    -- },
+                    {
+                        name = "buffer",
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end
+                        },
+                    },
                     { name = "nvim_lua" },
                     { name = "path" },
                 },

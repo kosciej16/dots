@@ -6,8 +6,8 @@
   back="#303030"
 highbg="#00BFFF"
 highfg="#202020"
- icons=$BITMAP_DIR/bitmaps/
- calex=$PANEL_DIR/cal.sh
+icons=$BITMAP_DIR/fn26
+calex=$PANEL_DIR/cal.sh
 
 # cur_col, next_col, icon
 trans() {
@@ -64,21 +64,18 @@ elif [ $month -gt 12 ]; then
 	year=$(($year + 1))
 fi
 
-curdate="$(date +'%B %Y' -d $year-$month-1)"
+curdate="$(date +'%b %Y' -d $year-$month-1)"
 
 calbody=$(cal $month $year | sed -e '/^ *$/d' -e '1d' -e 's/_\x08//g')
 
 calhead="\
-^p(-27)\
 ^ca(1, $calex -m $(( $month - 1 )) -y $year)\
-$(trans "$highbg" $back $icons/fn26/tri/mid_right_tri_stripe.xbm)\
+$(trans "$highbg" $back $icons/tri/mid_right_tri_stripe.xbm)\
 ^ca()\
 ^fg($highfg)^bg($highbg) \
-^ca(1, $calex)\
 $curdate \
-^ca()\
 ^ca(1, $calex -m $(( $month + 1 )) -y $year)\
-$(trans $highbg $back $icons/fn26/tri/mid_left_tri_stripe.xbm)^bg($back)\
+$(trans $highbg $back $icons/tri/mid_left_tri_stripe.xbm)^bg($back)\
 ^ca()"
 
 # highlight day (current month)

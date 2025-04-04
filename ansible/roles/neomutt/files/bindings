@@ -23,10 +23,11 @@ bind browser,pager,index        N   search-opposite
 
 macro index,browser \Cr "<enter-command>source ~/.config/neomutt/muttrc<enter>"
 # macro index,pager gt "|mutt2task<enter>"
-macro index,pager t "<pipe-message>mutt2task.py<enter>"
+# macro index,pager t "<pipe-message>mutt2task.py<enter>"
 
 
-macro index A "<modify-labels>+archive -unread -inbox<enter>" "Archive message"
+# macro index A "<modify-labels>+archive -unread -inbox<enter>" "Archive message"
+macro index A "<save-message>=home/archive<enter>" "Move to Archive"
 macro index c "<change-vfolder>?" "Change to vfolder overview"
 macro index \\\\ "<vfolder-from-query>" "Search mailbox"
 

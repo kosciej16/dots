@@ -25,6 +25,13 @@ Channel home-sent
 Master :home-remote:"[Gmail]/Sent Mail"
 Slave :home-local:sent
 
+Channel home-arch
+Master :home-remote:"arch"
+Slave :home-local:archive
+
+Channel home-hiszpanski
+Master :home-remote:"hiszpanski"
+Slave :home-local:hiszpanski
 # Channel home-robocze
 # Master :home-remote:"[Gmail]/Drafts"
 # # Master :mailbox-remote:"[Gmail]/Wersje robocze"
@@ -33,6 +40,7 @@ Slave :home-local:sent
 Group home
 Channel home-inbox
 Channel home-sent
+Channel home-arch
 
 IMAPStore itsg-remote
 Host itsg.home.pl

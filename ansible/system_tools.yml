@@ -1,9 +1,9 @@
 ---
-- hosts: ubuntu
+- hosts: localhost
   roles:
     # - { role: shell, shell_type: 'zsh' }
     # - git
-    - taskwarrior
+    # - taskwarrior
     # - weechat
     # - docker
     # TODO podman?
@@ -14,3 +14,4 @@
     # - tmux
     # - bspwm
     # - dunst
+    - logkeys

@@ -7,10 +7,16 @@ super + Return
 	st
 
 # program launcher
+    # rofi -show run -modi "run,pass:~/path/to/rofi-pass-menu.sh"
 super + @space
-    rofi -no-config -no-lazy-grab -show drun -modi drun
-	
+    rofi -no-lazy-grab -show drun -modi "drun"
 
+	
+super + p
+    pass -c pom 
+
+
+# export HTTP_PROXY='http://dowolkry:AlkadKwit%1@126.179.0.206:9090' HTTPS_PROXY='http://dowolkry:AlkadKwit%1@126.179.0.206:9090' rofi -no-config -no-lazy-grab -show drun -modi drun
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -69,7 +75,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.leaf
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -88,6 +94,10 @@ super + {o,i}
 # focus or send to the given desktop
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# release alt key to not interrupt Slack
+alt + s
+	bspc desktop -f ^5 ; xdotool keyup alt
 
 #
 # preselect
@@ -172,7 +182,7 @@ alt + m
     mute_skype
 
 super + shift + Right
-    bspc node -m DP-3
+    bspc node -m DP-1
 
 super + shift + Left
     bspc node -m eDP-1

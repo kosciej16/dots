@@ -1,5 +1,7 @@
 source ~/.config/neomutt/mailboxes
 
+set confirmappend = no
+
 set mailcap_path = ~/.config/neomutt/mailcap
 set folder=~/.mail
 

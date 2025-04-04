@@ -53,7 +53,7 @@ return {
     {
         'shumphrey/fugitive-gitlab.vim',
         init = function()
-            vim.g.fugitive_gitlab_domains = { 'https://ci-gitlab.corpnet.pl' }
+            vim.g.fugitive_gitlab_domains = { 'https://ci-gitlab.corpnet.pl', "https://git.opl.tools" }
             vim.api.nvim_create_user_command(
                 'Browse',
                 function(opts)

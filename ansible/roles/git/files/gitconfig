@@ -3,7 +3,7 @@
     ci = commit
     cm = commit --amend -n
     cf = commit --fixup HEAD -n
-    sf = "!sh -c 'ticket_number=$(git log -1 --pretty=%B | grep -oE \"^[A-Z]+-[0-9]+\" | head -n 1) && git commit -nm \"${ticket_number} Fixup\";' -"
+    sf = "!sh -c 'ticket_number=$(git log -1 --pretty=%B | grep -oE \"^[A-Z]+-[0-9]+\" | head -n 1) && git commit -nm \"${ticket_number} Improve the code\n[skip notes]\";' -"
 
     dc = diff --cached
     br = branch
@@ -29,7 +29,7 @@
 	rebase = true
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesFile = ~/.config/git/ignore
 	editor = nvim
 [hub]
 	protocol = ssh
@@ -49,3 +49,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[http]
+	postBuffer = 524288000

@@ -124,7 +124,7 @@ new() {
     if [ ! -z $1 ] ; then
         printf "pyenv global $1\n" > .envrc
     fi
-    printf "layout python3\nexport PYTHONPATH=.:src" >> .envrc
+    printf "export VIRTUAL_ENV=.venv\nlayout python3\nexport PYTHONPATH=.:src" >> .envrc
     direnv allow
 }
 
@@ -170,3 +170,41 @@ layout_poetry() {
 }
 
 eval "$(zoxide init zsh)"
+
+# Start ssh-agent automatically
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -s > "${HOME}/.ssh-agent"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(cat "${HOME}/.ssh-agent")" >/dev/null
+fi
+
+URGENT="❗"
+OVERDUE="☠️"
+DUETODAY="😱"
+DUETOMORROW="📅"
+
+function task_indicator {
+    if [ `task +READY +OVERDUE count` -gt "0" ]; then
+        echo "$OVERDUE"
+    elif [ `task +READY +DUETODAY count` -gt "0" ]; then
+        echo "$DUETODAY"
+    elif [ `task +READY +DUETOMORROW count` -gt "0" ]; then
+        echo "$DUETOMORROW"
+    elif [ `task +READY urgency \> 10 count` -gt "0" ]; then
+        echo "$URGENT"
+    else
+        echo '$'
+    fi
+}
+
+task_indicator()
+
+# export HTTP_PROXY='http://dowolkry:AlkadKwit%1@126.179.0.206:9090'
+# export HTTPS_PROXY='http://dowolkry:AlkadKwit%1@126.179.0.206:9090'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/kosciej/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/home/kosciej/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/kosciej/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/kosciej/tools/google-cloud-sdk/completion.zsh.inc'; fi

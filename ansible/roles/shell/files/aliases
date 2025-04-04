@@ -22,3 +22,12 @@ alias lat="pdflatex -output-directory=~/tmp"
 alias pipr="pip install --upgrade"
 alias xclip="xclip -selection CLIPBOARD"
 alias sudo='sudo '
+alias rg='rg --max-columns 300 '
+
+luavq() {
+    nvim --headless -u ~/.config/nvim/init.lua -c "luafile $1" -c "qa"
+}
+
+luav() {
+    nvim --headless -u ~/.config/nvim/init.lua -c "luafile $1"
+}

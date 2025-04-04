@@ -30,3 +30,13 @@ data.location=~/.task
 #include /usr/share/taskwarrior/no-color.theme
 
 urgency.user.tag.dzen.coefficient=4.5
+news.version=2.6.0
+context.pom.read=+pom
+context.pom.write=+pom
+
+context.lsp.read=+lsp
+context.lsp.write=+vim +lsp
+context.thebook.read=+tb
+context.thebook.write=+tb
+context.er.read=+er
+context.er.write=+er

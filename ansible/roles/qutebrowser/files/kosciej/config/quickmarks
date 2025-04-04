@@ -1,113 +1,51 @@
-mutt/afew https://github.com/afewmail/afew/tree/master/afew
-mutt/external https://neomutt.org/contrib/useful-programs
 mbank https://online.mbank.pl/pl/Login
-neomut build https://github.com/neomutt/neomutt/blob/master/.travis.yml
-citi https://www.citibankonline.pl/apps/auth/signin/
-gwent https://gwent.one/en/cards/
-git prompt https://github.com/magicmonty/bash-git-prompt
-pbo conflu https://polishbridgeonline.atlassian.net/wiki/spaces/PBB/pages/98441/All+pbb+documentation
-oh mu tmux https://github.com/gpakosz/.tmux
 fb https://www.facebook.com/
-babylon https://en.wikipedia.org/wiki/The_Richest_Man_in_Babylon
 unixporn https://www.reddit.com/r/unixporn/comments/cbea4m/yabai_woodman_says/
 bbo https://www.bridgebase.com/v3/
-gdrive https://drive.google.com/drive/my-drive
-neofetch https://github.com/dylanaraps/neofetch
-websocket https://tools.ietf.org/html/rfc6455
-python speed https://www.python.org/doc/essays/list2str/
-okta https://admin.oktawave.com/en/dc1/oci/instances
-jwt doc https://www.iana.org/assignments/jwt/jwt.xhtml
-pbo https://gitlab.com/gabilcious/pbo-table/-/jobs
-graylog http://176.119.35.227:9000/search/605a794a659810848bc59670?q=tag%3Adev&rangetype=relative&relative=86400
-trello https://trello.com/b/AwZ9gx22/pbo
-dev http://dev.polishbridge.com/
-notmuch http://notmuch.198994.n3.nabble.com/Folder-tags-td4043472.html#a4043517
-msmtp https://github.com/gauteh/lieer
-prod https://polishbridge.com/
+gdrive https://drive.google.com/drive/u/1/my-drive
 gmail https://mail.google.com/mail/u/0/#inbox
-gitlab env http://www.obsis.unb.br/gitlab/help/ci/environments.md
-docker user https://jtreminio.com/blog/running-docker-containers-as-current-host-user/#ok-so-what-actually-works
-home https://panel.home.pl/
-logs idea https://docs.fluentd.org/installation/install-by-rpm
-jwt https://www.pingidentity.com/en/company/blog/posts/2019/jwt-security-nobody-talks-about.html#:~:text=Unfortunately%2C%20symmetric%20signatures%20prevent%20the,to%20the%20same%20secret%20key.&text=An%20asymmetric%20signature%20uses%20a,pair%20possesses%20a%20unique%20property.
-12 rules https://www.12factor.net/concurrency
-sse https://sairamkrish.medium.com/handling-server-send-events-with-python-fastapi-e578f3929af1
-pip save https://stackoverflow.com/questions/19135867/what-is-pips-equivalent-of-npm-install-package-save-dev
-pbo tr https://tedmuller.us/Bridge/Director/Movements.htm?fbclid=IwAR1hO28twxNRRBlVpbtIdYnRv3uJM09NDGUzoqF4mH3TJV1VmzjhmNmD1SU
-pytest async mock https://stackoverflow.com/questions/51394411/python-object-magicmock-cant-be-used-in-await-expression
-socketio https://github.com/miguelgrinberg/python-socketio/issues/634
-pbo client https://gitlab.com/pbo8/client/-/merge_requests
-pbo server https://gitlab.com/pbo8/server/-/jobs
-clickup https://app.clickup.com/4671281/v/l/li/78459274?pr=10312210
-lumosity https://www.lumosity.com/app/v4/dashboard
-clickup demo https://clickup.com/on-demand-demo
-gadget duolink https://www.kickstarter.com/projects/duolinkgo/duolink-speakerbuds-play-music-in-more-ways
 hey krystian https://www.loom.com/share/7213b89c93f64dbf98b3e9c222ba4cd3
-<3 https://www.loom.com/share/7213b89c93f64dbf98b3e9c222ba4cd3
-greenhorn https://gitlab.com/pbo8/greenhorn/-/merge_requests
-sprint https://app.clickup.com/4671281/v/l/li/53071020?pr=10312210
-traefic https://community.traefik.io/t/need-some-help-with-understanding-traefic-goals/10215
-traefik app https://github.com/druidfi/stonehenge/blob/2.x/docker-compose.yml
-gitlab https://forum.gitlab.com/t/run-specific-child-pipeline/51137
-dockercon https://www.docker.com/dockercon-live/2021?utm_source=docker&utm_medium=email&utm_campaign=21-03-29emaildockerconregistration&mkt_tok=OTI5LUZKTC0xNzgAAAF8Hof6erc62U-nwkWYBJCPw4iEhgtjGINxjE0T054HUXs65LeD5AZrxKRdvhIOOhnlJM1VyfWav5FzULML-38XSj64U3lqZilSIyP4Ii9N1dLDbw
-er https://lock.me/pl/konkurs/escape-room-i-kryminalne-zagadki/regulamin
-factory https://github.com/FactoryBoy/factory_boy/issues
-python_read https://stackoverflow.com/questions/8240647/fast-data-move-from-file-to-some-stringio
-pread https://stackoverflow.com/questions/29835784/copy-a-generator
-memory https://mullenmemory.com/
-bitbucket https://stackoverflow.com/questions/8721730/bitbucket-send-a-pull-request-via-command-line
-python morse;s https://www.pythonmorsels.com/exercises/v2/vault/
-python morsels https://www.pythonmorsels.com/exercises/v2/vault/
-python slots https://stackoverflow.com/questions/46575174/if-an-object-doesnt-have-dict-does-its-class-must-have-a-slots-att/46575329
-python range\ https://treyhunner.com/2018/02/python-range-is-not-an-iterator/
-python itertools https://more-itertools.readthedocs.io/en/stable/
-python bolton https://boltons.readthedocs.io/en/latest/
-python references https://opensource.com/article/18/3/loop-better-deeper-look-iteration-python
-uro https://docs.google.com/spreadsheets/d/1dccfeiIxySOegH7sTZCaYl8U8dO4HDGSILdT09V_2Ow/edit#gid=0
-uro2 https://www.gusti-galanteria.pl/steampunk-ksiazka-artystyczna-dziennik-notatnik-brazowy-skora-2p48-24-17?gclid=Cj0KCQjw4cOEBhDMARIsAA3XDRg5b-A3yBkqHidrTK0jBWaAfhdN1bkdqLgnL4X4foO-9tC3ZJVp3Q4aAmLKEALw_wcB
-uro3 https://www.gusti-galanteria.pl/steampunk-ksiazka-artystyczna-dziennik-notatnik-brazowy-skora-2p48-24-17?gclid=Cj0KCQjw4cOEBhDMARIsAA3XDRg5b-A3yBkqHidrTK0jBWaAfhdN1bkdqLgnL4X4foO-9tC3ZJVp3Q4aAmLKEALw_wcB
-poly https://hashtagopen.com/
-poly2 https://www.google.com/search?q=feeld
-bw https://docs.google.com/spreadsheets/u/1/d/1DHY8z9Cu9TnLhvPq3R8tEe2h6QxkfzskF7t4ihAQD7E/edit#gid=0
-iqtest https://www.brainzilla.com/iq-tests/iqzilla-1/
-cards https://danielroymagic.com/booking
-gabi_2 https://www.overleaf.com/project/60ae5f9766090ad5702947db
-gabi_5 https://www.overleaf.com/project/6076c2852c7cc0ecedc4a2f2
-saga https://microservices.io/patterns/data/saga.html
-db polymorphic https://stackoverflow.com/questions/7000283/what-is-the-best-way-to-implement-polymorphic-association-in-sql-server
-macos https://www.makeuseof.com/tag/fix-mac-kernel-task-high-cpu-usage/#:~:text=Perhaps%20the%20most%20obvious%20fix,kernel_task%20process%20is%20Adobe%20Flash.
-python_now https://treyhunner.com/python-oddities/resources.html?__s=1278mtwt9ockl0namh4k
-python now https://legacy.python.org/dev/peps/pep-3134/
-book https://www.oreilly.com/library/view/apis-a-strategy/9781449321628/
-api now https://www.programmableweb.com/news/how-to-design-great-apis-api-first-design-and-raml/how-to/2015/07/10
-local http://127.0.0.1:8080/tables
-now packaging https://packaging.python.org/overview/
-piotr https://www.google.com/search?q=holotropy
-now https://www.google.com/search?tbm=vid&sxsrf=ALeKk00NtVksGuSdeYwujY3F43bKD4ns4A:1626454054417&q=is+it+worth+to+use+tortoise+with+fastapi&sa=X&ved=2ahUKEwi2lKDBhejxAhWvpYsKHUK_DZEQ8ccDegQIBRAD&biw=1328&bih=735
-now memory https://lwn.net/Articles/250967/
-now gtw https://fastapi.tiangolo.com/advanced/extending-openapi/
-help pyright https://github.com/microsoft/pyright/discussions/2117
-now nvim https://github.com/siduck76/NvChad
-now nvim2 https://github.com/ChristianChiarulli/LunarVim
-middleware https://www.starlette.io/middleware/
-sukienka https://www.zebraneo.com/pl/Nadruk-Kwiatowy-Blok-Koloru-Bez-Rekawow-Suknie-Shift-Nad-Kolana-Sukienki-199381876-g381876/?utm_source=offline&utm_medium=email&utm_campaign=whole-5031-1-0&utm_content=goods2&utm_term=20210816349117ff8bd466b23b8e8254b5f2425ecf43f37668114e8ce6ee70e30fdc208519aca09b5d,5-1-1,&currency=PLN
-avatar https://www.kickstarter.com/projects/magpiegames/avatar-legends-the-roleplaying-game?fbclid=IwAR2OXpDXJEWE8ndYD_xYBBc9_l-H6oqrKYw4xiWskqrWcv7Smdia5Qkv1-A&ref=bjvc94&utm_campaign=BK-PD-bjvc94&utm_medium=referral&utm_source=avatarrpg.projectdomino66.com
-docs https://petstore.swagger.io/?url=https://storage.googleapis.com/revolut-dev-data-credit-misc/warden/api.json#/US/crb_application_tape_api_us_common_crb_facility_application_post
-panda https://lockme.pl/en/user/99842/p4ndast0ner/followers
-arch raid https://bbs.archlinux.org/viewtopic.php?id=212198
-no google https://kylepiira.com/2020/01/09/why-i-quit-google/
-sentry https://sentry.io/organizations/pbo-0w/issues/?project=5949482
-er bydgoszcz https://wyjscieawaryjne.pl/bydgoskiemistrzostwa/wezudzial/
-ssh https://medium.com/trabe/use-your-local-ssh-keys-inside-a-docker-container-ea1d117515dc
-zaraz https://zaraz.herokuapp.com/jeden
-london https://www.gov.uk/guidance/travel-to-england-from-another-country-during-coronavirus-covid-19#if-you-are-not-fully-vaccinated
-puzzle https://puzzling.stackexchange.com/questions/45191/a-crossword-so-simple-it-practically-solves-itself
-python dis https://stackoverflow.com/questions/55876683/hook-into-the-builtin-python-f-string-format-machinery
-sp https://stackoverflow.com/questions/tagged/python
-sv https://stackoverflow.com/questions/tagged/vim
-sf https://stackoverflow.com/questions/tagged/fastapi
-spiew https://www.x-kom.pl/p/530112-mikrofon-rode-nt1-a-kit.html#Specyfikacja
-svim https://stackoverflow.com/questions/69957483/how-can-i-write-a-shortcut-to-compile-and-run-a-program-in-a-separate-terminal-w
-stronka http://176.119.35.227:3004/
-wii https://pythontutor.com/
-sg https://stackoverflow.com/questions/tagged/git
+stp https://stackoverflow.com/questions/tagged/python
+stv https://stackoverflow.com/questions/tagged/vim
+stf https://stackoverflow.com/questions/tagged/fastapi
+stg https://stackoverflow.com/questions/tagged/git
+ln https://www.linkedin.com/messaging/thread/2-MDdjN2NmYTgtNDI3NS00ZmMxLTg0ZTEtNmNhMzU2ZjY3NTA4XzAxMg==/
+linux https://www.amazon.pl/dp/1523915951?tag=guru99pl-21&th=1&psc=1&geniuslink=true
+sf-jira https://camcom.atlassian.net/jira/software/c/projects/STAR/boards/3
+sf-meets https://meet.google.com/ejk-dwew-ntv?pli=1&authuser=1
+sf-time_tracker https://app.clockify.me/tracker
+sf-conflu https://camcom.atlassian.net/wiki/spaces/STAR/overview?homepageId=524332
+sf-repos https://github.com/orgs/StarfishStorage/repositories
+sf-prezentacje https://drive.google.com/drive/u/1/folders/1EsJWglLr3MCrKXlieuxt8bVgsPBPpzyU
+sf-failed-jobs https://sf-jenkins.sfish.dev/jenkins/view/Failed%20jobs/
+sf-monitor https://docs.google.com/document/d/1qjPbBgiirrHoveeaKMvWiqO8DUI_GkrlP0f-mnLm1iw/edit
+sf-dowolski https://sf-jenkins.sfish.dev/jenkins/job/kdowolski/
+sf-workers zestawienie https://docs.google.com/spreadsheets/d/1vZH4v7j7xCpdWE5RakWcarHasX8Wtw9C7rASo9zuhUo/edit#gid=1953685143
+sf https://github.com/StarfishStorage/starfish
+kubernetes https://github.com/mmumshad/kubernetes-the-hard-way
+sf-notes https://docs.google.com/document/d/1S2vAkaOfPRpwV2wFRqd192EbEPiUUFWhnm9WreKr9_o/edit?skip_itp2_check=true&pli=1
+sf-radku https://medium.com/@rkujawa/how-to-spend-7-years-to-write-4-lines-of-code-42f17d695835
+sf-s3 https://my.s3for.me/client/buckets_objects/list/bucket/starfish-stable-updates
+network https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-routing
+pis http://100aferpis.pl/
+barbie https://barbie.fandom.com/pl/wiki/Barbie_(seria)
+pr https://github.com/StarfishStorage/starfish/compare/master...kdowolski:starfish:master
+sf-ans https://github.com/kdowolski/ansible/pulls
+hacker https://news.ycombinator.com/
+notmuch https://anarc.at/blog/2016-05-12-email-setup/
+inux now https://chrisdown.name/2018/01/02/in-defence-of-swap.html
+pg now https://postgres.ai/blog/20220525-common-db-schema-change-mistakes
+hack now https://samcurry.net/hacking-millions-of-modems
+ssh now https://iximiuz.com/en/posts/ssh-tunnels/
+smallworld https://www.nikonsmallworld.com/
+api guide https://github.com/zalando/restful-api-guidelines/tree/main
+sf-jpr https://sf-jenkins.sfish.dev/jenkins/job/pr/
+cc https://github.com/olimorris/codecompanion.nvim
+sf-registry https://sf-objectstores.sfish.dev/browser/
+adobe https://acrobat.adobe.com/link/home/%3Fpdfnow!verb=fillsign&x_api_client_id=adobe_com&x_api_client_location=fillsign&dropinId=verb-createpdf&filetype=application%2Fpdf&viewer!megaVerb=group-discover?pdfnow%21verb=fillsign&x_api_client_id=adobe_com&x_api_client_location=fillsign&dropinId=verb-createpdf&viewer%21megaVerb=group-discover
+sf-delivery https://sf-jenkins.sfish.dev/jenkins/job/Starfish/
+cal https://calendar.google.com/calendar/u/0/r
+now tmux https://medium.com/@hammad.ai/how-i-learned-tmux-became-a-workflow-ninja-7d33cc796793
+er now https://ekspedycja.pl/sklep/podziemia-kopalni-z%C5%82ota-16-03-2025-detail
+vim now https://thenewstack.io/vim-after-bram-a-core-maintainer-on-how-theyve-kept-it-going/
+rabbit now https://stackoverflow.com/questions/60407082/rabbit-mq-error-while-waiting-for-mnesia-tables

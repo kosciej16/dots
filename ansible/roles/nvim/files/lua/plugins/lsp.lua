@@ -45,18 +45,48 @@ local function get_pyright_error_code()
     end
 end
 
+local function goto_definition_or_fixture()
+    -- Call the LSP definition function first
+    vim.lsp.buf.definition()
+
+    -- Capture the current line where the cursor is
+    local current_line = vim.api.nvim_get_current_line()
+
+    -- Pattern to identify test function declarations
+    -- local is_test_function = current_line:match("^%s*(async%s+)?def%s+%w*test%w*")
+    local is_test_function = current_line:match("^%s*(async%s+)?def%s+%w*test%w*")
+
+    local is_fixture_parameter = false
+    -- Check the line above for the presence of "fixture"
+    local previous_line_number = vim.fn.line('.') - 1
+    if previous_line_number > 0 then
+        local previous_line = vim.api.nvim_buf_get_lines(0, previous_line_number - 1, previous_line_number, false)[1]
+        is_fixture_parameter = previous_line and previous_line:match("fixture")
+    end
+    if is_test_function or is_fixture_parameter then
+        -- If it looks like a test function, attempt to jump to a fixture
+        require("custom.fixture").jump() -- Adjust to your function managing fixtures
+    end
+end
 -- export on_attach & capabilities
 M.on_attach = function(client, bufnr)
     local function opts(desc)
         return { buffer = bufnr, silent = true, desc = "LSP " .. desc }
     end
 
+    -- if client.name == "pyright" then
+    --     client.server_capabilities.referencesProvider = false
+    --     client.server_capabilities.definitionProvider = false
+    -- end
+
     map("n", "<space>e", vim.diagnostic.open_float)
     map("n", "[d", vim.diagnostic.goto_prev)
     map("n", "]d", vim.diagnostic.goto_next)
     map("n", "<leader>cd", vim.diagnostic.setloclist)
     map("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-    map("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+    map("n", "gx", require "custom.fixture".jump)
+    -- map("n", "gd", goto_definition_or_fixture, opts("Go to fixture or definition"))
+    map("n", "gd", vim.lsp.buf.definition, opts("Go to fixture or definition"))
     map("n", "K", vim.lsp.buf.hover, opts("hover information"))
     map("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
     -- map("i", "gc", vim.lsp.buf.completion, opts("Completion"))
@@ -84,20 +114,6 @@ M.on_attach = function(client, bufnr)
     map("n", "gr", vim.lsp.buf.references, opts("Show references"))
 end
 
-function Test(folder)
-    -- vim.lsp.buf.add_workspace_folder(folder)
-
-    -- Restart pyright language server
-    for _, client in pairs(vim.lsp.get_active_clients()) do
-        if client.name == "pyright" then
-            client.stop()
-            vim.defer_fn(function()
-                vim.lsp.start_client(client.config)
-            end, 500)
-        end
-    end
-end
-
 local original_config = vim.lsp.handlers["workspace/configuration"]
 
 -- vim.lsp.handlers['workspace/configuration'] = vim.lsp.with(
@@ -112,48 +128,39 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "folke/neodev.nvim",
             "williamboman/mason.nvim",
             { "williamboman/mason-lspconfig.nvim", after = "mason.nvim" },
         },
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "lua_ls", "ruff", "rust_analyzer" }, -- List of LSP servers to automatically install
+                ensure_installed = { "basedpyright", "pyright", "lua_ls", "ruff", "rust_analyzer", "jedi_language_server" }, -- List of LSP servers to automatically install
             })
 
-            -- Set up pyright with nvim-lspconfig
-            -- vim.lsp.set_log_level("debug")
-
-            -- Improve lua lsp to work with neovim code
-            require("neodev").setup({
-                library = { plugins = { "nvim-dap-ui" }, types = true },
-            })
             local lspcfg = require("lspconfig")
             local util = require("lspconfig/util")
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            capabilities.textDocument.publishDiagnostics = nil
+
 
             require("lspconfig").pyright.setup({
-                capabilities = capabilities,
-                on_new_config = function(config, root_dir)
-                    print(config, root_dir)
-                    -- root_dir = util.root_pattern(".git", ".pyrightconfig.json"),
-                end,
-
-                -- local std_lib_path = '/usr/lib/python' .. python_version
-                -- local site_packages_path = venv_path .. '/lib/python' .. python_version .. '/site-packages'
-
+                -- on_attach = function(client, _)
+                --     client.server_capabilities.referencesProvider = false
+                --     client.server_capabilities.definitionProvider = false
+                -- end,
                 on_init = M.on_init,
                 on_attach = M.on_attach,
-                root_dir = util.root_pattern(".git", "pyrightconfig.json"),
+                -- root_dir = util.root_pattern("pyrightconfig.json", ".git"),
+                root_dir = util.root_pattern("pyproject.toml", "pyrightconfig.json", ".git"),
 
                 settings = {
                     python = {
                         analysis = {
-                            -- extraPaths = {'/home/kosciej/.local/share/nvim/mason/packages/pyright/node_modules/pyright/dist/typeshed-fallback/stdlib'},
-                            -- autoSearchPaths = true,
-                            -- extraPaths = {"tests"},
+                            autoSearchPaths = true,
+
+                            extraPaths = { "src", "../../libs/commons/src", "../../libs/anon_casc_combiner/src" },
+
                             -- diagnosticMode = 'openFiles',
                             -- diagnosticMode = 'workspace',
                             useLibraryCodeForTypes = true,
@@ -163,12 +170,36 @@ return {
                 },
             })
 
-            -- lspcfg.ruff_lsp.setup {}
             lspcfg.ruff.setup({
-                -- capabilities = capabilities,
+                capabilities = capabilities,
+                -- root_dir = util.root_pattern("pyrightconfig.json", ".git"),
+                root_dir = util.root_pattern("pyproject.toml", "pyrightconfig.json", ".git"),
+                -- root_dir = util.root_pattern("pyproject.toml", "pyrightconfig.json", ".git"),
             })
 
+            -- lspcfg.jedi_language_server.setup {
+            --     capabilities = capabilities,
+            --     on_init = M.on_init,
+            --     root_dir = util.root_pattern("pyproject.toml", "pyrightconfig.json", ".git"),
+            --     -- on_attach = M.on_attach,
+            --     init_options = {
+            --         workspace = {
+            --             extraPaths = { "src" },
+            --         }
+            --     },
+            -- }
             lspcfg.lua_ls.setup({
+                settings = {
+                    Lua = {
+                        format = {
+                            enable = true,
+                            defaultConfig = {
+                                max_line_length = "120", -- Set your desired line length here
+                            },
+                        },
+                    },
+                },
+
                 capabilities = capabilities,
                 on_attach = M.on_attach,
             })
@@ -177,6 +208,14 @@ return {
                 root_dir = util.root_pattern("Cargo.toml"),
                 filetypes = { "rust" },
                 settings = {
+                    -- rustfmt = {
+                    --     overrideCommand = {
+                    --         'rustfmt',
+                    --         '--config',
+                    --         'max_width=100',
+                    --     },
+                    -- },
+
                     ["rust_analyzer"] = {
                         cargo = {
                             allFeatures = true,
@@ -193,4 +232,8 @@ return {
             vim.g.rustfmt_autosave = 1
         end,
     },
+    {
+        "AckslD/nvim-pytrize.lua",
+        config = true,
+    }
 }

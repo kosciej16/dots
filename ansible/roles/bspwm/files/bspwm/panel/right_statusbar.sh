@@ -65,7 +65,7 @@ set_power() {
 
 set_time() {
     timetxt=$(date +"%H:%M:%S")
-	bartxt="$bartxt $timetxt"
+	bartxt="$bartxt$timetxt"
 		# timetxt=$timetxt" ^fg($col6)"
 		# timetxt=$timetxt"^ca(1, $TIMECMD)"
 		# timetxt=$timetxt"^i($icons/fn26/hourglass2.xbm)"

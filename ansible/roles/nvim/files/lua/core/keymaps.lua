@@ -1,4 +1,4 @@
-map = vim.keymap.set
+local map = vim.keymap.set
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +4<cr>", { desc = "Increase Window Height" })

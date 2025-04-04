@@ -53,6 +53,14 @@ set_mpd() {
 	bartxt="$bartxt $mpd"
 }
 
+set_music() {
+    track=$(spotifycli --song)
+    artist=$(spotifycli --artist)
+    # controll="^fn(Noto Color Emoji)^ca(1, playerctl play-pause)⏯^ca() ^ca(1, playerctl next)⏭^ca()^fn()"
+    music="${color_sec1}${mpd_icon} ${color_main}$artist - $track $controll"
+	bartxt="$bartxt $font $music"
+}
+
 set_workspace() {
     WS=$(bspc wm -g |
         sed -Ee 's/:m/ \n  M\>/g' \
@@ -80,8 +88,11 @@ while :; do
 
 # volume
     set_volume
+    transition
+    # set_music
     # transition
     # set_workspace
+    # transition
     echo $bartxt
     sleep 1
 

@@ -1,15 +1,16 @@
 local map = vim.keymap.set
-function Dupa()
-end
+function Dupa() end
 
 function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
+    if type(o) == "table" then
+        local s = "{ "
         for k, v in pairs(o) do
-            if type(k) ~= 'number' then k = '"' .. k .. '"' end
-            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+            if type(k) ~= "number" then
+                k = '"' .. k .. '"'
+            end
+            s = s .. "[" .. k .. "] = " .. dump(v) .. ","
         end
-        return s .. '} '
+        return s .. "} "
     else
         return tostring(o)
     end
@@ -24,16 +25,16 @@ return {
             require("nvim-surround").setup({
                 --   Configuration here, or leave empty to use defaults
             })
-        end
+        end,
     },
     {
-        'alexghergh/nvim-tmux-navigation',
+        "alexghergh/nvim-tmux-navigation",
         config = function()
-            local nvim_tmux_nav = require('nvim-tmux-navigation')
+            local nvim_tmux_nav = require("nvim-tmux-navigation")
 
-            nvim_tmux_nav.setup {
-                disable_when_zoomed = true -- defaults to false
-            }
+            nvim_tmux_nav.setup({
+                disable_when_zoomed = true, -- defaults to false
+            })
 
             -- map('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
             -- map('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
@@ -43,33 +44,99 @@ return {
             -- map('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
         end,
         keys = {
-            { "<C-h>",     function() require('nvim-tmux-navigation').NvimTmuxNavigateLeft() end },
-            { "<C-j>",     function() require('nvim-tmux-navigation').NvimTmuxNavigateDown() end },
-            { "<C-k>",     function() require('nvim-tmux-navigation').NvimTmuxNavigateUp() end },
-            { "<C-l>",     function() require('nvim-tmux-navigation').NvimTmuxNavigateRight() end },
-            { "<C-\\>",    function() require('nvim-tmux-navigation').NvimTmuxNavigateLastActive() end },
-            { "<C-Space>", function() require('nvim-tmux-navigation').NvimTmuxNavigateNext() end },
-        }
+            {
+                "<C-h>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+                end,
+            },
+            {
+                "<C-j>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+                end,
+            },
+            {
+                "<C-k>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+                end,
+            },
+            {
+                "<C-l>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+                end,
+            },
+            {
+                "<C-\\>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()
+                end,
+            },
+            {
+                "<C-Space>",
+                function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateNext()
+                end,
+            },
+        },
     },
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         cmd = "NvimTreeFindFile",
-        init = function()
-            map("n", "<leader>m", "<cmd> NvimTreeFindFile<CR>")
-        end,
+
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        init = function()
+            map("n", "<leader>m", "<cmd> NvimTreeFindFile!<CR>")
+            function change_root_from_tree()
+                if vim.bo.filetype ~= "NvimTree" then
+                    print("This function only works in nvim-tree")
+                    return
+                end
+
+                local node = require('nvim-tree.api').tree.get_node_under_cursor()
+                if not node then
+                    print("No node found under cursor")
+                    return
+                end
+
+                local path = node.absolute_path
+                if path == '' then
+                    print("Failed to get path")
+                    return
+                end
+
+                if vim.fn.isdirectory(path) == 0 then
+                    path = vim.fn.fnamemodify(path, ':h')
+                end
+
+                vim.cmd('cd ' .. path)
+                print("Changed directory to: " .. path)
+            end
+        end,
+
         config = function()
-            require("nvim-tree").setup {
-                -- on_attach = Dupa,
+            -- Map it to a key (only active in nvim-tree buffer)
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "NvimTree",
+                callback = function()
+                    vim.keymap.set('n', '<leader>cd', change_root_from_tree,
+                        { buffer = true, desc = 'Change root from tree node' })
+                end
+            })
+
+            require("nvim-tree").setup({
                 view = { adaptive_size = true },
                 actions = {
                     open_file = {
                         window_picker = {
                             enable = false,
-                        }
-                    }
-                } }
+                        },
+                    },
+                },
+            })
             -- vim.api.nvim_create_autocmd("FileType", {
             --     pattern = "NvimTree",
             --     callback = function()
@@ -79,20 +146,20 @@ return {
         end,
     },
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         config = function()
-            map('x', "<C-_>", "<Plug>(comment_toggle_linewise_visual)")
+            map("x", "<C-_>", "<Plug>(comment_toggle_linewise_visual)")
             require("Comment").setup({
                 toggler = {
-                    line = '<C-_>',
+                    line = "<C-_>",
                 },
             })
         end,
     },
     {
-        'akinsho/bufferline.nvim',
+        "akinsho/bufferline.nvim",
         version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        dependencies = "nvim-tree/nvim-web-devicons",
         config = function(x, opts)
             function foo(name, path, buffnr)
                 return "abc"
@@ -110,14 +177,14 @@ return {
     --         require("base46").load_all_highlights()
     --     end,
     -- },
-    'tpope/vim-rsi',
+    "tpope/vim-rsi",
     {
-        'jremmen/vim-ripgrep',
+        "jremmen/vim-ripgrep",
         config = function()
             map("n", "<leader>rr", ':Rg -w <c-r><c-w> --glob "!tests"<CR>')
             map("n", "<leader>ra", ':Rg --hidden -g "!.git"<SPACE>')
             -- " search everywhere
-            map("n", "<leader>re", ':Rg -w --hidden <c-r><c-w><CR>')
+            map("n", "<leader>re", ":Rg -w --hidden <c-r><c-w><CR>")
             -- search current directory word under cursor
             map("n", "<leader>rd", ':Rg <c-r><c-w> "%:p:h"<CR>')
             -- search current directory
@@ -128,9 +195,9 @@ return {
             -- search that omits tests
             map("n", "<leader>ro", ':Rg --glob "!tests" --hidden<SPACE>')
             -- search for filename
-            map("n", "<leader>rf", ':Rg %:t:r<CR>')
-            map("n", "<leader>rv", ':Rg --hidden  ~/.config/nvim<S-LEFT><LEFT>')
-            map("n", "\\", ':Rg<SPACE>')
+            map("n", "<leader>rf", ":Rg %:t:r<CR>")
+            map("n", "<leader>rv", ":Rg --hidden  ~/.config/nvim<S-LEFT><LEFT>")
+            map("n", "\\", ":Rg<SPACE>")
         end,
         -- search for word under cursor that omits tests
         -- let g:rg_highlight=1
@@ -139,35 +206,34 @@ return {
     },
 
     {
-        'lambdalisue/suda.vim',
+        "lambdalisue/suda.vim",
         config = function()
             map("c", "w!!", ":SudaWrite<CR>")
             map("c", "e!!", ":SudaRead<CR>")
-        end
+        end,
     },
     {
-        'tummetott/unimpaired.nvim',
-        event = 'VeryLazy',
+        "tummetott/unimpaired.nvim",
+        event = "VeryLazy",
         opts = {
             -- add options here if you wish to override the default settings
         },
     },
     {
-        'vimwiki/vimwiki',
+        "vimwiki/vimwiki",
         init = function()
-            local wiki_1 = { path = '~/.config/nvim/vimwiki/personal', syntax = 'markdown', ext = 'md' }
-            local wiki_2 = { path = '~/.config/nvim/vimwiki/sf', syntax = 'markdown', ext = 'md' }
-            local wiki_3 = { path = '~/.config/nvim/vimwiki/pom', syntax = 'markdown', ext = 'md' }
+            local wiki_1 = { path = "~/.config/nvim/vimwiki/personal", syntax = "markdown", ext = "md" }
+            local wiki_2 = { path = "~/.config/nvim/vimwiki/sf", syntax = "markdown", ext = "md" }
+            local wiki_3 = { path = "~/.config/nvim/vimwiki/pom", syntax = "markdown", ext = "md" }
 
             vim.g.vimwiki_map_prefix = "<leader>v"
             vim.g.vimwiki_list = { wiki_1, wiki_2, wiki_3 }
             vim.g.vimwiki_ext2syntax = {
-                ['.md'] = 'markdown',
-                ['.markdown'] = 'markdown',
-                ['.mdown'] = 'markdown'
+                [".md"] = "markdown",
+                [".markdown"] = "markdown",
+                [".mdown"] = "markdown",
             }
-        end
-
+        end,
     },
     {
         "catppuccin/nvim",
@@ -195,16 +261,16 @@ return {
                 mason = true,
                 gitsigns = true,
                 which_key = true,
-            }
-        }
+            },
+        },
     },
     {
         "gregorias/coerce.nvim",
-        tag = 'v1.0',
+        tag = "v1.0",
         config = true,
     },
     -- Plugin that disables other plugins when open big file
-    'pteroctopus/faster.nvim',
+    "pteroctopus/faster.nvim",
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
@@ -216,13 +282,25 @@ return {
             harpoon:setup()
             -- REQUIRED
 
-            vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-            vim.keymap.set("n", ",h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            vim.keymap.set("n", "<leader>ha", function()
+                harpoon:list():add()
+            end)
+            vim.keymap.set("n", ",h", function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end)
 
-            vim.keymap.set("n", "<leader>h1", function() harpoon:list():select(1) end)
-            vim.keymap.set("n", "<leader>h2", function() harpoon:list():select(2) end)
-            vim.keymap.set("n", "<leader>h3", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<leader>h4", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "<leader>h1", function()
+                harpoon:list():select(1)
+            end)
+            vim.keymap.set("n", "<leader>h2", function()
+                harpoon:list():select(2)
+            end)
+            vim.keymap.set("n", "<leader>h3", function()
+                harpoon:list():select(3)
+            end)
+            vim.keymap.set("n", "<leader>h4", function()
+                harpoon:list():select(4)
+            end)
 
             -- Toggle previous & next buffers stored within Harpoon list
             -- vim.keymap.set("n", "<S-P>", function() harpoon:list():prev() end)
@@ -274,7 +352,8 @@ return {
                 "typescript",
                 "vim",
                 "vimdoc",
-                "xml", "yaml"
+                "xml",
+                "yaml",
             },
             incremental_selection = {
                 enable = true,
@@ -297,7 +376,7 @@ return {
         },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
-        end
+        end,
         -- init = function(plugin)
         --     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
         --     -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
@@ -311,7 +390,7 @@ return {
     {
         "folke/which-key.nvim",
         opts = {
-            notify = false
+            notify = false,
         },
     },
 }

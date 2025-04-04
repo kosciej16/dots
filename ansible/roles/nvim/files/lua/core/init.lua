@@ -1,6 +1,6 @@
 local opt = vim.opt
 local g = vim.g
-map = vim.keymap.set
+local map = vim.keymap.set
 
 opt.number = true
 opt.visualbell = true

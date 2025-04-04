@@ -17,6 +17,7 @@ c.url.searchengines = {
     "bgg": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q={}",
     "isz": "https://i-szop.pl/szukaj2/1/{}",
     "w": "https://pl.wikipedia.org/w/index.php?search={}",
+    "S": "https://starfishstorage.atlassian.net/browse/STAR-{}",
 }
 c.zoom.default = "125%"
 c.url.default_page = "https://www.google.com/"
@@ -48,7 +49,7 @@ c.hints.next_regexes = [
 c.hints.next_regexes.append("Następna")
 
 c.content.geolocation = True
-c.downloads.open_dispatcher = "evince"
+# c.downloads.open_dispatcher = "evince"
 
 c.new_instance_open_target = "tab"
 c.aliases = {"w": "session-save", "q": "quit", "wq": "quit --save", "h": "help"}
@@ -56,6 +57,7 @@ c.tabs.mode_on_change = "restore"
 
 config.unbind("<Ctrl-w>")
 
+config.bind("<z><t>", "spawn --userscript test")
 config.bind("<z><l>", "spawn --userscript qute-pass")
 config.bind("<z><u><l>", "spawn --userscript qute-pass --username-only")
 config.bind("<z><p><l>", "spawn --userscript qute-pass --password-only")
@@ -141,3 +143,7 @@ config.unbind("l")
 config.unbind("h")
 config.bind("l", "forward")
 config.bind("h", "back")
+
+c.content.javascript.clipboard = "access-paste"
+
+c.qt.args = ["proxy-pac-url=file://" + str(config.configdir / "proxy.pac")]
